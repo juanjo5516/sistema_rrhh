@@ -13,10 +13,8 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
                     'Bienvienido al Sistema de Recursos Humanos!'
-   
-                </div>
+                </div>               
             </div>
         </div>
     </div>

@@ -15,7 +15,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="/css/app.css">
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="sidebar-mini layout-fixed layout-navbar-fixed">
   <div class="wrapper">
 
     <!-- Navbar -->
@@ -73,10 +73,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar sidebar-light-blue elevation-3">
       <!-- Brand Logo -->
-      <a href="index3.html" class="brand-link">
-        <img src="./img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <a href="" class="brand-link">
+        <img src="./img/logo-horizontal-mineco.jpg" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+        <br>
+        <br>
         <span class="brand-text font-weight-light">Recursos Humanos</span>
       </a>
 
@@ -98,11 +100,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Starter Pages
+                  Vacaciones
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -121,11 +123,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-friends"></i>
+                <p>
+                  Personal
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="/personal" class="nav-link active">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Registro Personal</p>
+                  </a>
+                </li>
+<!--                 <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Inactive Page</p>
+                  </a>
+                </li> -->
+              </ul>
+            </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-th"></i>
                 <p>
-                  Simple Link
+                  Vista 1
                   <span class="right badge badge-danger">New</span>
                 </p>
               </a>
@@ -178,7 +203,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- /.content-wrapper -->
 
     <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
+    <aside class="control-sidebar control-sidebar-light">
       <!-- Control sidebar content goes here -->
       <div class="p-3">
         <h5>Title</h5>

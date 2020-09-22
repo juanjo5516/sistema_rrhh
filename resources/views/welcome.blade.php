@@ -16,11 +16,20 @@
         html,
         body {
             background-color: #fff;
-            color: #636b6f;
+            background-image: url(img/img-mineco.jpg);
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #000;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
             margin: 0;
+        }
+
+        body:hover {
+            filter: blur(2.5);
         }
 
         .full-height {
@@ -74,11 +83,9 @@
             @auth
             <a href="{{ url('/home') }}">Home</a>
             @else
-            <a href="{{ route('login') }}"><button type="button" class="btn btn-outline-primary">Iniciar Sesión</button></a>
-            
-
+            <a href="{{ route('login') }}"><button type="button" class="btn btn-primary">Iniciar Sesión</button></a>
             @if (Route::has('register'))
-            <a href="{{ route('register') }}">Registrarse</a>
+            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary">Registrarse</button></a>
             @endif
             @endauth
         </div>
@@ -89,18 +96,22 @@
             <!--             <div class="col-6">
                 <img src="img/logo-mineco-welcome.png" alt="">
             </div> -->
-            <div class="row justify-content-md-center">
-                <div class="col col-lg-3">
-                    <!-- <img src="img/logo-mineco-welcome.png" alt=""> -->
-                    <img src="img/logo-mineco-welcome.png" class="img-fluid" alt="Responsive image">
-                </div>
-            </div>
 
-            <div class="title m-b-md">
-                Sistema Recursos Humanos!
-            </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row justify-content-md-center">
+                                <div class="col col-lg-3">
+                                    <!-- <img src="img/logo-mineco-welcome.png" alt=""> -->
+                                    <img src="img/logo-mineco-welcome.png" class="img-fluid" alt="Responsive image">
+                                </div>
+                            </div>
+                            <div class="title">
+                                Sistema Recursos Humanos
+                            </div>
+                        </div>
+                    </div>
 
-<!--             <div class="links">
+            <!--             <div class="links">
                 <a href="https://laravel.com/docs">Docs</a>
                 <a href="https://laracasts.com">Laracasts</a>
                 <a href="https://laravel-news.com">News</a>
