@@ -20,4 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::view('/personal', 'personal.listadopersonas', ['name' => 'Taylor']);
+Route::view('/personal', 'personal.listadopersonas');
+Route::view('/registro-personal', 'personal.registropersonas');

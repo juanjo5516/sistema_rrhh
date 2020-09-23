@@ -83,9 +83,9 @@
             @auth
             <a href="{{ url('/home') }}">Home</a>
             @else
-            <a href="{{ route('login') }}"><button type="button" class="btn btn-primary">Iniciar Sesión</button></a>
+            <a href="{{ route('login') }}"><button type="button" class="btn btn-light">Iniciar Sesión</button></a>
             @if (Route::has('register'))
-            <a href="{{ route('register') }}"><button type="button" class="btn btn-primary">Registrarse</button></a>
+            <a href="{{ route('register') }}"><button type="button" class="btn btn-light">Registrarse</button></a>
             @endif
             @endauth
         </div>

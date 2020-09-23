@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="./img/profile.png" class="img-circle elevation-2" alt="User Image">
+            <img src="./img/profile1.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"> {{ Auth::user()->name}}</a>
@@ -133,7 +133,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="/personal" class="nav-link active">
+                  <a href="/registro-personal" class="nav-link active">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Registro Personal</p>
                   </a>
