@@ -1993,16 +1993,99 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log('Component mounted.');
+    console.log("Component mounted.");
   },
   data: function data() {
     return {
       primer_nombre: "",
       segundo_nombre: "",
+      tercer_nombre: "",
       primer_apellido: "",
-      segundo_apellido: ""
+      segundo_apellido: "",
+      apellido_casada: "",
+      picked: "",
+      nit: ""
     };
   }
 });
@@ -37684,109 +37767,273 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Registro")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("span", [_vm._v("Primer Nombre:")]),
-            _c("br"),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.primer_nombre,
-                  expression: "primer_nombre"
-                }
-              ],
-              attrs: { placeholder: "Primer Nombre" },
-              domProps: { value: _vm.primer_nombre },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c("form", [
+              _c("div", { staticClass: "form-row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("span", [_vm._v("Primer Nombre:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.primer_nombre,
+                        expression: "primer_nombre"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "Primer Nombre" },
+                    domProps: { value: _vm.primer_nombre },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.primer_nombre = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Message is: " + _vm._s(_vm.primer_nombre))])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("span", [_vm._v("Segundo Nombre:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.segundo_nombre,
+                        expression: "segundo_nombre"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "Segundo Nombre" },
+                    domProps: { value: _vm.segundo_nombre },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.segundo_nombre = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Message is: " + _vm._s(_vm.segundo_nombre))])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("span", [_vm._v("Tercer Nombre:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.tercer_nombre,
+                        expression: "tercer_nombre"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "Tercer Nombre" },
+                    domProps: { value: _vm.tercer_nombre },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.tercer_nombre = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [_vm._v("Message is: " + _vm._s(_vm.tercer_nombre))])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-row" }, [
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("span", [_vm._v("Primer Apellido:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.primer_apellido,
+                        expression: "primer_apellido"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "Primer Apellido" },
+                    domProps: { value: _vm.primer_apellido },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.primer_apellido = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v("Message is: " + _vm._s(_vm.primer_apellido))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col-md-6" }, [
+                  _c("span", [_vm._v("Segundo Apellido:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.segundo_apellido,
+                        expression: "segundo_apellido"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "Segundo Apellido" },
+                    domProps: { value: _vm.segundo_apellido },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.segundo_apellido = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", [
+                    _vm._v("Message is: " + _vm._s(_vm.segundo_apellido))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("span", [_vm._v("Apellido de casada:")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.apellido_casada,
+                      expression: "apellido_casada"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { placeholder: "Apellido de casada" },
+                  domProps: { value: _vm.apellido_casada },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.apellido_casada = $event.target.value
+                    }
                   }
-                  _vm.primer_nombre = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Message is: " + _vm._s(_vm.primer_nombre))]),
-            _vm._v(" "),
-            _c("span", [_vm._v("Segundo Nombre:")]),
-            _c("br"),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.segundo_nombre,
-                  expression: "segundo_nombre"
-                }
-              ],
-              attrs: { placeholder: "Segundo Nombre" },
-              domProps: { value: _vm.segundo_nombre },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                }),
+                _vm._v(" "),
+                _c("p", [_vm._v("Message is: " + _vm._s(_vm.apellido_casada))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.picked,
+                      expression: "picked"
+                    }
+                  ],
+                  attrs: { type: "radio", id: "one", value: "Mujer" },
+                  domProps: { checked: _vm._q(_vm.picked, "Mujer") },
+                  on: {
+                    change: function($event) {
+                      _vm.picked = "Mujer"
+                    }
                   }
-                  _vm.segundo_nombre = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Message is: " + _vm._s(_vm.segundo_nombre))]),
-            _vm._v(" "),
-            _c("span", [_vm._v("Primer Apellido:")]),
-            _c("br"),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.primer_apellido,
-                  expression: "primer_apellido"
-                }
-              ],
-              attrs: { placeholder: "Primer Apellido" },
-              domProps: { value: _vm.primer_apellido },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "one" } }, [_vm._v("Mujer")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.picked,
+                      expression: "picked"
+                    }
+                  ],
+                  attrs: { type: "radio", id: "two", value: "Hombre" },
+                  domProps: { checked: _vm._q(_vm.picked, "Hombre") },
+                  on: {
+                    change: function($event) {
+                      _vm.picked = "Hombre"
+                    }
                   }
-                  _vm.primer_apellido = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Message is: " + _vm._s(_vm.primer_apellido))]),
-            _vm._v(" "),
-            _c("span", [_vm._v("Segundo Apellido:")]),
-            _c("br"),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.segundo_apellido,
-                  expression: "segundo_apellido"
-                }
-              ],
-              attrs: { placeholder: "Segundo Apellido" },
-              domProps: { value: _vm.segundo_apellido },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                }),
+                _vm._v(" "),
+                _c("label", { attrs: { for: "two" } }, [_vm._v("Hombre")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("span", [_vm._v("Género: " + _vm._s(_vm.picked))])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-group" }, [
+                _c("span", [_vm._v("Nit:")]),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.nit,
+                      expression: "nit"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { placeholder: "Nit" },
+                  domProps: { value: _vm.nit },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.nit = $event.target.value
+                    }
                   }
-                  _vm.segundo_apellido = $event.target.value
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("p", [_vm._v("Message is: " + _vm._s(_vm.segundo_apellido))])
+                }),
+                _vm._v(" "),
+                _c("p", [_vm._v("Message is: " + _vm._s(_vm.nit))])
+              ])
+            ])
           ])
         ])
       ])
