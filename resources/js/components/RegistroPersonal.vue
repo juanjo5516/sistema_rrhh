@@ -73,6 +73,7 @@
               </div>
 
               <div class="form-group">
+                <div class="col-md-6">
                 <!-- Input para colocar Segundo apellido -->
                 <span>Apellido de casada:</span>
                 <br />
@@ -82,6 +83,7 @@
                   placeholder="Apellido de casada"
                 />
                 <p>Message is: {{ apellido_casada }}</p>
+                </div>
               </div>
               <div class="form-group">
                 <input type="radio" id="one" value="Mujer" v-model="picked" />

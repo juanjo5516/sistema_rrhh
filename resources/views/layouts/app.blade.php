@@ -111,13 +111,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="#" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-circle nav-icon"></i>
                     <p>Active Page</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-circle nav-icon"></i>
                     <p>Inactive Page</p>
                   </a>
                 </li>
@@ -134,7 +134,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="/registro-personal" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="fas fa-address-card nav-icon"></i>
                     <p>Registro Personal</p>
                   </a>
                 </li>
@@ -146,15 +146,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li> -->
               </ul>
             </li>
+
             <li class="nav-item">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-th"></i>
+                <i class="nav-icon fas fa-chart-bar"></i>
                 <p>
-                  Vista 1
+                  Tablero 1
                   <span class="right badge badge-danger">New</span>
                 </p>
               </a>
             </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-line"></i>
+                <p>
+                  Tablero 2
+                  <span class="right badge badge-danger">New</span>
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-chart-line"></i>
+                <p>
+                  Tablero 3
+                  <span class="right badge badge-danger">New</span>
+                </p>
+              </a>
+            </li>
+
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -216,10 +238,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
       <!-- To the right -->
       <div class="float-right d-none d-sm-inline">
-        Anything you want
+        Recursos Humanos
       </div>
       <!-- Default to the left -->
-      <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+      <!-- <strong>Copyright &copy; 2014-2019 <a href="https://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved. -->
     </footer>
   </div>
   <!-- ./wrapper -->
