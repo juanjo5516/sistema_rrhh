@@ -138,12 +138,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>Registro Personal</p>
                   </a>
                 </li>
-<!--                 <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Inactive Page</p>
+                <li class="nav-item">
+                  <a href="{{route('persona.index')}}" class="nav-link">
+                    <i class="fas fa-circle nav-icon"></i>
+                    <p>Empleados</p>
                   </a>
-                </li> -->
+                </li>
               </ul>
             </li>
 
@@ -191,7 +191,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0 text-dark">Login</h1>
+              <h1 class="m-0 text-dark">Sistema RRHH</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
