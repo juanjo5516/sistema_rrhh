@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+const { default: Axios } = require('axios');
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -31,6 +33,8 @@ Vue.component('registro-personal', require('./components/RegistroPersonal.vue').
 const app = new Vue({
     el: '#app',
     data:{
-        message:""
+        message:"",
+        primer_nombre: ''
     }
+
 });

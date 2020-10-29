@@ -24,3 +24,5 @@ Route::view('/personal', 'personal.listadopersonas');
 Route::view('/registro-personal', 'personal.registropersonas');
 
 Route::resource('persona', 'PersonaController');
+
+Route::get('/obtener-catalogo', 'ObtenerCatalogoController@obtenerCatalogo');

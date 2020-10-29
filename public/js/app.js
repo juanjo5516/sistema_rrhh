@@ -2099,27 +2099,141 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
+    this.obtenerCatalogo('etnias', 'etnia');
+    this.obtenerCatalogo('comunidads', 'comunidad_linguistica');
+    this.obtenerCatalogo('profesions', 'profesion_universitaria');
   },
   data: function data() {
     return {
       primer_nombre: "",
+      dpi: "",
       segundo_nombre: "",
       tercer_nombre: "",
       primer_apellido: "",
       segundo_apellido: "",
       apellido_casada: "",
       picked: "",
-      nit: ""
+      nit: "",
+      etnias: [],
+      comunidades: [],
+      profesiones: [],
+      renglones: [{
+        id: 1,
+        numero: '011'
+      }, {
+        id: 2,
+        numero: '022'
+      }, {
+        id: 3,
+        numero: '029'
+      }, {
+        id: 3,
+        numero: '018'
+      }]
     };
   },
   components: {
     FormWizard: vue_form_wizard__WEBPACK_IMPORTED_MODULE_0__["FormWizard"],
     TabContent: vue_form_wizard__WEBPACK_IMPORTED_MODULE_0__["TabContent"]
+  },
+  methods: {
+    crearPersona: function crearPersona() {
+      alert("¡Nítido!");
+      console.log("Funcionando botón");
+      var url = "/persona";
+      axios.post(url, {
+        dpi: this.dpi,
+        nombre1: this.primer_nombre,
+        nombre2: this.segundo_nombre,
+        nombre3: this.tercer_nombre,
+        apellido1: this.primer_apellido,
+        apellido2: this.segundo_apellido,
+        apellido_casada: this.apellido_casada
+      }).then(function (response) {
+        console.log(result);
+      });
+      location.href = "/home";
+    },
+    obtenerCatalogo: function obtenerCatalogo(table, column) {
+      var _this = this;
+
+      axios.get("/obtener-catalogo?table=".concat(table, "&column=").concat(column)).then(function (response) {
+        if (table == 'etnias') {
+          _this.etnias = response.data;
+        } else if (table == 'comunidads') {
+          _this.comunidades = response.data;
+        } else if (table == 'profesions') {
+          _this.profesiones = response.data;
+        }
+      });
+    }
   }
 });
 
@@ -38497,10 +38611,30 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c(
               "form",
+              {
+                attrs: { method: "POST" },
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.crearPersona($event)
+                  }
+                }
+              },
               [
                 _c(
                   "form-wizard",
-                  { attrs: { title: "", subtitle: "" } },
+                  {
+                    attrs: {
+                      title: "",
+                      subtitle: "",
+                      "next-button-text": "Siguiente",
+                      "back-button-text": "Atrás",
+                      "finish-button-text": "Finalizar",
+                      color: "#20A7E1",
+                      shape: "circle"
+                    },
+                    on: { "on-complete": _vm.crearPersona }
+                  },
                   [
                     _c(
                       "tab-content",
@@ -38509,7 +38643,37 @@ var render = function() {
                       },
                       [
                         _c("div", { staticClass: "form-row" }, [
-                          _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
+                            _c("span", [_vm._v("DPI:")]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.dpi,
+                                  expression: "dpi"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { placeholder: "Dpi" },
+                              domProps: { value: _vm.dpi },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.dpi = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-row" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
                             _c("span", [_vm._v("Primer Nombre:")]),
                             _vm._v(" "),
                             _c("br"),
@@ -38534,14 +38698,10 @@ var render = function() {
                                   _vm.primer_nombre = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v("Message is: " + _vm._s(_vm.primer_nombre))
-                            ])
+                            })
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
                             _c("span", [_vm._v("Segundo Nombre:")]),
                             _vm._v(" "),
                             _c("br"),
@@ -38566,18 +38726,12 @@ var render = function() {
                                   _vm.segundo_nombre = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "Message is: " + _vm._s(_vm.segundo_nombre)
-                              )
-                            ])
+                            })
                           ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-row" }, [
-                          _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
                             _c("span", [_vm._v("Tercer Nombre:")]),
                             _vm._v(" "),
                             _c("br"),
@@ -38602,16 +38756,12 @@ var render = function() {
                                   _vm.tercer_nombre = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v("Message is: " + _vm._s(_vm.tercer_nombre))
-                            ])
+                            })
                           ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-row" }, [
-                          _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
                             _c("span", [_vm._v("Primer Apellido:")]),
                             _vm._v(" "),
                             _c("br"),
@@ -38636,16 +38786,10 @@ var render = function() {
                                   _vm.primer_apellido = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "Message is: " + _vm._s(_vm.primer_apellido)
-                              )
-                            ])
+                            })
                           ]),
                           _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
                             _c("span", [_vm._v("Segundo Apellido:")]),
                             _vm._v(" "),
                             _c("br"),
@@ -38670,18 +38814,12 @@ var render = function() {
                                   _vm.segundo_apellido = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "Message is: " + _vm._s(_vm.segundo_apellido)
-                              )
-                            ])
+                            })
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("div", { staticClass: "col-md-6" }, [
+                        _c("div", { staticClass: "form-row" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
                             _c("span", [_vm._v("Apellido de casada:")]),
                             _vm._v(" "),
                             _c("br"),
@@ -38706,17 +38844,15 @@ var render = function() {
                                   _vm.apellido_casada = $event.target.value
                                 }
                               }
-                            }),
-                            _vm._v(" "),
-                            _c("p", [
-                              _vm._v(
-                                "Message is: " + _vm._s(_vm.apellido_casada)
-                              )
-                            ])
+                            })
                           ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
+                          _c("span", [_vm._v("Género: ")]),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
                           _c("input", {
                             directives: [
                               {
@@ -38767,9 +38903,7 @@ var render = function() {
                             _vm._v("Hombre")
                           ]),
                           _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("span", [_vm._v("Género: " + _vm._s(_vm.picked))])
+                          _c("br")
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
@@ -38795,9 +38929,7 @@ var render = function() {
                                 _vm.nit = $event.target.value
                               }
                             }
-                          }),
-                          _vm._v(" "),
-                          _c("p", [_vm._v("Message is: " + _vm._s(_vm.nit))])
+                          })
                         ])
                       ]
                     ),
@@ -38806,14 +38938,222 @@ var render = function() {
                       "tab-content",
                       { attrs: { title: "Información adicional" } },
                       [
-                        _vm._v(
-                          "\n                  Segundo paso\n              "
-                        )
+                        _c("div", { staticClass: "form-row" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
+                            _c("span", [_vm._v("Seleccione Etnia:  ")]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.Seleccione,
+                                    expression: "Seleccione"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.Seleccione = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.etnias, function(etnia) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: etnia.id } },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(etnia.etnia) +
+                                        "\n                        "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
+                            _c("span", [
+                              _vm._v("Seleccione Comunidad Linguistica:  ")
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.selected,
+                                    expression: "selected"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.selected = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.comunidades, function(comunidad) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: comunidad.id } },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(
+                                          comunidad.comunidad_linguistica
+                                        ) +
+                                        "\n                        "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "form-row" }, [
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
+                            _c("span", [
+                              _vm._v("Seleccione profesión Universitaria:  ")
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.selected,
+                                    expression: "selected"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.selected = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.profesiones, function(profesion) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: profesion.id } },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(
+                                          profesion.profesion_universitaria
+                                        ) +
+                                        "\n                        "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6 py-3" }, [
+                            _c("span", [_vm._v("Seleccione Renglon:  ")]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c(
+                              "select",
+                              {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: _vm.selected,
+                                    expression: "selected"
+                                  }
+                                ],
+                                on: {
+                                  change: function($event) {
+                                    var $$selectedVal = Array.prototype.filter
+                                      .call($event.target.options, function(o) {
+                                        return o.selected
+                                      })
+                                      .map(function(o) {
+                                        var val =
+                                          "_value" in o ? o._value : o.value
+                                        return val
+                                      })
+                                    _vm.selected = $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  }
+                                }
+                              },
+                              _vm._l(_vm.renglones, function(renglon) {
+                                return _c(
+                                  "option",
+                                  { domProps: { value: renglon.numero } },
+                                  [
+                                    _vm._v(
+                                      "\n                          " +
+                                        _vm._s(renglon.numero) +
+                                        "\n                        "
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          ])
+                        ])
                       ]
                     ),
                     _vm._v(" "),
                     _c("tab-content", { attrs: { title: "Verificación" } }, [
-                      _vm._v("\n                  Tercer paso\n              ")
+                      _vm._v(" Tercer paso ")
                     ])
                   ],
                   1
@@ -51083,6 +51423,9 @@ module.exports = function(module) {
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
+var _require = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"),
+    Axios = _require["default"];
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -51108,7 +51451,8 @@ Vue.component('registro-personal', __webpack_require__(/*! ./components/Registro
 var app = new Vue({
   el: '#app',
   data: {
-    message: ""
+    message: "",
+    primer_nombre: ''
   }
 });
 

@@ -35,7 +35,18 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $persona = new Persona();
+        $persona->dpi = $request->dpi;
+        $persona->nombre1 = $request->nombre1;
+        $persona->nombre2 = $request->nombre2;
+        $persona->nombre3 = $request->nombre3;
+        $persona->apellido1 = $request->apellido1;
+        $persona->apellido2 = $request->apellido2;
+        $persona->apellido_casada = $request->apellido_casada;
+
+        $persona->save();
+
+        return redirect('home');
     }
 
     /**
