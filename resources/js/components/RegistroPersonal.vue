@@ -108,18 +108,18 @@
                     <input
                       type="radio"
                       id="one"
-                      value="Mujer"
+                      value="F"
                       v-model="picked"
                     />
-                    <label for="one">Mujer</label>
+                    <label for="one">Femenino</label>
                     <br />
                     <input
                       type="radio"
                       id="two"
-                      value="Hombre"
+                      value="M"
                       v-model="picked"
                     />
-                    <label for="two">Hombre</label>
+                    <label for="two">Masculino</label>
                     <br />
                     
                   </div>
@@ -137,11 +137,12 @@
                   <div class="form-row">
                     <div class="col-md-6 py-3">
                       <span>Seleccione Etnia:  </span> <br>
-                        <select v-model="Seleccione">
+                        <select v-model="etnia">
 
                           <option 
                             v-for="etnia in etnias"
                             v-bind:value="etnia.id"
+                            v-bind:key="etnia.id"
                           >
                             {{ etnia.etnia }}
                           </option>
@@ -149,10 +150,11 @@
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Seleccione Comunidad Linguistica:  </span> <br>
-                        <select v-model="selected">
+                        <select v-model="comunidad">
                           <option 
                             v-for="comunidad in comunidades"
                             v-bind:value="comunidad.id"
+                            v-bind:key="comunidad.id"
                           >
                             {{ comunidad.comunidad_linguistica }}
                           </option>
@@ -163,10 +165,11 @@
                   <div class="form-row">
                     <div class="col-md-6 py-3">
                       <span>Seleccione profesión Universitaria:  </span> <br>
-                        <select v-model="selected">
+                        <select v-model="profesion">
                           <option 
                             v-for="profesion in profesiones"
                             v-bind:value="profesion.id"
+                            v-bind:key="profesion.id"
                           >
                             {{ profesion.profesion_universitaria }}
                           </option>
@@ -174,10 +177,11 @@
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Seleccione Renglon:  </span> <br>
-                        <select v-model="selected">
+                        <select v-model="renglon">
                           <option 
                             v-for="renglon in renglones"
                             v-bind:value="renglon.numero"
+                            v-bind:key="renglon.numero"
                           >
                             {{ renglon.numero }}
                           </option>
@@ -227,7 +231,11 @@ export default {
         {id:2,numero: '022'},
         {id:3,numero: '029'},
         {id:3,numero: '018'}
-      ]
+      ],
+      renglon:"",
+      etnia:"",
+      comunidad:"",
+      profesion:""
 
     };
   },
@@ -237,7 +245,7 @@ export default {
   },
   methods: {
     crearPersona: function () {
-      alert("¡Nítido!");
+      alert("¡Registro Creado satisfactoriamente!");
       console.log("Funcionando botón");
       var url = "/persona";
       axios
@@ -248,12 +256,20 @@ export default {
           nombre3: this.tercer_nombre,
           apellido1: this.primer_apellido,
           apellido2: this.segundo_apellido,
-          apellido_casada: this.apellido_casada
+          apellido_casada: this.apellido_casada,
+          renglon: this.renglon,
+          genero: this.picked,
+          etnia: this.etnia,
+          comunidad: this.comunidad,
+          profesion: this.profesion
         })
         .then((response) => {
+          location.href = "/home";
           console.log(result);
+          
+
         });
-      location.href = "/home";
+
     },
     obtenerCatalogo: function(table, column){
       axios.get(`/obtener-catalogo?table=${table}&column=${column}`)

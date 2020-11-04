@@ -2161,6 +2161,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2196,7 +2200,11 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         id: 3,
         numero: '018'
-      }]
+      }],
+      renglon: "",
+      etnia: "",
+      comunidad: "",
+      profesion: ""
     };
   },
   components: {
@@ -2205,7 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     crearPersona: function crearPersona() {
-      alert("¡Nítido!");
+      alert("¡Registro Creado satisfactoriamente!");
       console.log("Funcionando botón");
       var url = "/persona";
       axios.post(url, {
@@ -2215,11 +2223,16 @@ __webpack_require__.r(__webpack_exports__);
         nombre3: this.tercer_nombre,
         apellido1: this.primer_apellido,
         apellido2: this.segundo_apellido,
-        apellido_casada: this.apellido_casada
+        apellido_casada: this.apellido_casada,
+        renglon: this.renglon,
+        genero: this.picked,
+        etnia: this.etnia,
+        comunidad: this.comunidad,
+        profesion: this.profesion
       }).then(function (response) {
+        location.href = "/home";
         console.log(result);
       });
-      location.href = "/home";
     },
     obtenerCatalogo: function obtenerCatalogo(table, column) {
       var _this = this;
@@ -38862,17 +38875,17 @@ var render = function() {
                                 expression: "picked"
                               }
                             ],
-                            attrs: { type: "radio", id: "one", value: "Mujer" },
-                            domProps: { checked: _vm._q(_vm.picked, "Mujer") },
+                            attrs: { type: "radio", id: "one", value: "F" },
+                            domProps: { checked: _vm._q(_vm.picked, "F") },
                             on: {
                               change: function($event) {
-                                _vm.picked = "Mujer"
+                                _vm.picked = "F"
                               }
                             }
                           }),
                           _vm._v(" "),
                           _c("label", { attrs: { for: "one" } }, [
-                            _vm._v("Mujer")
+                            _vm._v("Femenino")
                           ]),
                           _vm._v(" "),
                           _c("br"),
@@ -38886,21 +38899,17 @@ var render = function() {
                                 expression: "picked"
                               }
                             ],
-                            attrs: {
-                              type: "radio",
-                              id: "two",
-                              value: "Hombre"
-                            },
-                            domProps: { checked: _vm._q(_vm.picked, "Hombre") },
+                            attrs: { type: "radio", id: "two", value: "M" },
+                            domProps: { checked: _vm._q(_vm.picked, "M") },
                             on: {
                               change: function($event) {
-                                _vm.picked = "Hombre"
+                                _vm.picked = "M"
                               }
                             }
                           }),
                           _vm._v(" "),
                           _c("label", { attrs: { for: "two" } }, [
-                            _vm._v("Hombre")
+                            _vm._v("Masculino")
                           ]),
                           _vm._v(" "),
                           _c("br")
@@ -38951,8 +38960,8 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.Seleccione,
-                                    expression: "Seleccione"
+                                    value: _vm.etnia,
+                                    expression: "etnia"
                                   }
                                 ],
                                 on: {
@@ -38966,7 +38975,7 @@ var render = function() {
                                           "_value" in o ? o._value : o.value
                                         return val
                                       })
-                                    _vm.Seleccione = $event.target.multiple
+                                    _vm.etnia = $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
                                   }
@@ -38975,7 +38984,10 @@ var render = function() {
                               _vm._l(_vm.etnias, function(etnia) {
                                 return _c(
                                   "option",
-                                  { domProps: { value: etnia.id } },
+                                  {
+                                    key: etnia.id,
+                                    domProps: { value: etnia.id }
+                                  },
                                   [
                                     _vm._v(
                                       "\n                          " +
@@ -39003,8 +39015,8 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.selected,
-                                    expression: "selected"
+                                    value: _vm.comunidad,
+                                    expression: "comunidad"
                                   }
                                 ],
                                 on: {
@@ -39018,7 +39030,7 @@ var render = function() {
                                           "_value" in o ? o._value : o.value
                                         return val
                                       })
-                                    _vm.selected = $event.target.multiple
+                                    _vm.comunidad = $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
                                   }
@@ -39027,7 +39039,10 @@ var render = function() {
                               _vm._l(_vm.comunidades, function(comunidad) {
                                 return _c(
                                   "option",
-                                  { domProps: { value: comunidad.id } },
+                                  {
+                                    key: comunidad.id,
+                                    domProps: { value: comunidad.id }
+                                  },
                                   [
                                     _vm._v(
                                       "\n                          " +
@@ -39059,8 +39074,8 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.selected,
-                                    expression: "selected"
+                                    value: _vm.profesion,
+                                    expression: "profesion"
                                   }
                                 ],
                                 on: {
@@ -39074,7 +39089,7 @@ var render = function() {
                                           "_value" in o ? o._value : o.value
                                         return val
                                       })
-                                    _vm.selected = $event.target.multiple
+                                    _vm.profesion = $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
                                   }
@@ -39083,7 +39098,10 @@ var render = function() {
                               _vm._l(_vm.profesiones, function(profesion) {
                                 return _c(
                                   "option",
-                                  { domProps: { value: profesion.id } },
+                                  {
+                                    key: profesion.id,
+                                    domProps: { value: profesion.id }
+                                  },
                                   [
                                     _vm._v(
                                       "\n                          " +
@@ -39111,8 +39129,8 @@ var render = function() {
                                   {
                                     name: "model",
                                     rawName: "v-model",
-                                    value: _vm.selected,
-                                    expression: "selected"
+                                    value: _vm.renglon,
+                                    expression: "renglon"
                                   }
                                 ],
                                 on: {
@@ -39126,7 +39144,7 @@ var render = function() {
                                           "_value" in o ? o._value : o.value
                                         return val
                                       })
-                                    _vm.selected = $event.target.multiple
+                                    _vm.renglon = $event.target.multiple
                                       ? $$selectedVal
                                       : $$selectedVal[0]
                                   }
@@ -39135,7 +39153,10 @@ var render = function() {
                               _vm._l(_vm.renglones, function(renglon) {
                                 return _c(
                                   "option",
-                                  { domProps: { value: renglon.numero } },
+                                  {
+                                    key: renglon.numero,
+                                    domProps: { value: renglon.numero }
+                                  },
                                   [
                                     _vm._v(
                                       "\n                          " +

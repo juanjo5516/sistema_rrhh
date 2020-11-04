@@ -27,7 +27,7 @@ class CreatePersonasTable extends Migration
             $table->date('fecha_nacimiento')->default('2020-01-01');
             $table->string('lugar_nacimiento', 50)->default('lugar_nacimiento');
             $table->string('estado_civil', 1)->default('C');
-            $table->string('genero', 1)->default('M');
+            $table->string('genero', 1)->nullable();
             $table->integer('etnia_id')->default(1);
             $table->integer('comunidadlinguistica_id')->default(1);
             $table->integer('discapacidad_id')->default(1);

@@ -26,3 +26,5 @@ Route::view('/registro-personal', 'personal.registropersonas');
 Route::resource('persona', 'PersonaController');
 
 Route::get('/obtener-catalogo', 'ObtenerCatalogoController@obtenerCatalogo');
+
+Route::view('/tablero-renglon', 'tableros.renglones');

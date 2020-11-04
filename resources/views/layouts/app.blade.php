@@ -148,10 +148,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="http://bi.mineco.gob.gt/views/RecursosHumanos/Dashboard1?iframeSizedToWindow=true&:embed=y&:showAppBanner=yes&:display_count=no&:showVizHome=no" class="nav-link">
                 <i class="nav-icon fas fa-chart-bar"></i>
                 <p>
-                  Tablero 1
+                  Tablero Renglones
                   <span class="right badge badge-danger">New</span>
                 </p>
               </a>
