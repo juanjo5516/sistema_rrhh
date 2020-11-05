@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MensajeCreacion;
 use App\Persona;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PersonaController extends Controller
 {
@@ -50,6 +52,11 @@ class PersonaController extends Controller
         $persona->comunidadlinguistica_id = $request->comunidad;
 
         $persona->save();
+
+        //Para enviar correo
+
+        Mail::to('jjaguilal@mineco.gob.gt')->queue(new MensajeCreacion);
+
 
         return response()->json('Persona creada',200);
 
