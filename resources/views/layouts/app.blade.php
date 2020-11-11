@@ -76,7 +76,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <aside class="main-sidebar sidebar-light-blue elevation-3">
       <!-- Brand Logo -->
       <a href="" class="brand-link">
-        <img src="./img/logo-horizontal-mineco.jpg" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
+        <img src="{{ asset('img/logo-horizontal-mineco.jpg') }}" alt="AdminLTE Logo" class="brand-image elevation-3" style="opacity: .8">
         <br>
         <br>
         <span class="brand-text font-weight-light">Recursos Humanos</span>
@@ -87,7 +87,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="./img/profile1.png" class="img-circle elevation-2" alt="User Image">
+            <img src="{{asset('img/profile1.png')}}" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"> {{ Auth::user()->name}}</a>
