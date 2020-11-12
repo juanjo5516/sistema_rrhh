@@ -83,6 +83,10 @@ class RolController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rol = Role::find($id);
+        
+        $rol->delete();
+
+        return redirect()->back();
     }
 }

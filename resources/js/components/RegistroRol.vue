@@ -3,9 +3,12 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card">
-          <div class="card-header">Registro</div>
+          <div class="card-header">
+            <span>Registro</span>
+            <a class="btn btn-primary float-right" v-bind:href="route">Crear Rol</a>
+          </div>
           <div class="card-body">
-            <form method="POST" v-on:submit.prevent="crearPersona">
+
                 <div class="form-row">
                     <div class="col-12 py-3">
                         <table class="table">
@@ -25,14 +28,18 @@
                                     {{rol.name}}
                                     </td>
                                     <td>
-                                    <button class="btn btn-primary">Eliminar</button>
+                                      <form v-bind:action="`rol/${rol.id}`" method="POST">
+                                        <input type="hidden" name="_token" v-bind:value="token">
+                                        <input type="hidden" name="_method" value="DELETE">
+                                        <button type="submit" class="btn btn-danger text-white" >Eliminar</button>
+                                      </form>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-            </form>
+
           </div>
         </div>
       </div>
@@ -45,13 +52,14 @@ import { FormWizard, TabContent } from "vue-form-wizard";
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
 export default {
-  mounted() {
+  created() {
     console.log("Component mounted.");
-    this.obtenerCatalogo("etnias", "etnia");
-    this.obtenerCatalogo("comunidads", "comunidad_linguistica");
-    this.obtenerCatalogo("profesions", "profesion_universitaria");
     this.obtenerCatalogo("roles", "name");
   },
+  props:[
+    "route",
+    "token"
+  ],
   data() {
     return {
       primer_nombre: "",

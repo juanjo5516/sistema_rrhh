@@ -5,7 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div id="app">
-                <registro-rol></registro-rol>
+                @method('DELETE')
+                <registro-rol route="{{route('rol.create')}}" token="{{csrf_token()}}"></registro-rol>
             </div>
         </div>
     </div>

@@ -42,13 +42,6 @@ import { FormWizard, TabContent } from "vue-form-wizard";
 import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
 export default {
-  mounted() {
-    console.log("Component mounted.");
-    this.obtenerCatalogo("etnias", "etnia");
-    this.obtenerCatalogo("comunidads", "comunidad_linguistica");
-    this.obtenerCatalogo("profesions", "profesion_universitaria");
-    this.obtenerCatalogo("roles", "name");
-  },
   data() {
     return {
       rol:""
@@ -60,7 +53,7 @@ export default {
   },
   methods: {
     crearRol: function () {
-      alert("¡Registro Creado satisfactoriamente!");
+      
       console.log("Funcionando botón");
       var url = "/rol";
       axios
@@ -68,9 +61,11 @@ export default {
           rol: this.rol
         })
         .then((response) => {
-          location.href = "/home";
+          alert("¡Registro Creado satisfactoriamente!");
+          location.href = "/rol";
           console.log(result);
         });
+        
     },
     obtenerCatalogo: function (table, column) {
       axios

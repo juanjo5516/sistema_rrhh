@@ -1971,13 +1971,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
-    console.log("Component mounted.");
-    this.obtenerCatalogo("etnias", "etnia");
-    this.obtenerCatalogo("comunidads", "comunidad_linguistica");
-    this.obtenerCatalogo("profesions", "profesion_universitaria");
-    this.obtenerCatalogo("roles", "name");
-  },
   data: function data() {
     return {
       rol: ""
@@ -1989,13 +1982,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     crearRol: function crearRol() {
-      alert("¡Registro Creado satisfactoriamente!");
       console.log("Funcionando botón");
       var url = "/rol";
       axios.post(url, {
         rol: this.rol
       }).then(function (response) {
-        location.href = "/home";
+        alert("¡Registro Creado satisfactoriamente!");
+        location.href = "/rol";
         console.log(result);
       });
     },
@@ -2410,16 +2403,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  mounted: function mounted() {
+  created: function created() {
     console.log("Component mounted.");
-    this.obtenerCatalogo("etnias", "etnia");
-    this.obtenerCatalogo("comunidads", "comunidad_linguistica");
-    this.obtenerCatalogo("profesions", "profesion_universitaria");
     this.obtenerCatalogo("roles", "name");
   },
+  props: ["route", "token"],
   data: function data() {
     return {
       primer_nombre: "",
@@ -39562,48 +39560,75 @@ var render = function() {
     _c("div", { staticClass: "row justify-content-center" }, [
       _c("div", { staticClass: "col-md-12" }, [
         _c("div", { staticClass: "card" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Registro")]),
+          _c("div", { staticClass: "card-header" }, [
+            _c("span", [_vm._v("Registro")]),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "btn btn-primary float-right",
+                attrs: { href: _vm.route }
+              },
+              [_vm._v("Crear Rol")]
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c(
-              "form",
-              {
-                attrs: { method: "POST" },
-                on: {
-                  submit: function($event) {
-                    $event.preventDefault()
-                    return _vm.crearPersona($event)
-                  }
-                }
-              },
-              [
-                _c("div", { staticClass: "form-row" }, [
-                  _c("div", { staticClass: "col-12 py-3" }, [
-                    _c("table", { staticClass: "table" }, [
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.roles, function(rol) {
-                          return _c("tr", { key: rol.id }, [
-                            _c("td", [
-                              _vm._v(
-                                "\n                                  " +
-                                  _vm._s(rol.name) +
-                                  "\n                                  "
+            _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "col-12 py-3" }, [
+                _c("table", { staticClass: "table" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c(
+                    "tbody",
+                    _vm._l(_vm.roles, function(rol) {
+                      return _c("tr", { key: rol.id }, [
+                        _c("td", [
+                          _vm._v(
+                            "\n                                  " +
+                              _vm._s(rol.name) +
+                              "\n                                  "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", [
+                          _c(
+                            "form",
+                            {
+                              attrs: { action: "rol/" + rol.id, method: "POST" }
+                            },
+                            [
+                              _c("input", {
+                                attrs: { type: "hidden", name: "_token" },
+                                domProps: { value: _vm.token }
+                              }),
+                              _vm._v(" "),
+                              _c("input", {
+                                attrs: {
+                                  type: "hidden",
+                                  name: "_method",
+                                  value: "DELETE"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger text-white",
+                                  attrs: { type: "submit" }
+                                },
+                                [_vm._v("Eliminar")]
                               )
-                            ]),
-                            _vm._v(" "),
-                            _vm._m(1, true)
-                          ])
-                        }),
-                        0
-                      )
-                    ])
-                  ])
+                            ]
+                          )
+                        ])
+                      ])
+                    }),
+                    0
+                  )
                 ])
-              ]
-            )
+              ])
+            ])
           ])
         ])
       ])
@@ -39629,14 +39654,6 @@ var staticRenderFns = [
           )
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("td", [
-      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Eliminar")])
     ])
   }
 ]
