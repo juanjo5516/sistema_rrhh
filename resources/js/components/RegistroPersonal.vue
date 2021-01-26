@@ -103,26 +103,38 @@
                       />
                     </div>
                   </div>
-                  <div class="form-group">
-                    <span>Género: </span> <br />
-                    <input
-                      type="radio"
-                      id="one"
-                      value="F"
-                      v-model="picked"
-                    />
-                    <label for="one">Femenino</label>
-                    <br />
-                    <input
-                      type="radio"
-                      id="two"
-                      value="M"
-                      v-model="picked"
-                    />
-                    <label for="two">Masculino</label>
-                    <br />
-                    
+                  <div class="form-row">
+                    <div class="col-md-6">                   
+                      <span>Género: </span> <br />
+                      <input
+                        type="radio"
+                        id="one"
+                        value="F"
+                        v-model="picked"
+                      />
+                      <label for="one">Femenino</label>
+                      <br />
+                      <input
+                        type="radio"
+                        id="two"
+                        value="M"
+                        v-model="picked"
+                      />
+                      <label for="two">Masculino</label>
+                      <br />    
+                    </div>
+                      <div class="col-md-6">
+                        <span>Fecha de Nacimiento:</span>
+                        <br />
+                        <input
+                          class="form-control"
+                          type="date"
+                          v-model="fecha_nac"
+                          placeholder="Primer Nombre"
+                        />
+                      </div>               
                   </div>
+
                   <!-- Input para colocar nit -->
                   <div class="form-group">
                     <span>Nit:</span>
@@ -189,9 +201,36 @@
                     </div>
                   </div>
 
-
+<!-- PASO 3 STEP -->
                 </tab-content>
-                <tab-content title="Verificación"> Tercer paso </tab-content>
+                <tab-content title="Discapacidad">
+                  <div class="form-group">
+                    <span>Sensorial y de la Comunicación</span>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                      <label class="form-check-label" for="inlineCheckbox1">Visual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Auditiva</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Verbal</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Comprensión</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                      <label class="form-check-label" for="inlineCheckbox3">Múltiple</label>
+                    </div>
+                  </div>
+                  
+                </tab-content>
+<!-- FINALIZA PASO 3 STEP -->
+
               </form-wizard>
             </form>
           </div>
@@ -235,7 +274,8 @@ export default {
       renglon:"",
       etnia:"",
       comunidad:"",
-      profesion:""
+      profesion:"",
+      fecha_nac:""
 
     };
   },
@@ -261,7 +301,8 @@ export default {
           genero: this.picked,
           etnia: this.etnia,
           comunidad: this.comunidad,
-          profesion: this.profesion
+          profesion: this.profesion,
+          fecha_nac: this.fecha_nac
         })
         .then((response) => {
           location.href = "/home";

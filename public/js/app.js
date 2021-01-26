@@ -2261,6 +2261,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2300,7 +2339,8 @@ __webpack_require__.r(__webpack_exports__);
       renglon: "",
       etnia: "",
       comunidad: "",
-      profesion: ""
+      profesion: "",
+      fecha_nac: ""
     };
   },
   components: {
@@ -2324,7 +2364,8 @@ __webpack_require__.r(__webpack_exports__);
         genero: this.picked,
         etnia: this.etnia,
         comunidad: this.comunidad,
-        profesion: this.profesion
+        profesion: this.profesion,
+        fecha_nac: this.fecha_nac
       }).then(function (response) {
         location.href = "/home";
         console.log(result);
@@ -39207,58 +39248,91 @@ var render = function() {
                           ])
                         ]),
                         _vm._v(" "),
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("span", [_vm._v("Género: ")]),
-                          _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.picked,
-                                expression: "picked"
+                        _c("div", { staticClass: "form-row" }, [
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("span", [_vm._v("Género: ")]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.picked,
+                                  expression: "picked"
+                                }
+                              ],
+                              attrs: { type: "radio", id: "one", value: "F" },
+                              domProps: { checked: _vm._q(_vm.picked, "F") },
+                              on: {
+                                change: function($event) {
+                                  _vm.picked = "F"
+                                }
                               }
-                            ],
-                            attrs: { type: "radio", id: "one", value: "F" },
-                            domProps: { checked: _vm._q(_vm.picked, "F") },
-                            on: {
-                              change: function($event) {
-                                _vm.picked = "F"
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: "one" } }, [
+                              _vm._v("Femenino")
+                            ]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.picked,
+                                  expression: "picked"
+                                }
+                              ],
+                              attrs: { type: "radio", id: "two", value: "M" },
+                              domProps: { checked: _vm._q(_vm.picked, "M") },
+                              on: {
+                                change: function($event) {
+                                  _vm.picked = "M"
+                                }
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("label", { attrs: { for: "one" } }, [
-                            _vm._v("Femenino")
+                            }),
+                            _vm._v(" "),
+                            _c("label", { attrs: { for: "two" } }, [
+                              _vm._v("Masculino")
+                            ]),
+                            _vm._v(" "),
+                            _c("br")
                           ]),
                           _vm._v(" "),
-                          _c("br"),
-                          _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.picked,
-                                expression: "picked"
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c("span", [_vm._v("Fecha de Nacimiento:")]),
+                            _vm._v(" "),
+                            _c("br"),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.fecha_nac,
+                                  expression: "fecha_nac"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                type: "date",
+                                placeholder: "Primer Nombre"
+                              },
+                              domProps: { value: _vm.fecha_nac },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.fecha_nac = $event.target.value
+                                }
                               }
-                            ],
-                            attrs: { type: "radio", id: "two", value: "M" },
-                            domProps: { checked: _vm._q(_vm.picked, "M") },
-                            on: {
-                              change: function($event) {
-                                _vm.picked = "M"
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("label", { attrs: { for: "two" } }, [
-                            _vm._v("Masculino")
-                          ]),
-                          _vm._v(" "),
-                          _c("br")
+                            })
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-group" }, [
@@ -39336,9 +39410,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          " +
+                                      "\n                            " +
                                         _vm._s(etnia.etnia) +
-                                        "\n                        "
+                                        "\n                          "
                                     )
                                   ]
                                 )
@@ -39391,11 +39465,11 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          " +
+                                      "\n                            " +
                                         _vm._s(
                                           comunidad.comunidad_linguistica
                                         ) +
-                                        "\n                        "
+                                        "\n                          "
                                     )
                                   ]
                                 )
@@ -39450,11 +39524,11 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          " +
+                                      "\n                            " +
                                         _vm._s(
                                           profesion.profesion_universitaria
                                         ) +
-                                        "\n                        "
+                                        "\n                          "
                                     )
                                   ]
                                 )
@@ -39505,9 +39579,9 @@ var render = function() {
                                   },
                                   [
                                     _vm._v(
-                                      "\n                          " +
+                                      "\n                            " +
                                         _vm._s(renglon.numero) +
-                                        "\n                        "
+                                        "\n                          "
                                     )
                                   ]
                                 )
@@ -39519,8 +39593,131 @@ var render = function() {
                       ]
                     ),
                     _vm._v(" "),
-                    _c("tab-content", { attrs: { title: "Verificación" } }, [
-                      _vm._v(" Tercer paso ")
+                    _c("tab-content", { attrs: { title: "Discapacidad" } }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("span", [_vm._v("Sensorial y de la Comunicación")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox1",
+                                value: "option1"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox1" }
+                              },
+                              [_vm._v("Visual")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Auditiva")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Verbal")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Comprensión")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox3",
+                                value: "option3",
+                                disabled: ""
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox3" }
+                              },
+                              [_vm._v("Múltiple")]
+                            )
+                          ]
+                        )
+                      ])
                     ])
                   ],
                   1

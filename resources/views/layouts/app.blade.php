@@ -10,7 +10,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>AdminLTE 3 | Starter</title>
+  <title>Recursos Humanos</title>
 
   <link rel="stylesheet" href="/css/app.css">
 </head>
@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                   <a href="/registro-personal" class="nav-link active">
                     <i class="fas fa-address-card nav-icon"></i>
-                    <p>Registro Personal</p>
+                    <p>Registro Personal 029</p>
                   </a>
                 </li>
                 <li class="nav-item">
