@@ -17,8 +17,30 @@
                 shape="circle"
               >
                 <tab-content title="Detalles personales" icon="ti-user">
+                  <div class="row justify-content-md-center">
+                    <h4>Selecciona Renglon prespuestario</h4> <br>
+                  </div>
+                  <div class="row justify-content-md-center">     
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="011" v-model="renglon">
+                      <label class="form-check-label" for="inlineRadio1">011</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="022" v-model="renglon">
+                      <label class="form-check-label" for="inlineRadio2">022</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="029" v-model="renglon">
+                      <label class="form-check-label" for="inlineRadio3">029</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="018" v-model="renglon">
+                      <label class="form-check-label" for="inlineRadio4">Sub-grupo 18</label>
+                    </div>
+                  </div>
+
                   <!-- Input para colocar Primer nombre -->
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011' || renglon==='022' || renglon==='029' || renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>DPI:</span>
                       <br />
@@ -187,25 +209,15 @@
                           </option>
                         </select>
                     </div>
-                    <div class="col-md-6 py-3">
-                      <span>Seleccione Renglon:  </span> <br>
-                        <select v-model="renglon">
-                          <option 
-                            v-for="renglon in renglones"
-                            v-bind:value="renglon.numero"
-                            v-bind:key="renglon.numero"
-                          >
-                            {{ renglon.numero }}
-                          </option>
-                        </select>
-                    </div>
+
                   </div>
 
 <!-- PASO 3 STEP -->
                 </tab-content>
                 <tab-content title="Discapacidad">
                   <div class="form-group">
-                    <span>Sensorial y de la Comunicación</span>
+
+                    <h2>Sensorial y de la Comunicación</h2>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
                       <label class="form-check-label" for="inlineCheckbox1">Visual</label>
@@ -223,11 +235,54 @@
                       <label class="form-check-label" for="inlineCheckbox2">Comprensión</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" disabled>
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
                       <label class="form-check-label" for="inlineCheckbox3">Múltiple</label>
                     </div>
                   </div>
-                  
+
+                  <div class="form-group">
+                    <h2>Motriz</h2>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                      <label class="form-check-label" for="inlineCheckbox1">Extremidades inferiores</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Extremidades superiores</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Cabeza</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Cuello</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                      <label class="form-check-label" for="inlineCheckbox3">Tronco</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                      <label class="form-check-label" for="inlineCheckbox3">Múltiple</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <h2>Mental</h2>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                      <label class="form-check-label" for="inlineCheckbox1">Intelectual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Conductual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                      <label class="form-check-label" for="inlineCheckbox2">Otra</label>
+                    </div>
+                  </div>
                 </tab-content>
 <!-- FINALIZA PASO 3 STEP -->
 

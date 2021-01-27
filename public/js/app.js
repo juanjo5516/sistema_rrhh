@@ -2300,6 +2300,61 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -39042,35 +39097,222 @@ var render = function() {
                         attrs: { title: "Detalles personales", icon: "ti-user" }
                       },
                       [
-                        _c("div", { staticClass: "form-row" }, [
-                          _c("div", { staticClass: "col-md-6 py-3" }, [
-                            _c("span", [_vm._v("DPI:")]),
+                        _c(
+                          "div",
+                          { staticClass: "row justify-content-md-center" },
+                          [
+                            _c("h4", [
+                              _vm._v("Selecciona Renglon prespuestario")
+                            ]),
                             _vm._v(" "),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.dpi,
-                                  expression: "dpi"
-                                }
-                              ],
-                              staticClass: "form-control",
-                              attrs: { placeholder: "Dpi" },
-                              domProps: { value: _vm.dpi },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+                            _c("br")
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "row justify-content-md-center" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.renglon,
+                                      expression: "renglon"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "inlineRadioOptions",
+                                    id: "inlineRadio1",
+                                    value: "011"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.renglon, "011")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.renglon = "011"
+                                    }
                                   }
-                                  _vm.dpi = $event.target.value
-                                }
-                              }
-                            })
-                          ])
-                        ]),
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-check-label",
+                                    attrs: { for: "inlineRadio1" }
+                                  },
+                                  [_vm._v("011")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.renglon,
+                                      expression: "renglon"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "inlineRadioOptions",
+                                    id: "inlineRadio2",
+                                    value: "022"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.renglon, "022")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.renglon = "022"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-check-label",
+                                    attrs: { for: "inlineRadio2" }
+                                  },
+                                  [_vm._v("022")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.renglon,
+                                      expression: "renglon"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "inlineRadioOptions",
+                                    id: "inlineRadio3",
+                                    value: "029"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.renglon, "029")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.renglon = "029"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-check-label",
+                                    attrs: { for: "inlineRadio3" }
+                                  },
+                                  [_vm._v("029")]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-check form-check-inline" },
+                              [
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.renglon,
+                                      expression: "renglon"
+                                    }
+                                  ],
+                                  staticClass: "form-check-input",
+                                  attrs: {
+                                    type: "radio",
+                                    name: "inlineRadioOptions",
+                                    id: "inlineRadio4",
+                                    value: "018"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.renglon, "018")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.renglon = "018"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "label",
+                                  {
+                                    staticClass: "form-check-label",
+                                    attrs: { for: "inlineRadio4" }
+                                  },
+                                  [_vm._v("Sub-grupo 18")]
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _vm.renglon === "011" ||
+                        _vm.renglon === "022" ||
+                        _vm.renglon === "029" ||
+                        _vm.renglon === "018"
+                          ? _c("div", { staticClass: "form-row" }, [
+                              _c("div", { staticClass: "col-md-6 py-3" }, [
+                                _c("span", [_vm._v("DPI:")]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dpi,
+                                      expression: "dpi"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { placeholder: "Dpi" },
+                                  domProps: { value: _vm.dpi },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.dpi = $event.target.value
+                                    }
+                                  }
+                                })
+                              ])
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
                         _c("div", { staticClass: "form-row" }, [
                           _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -39535,59 +39777,6 @@ var render = function() {
                               }),
                               0
                             )
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6 py-3" }, [
-                            _c("span", [_vm._v("Seleccione Renglon:  ")]),
-                            _vm._v(" "),
-                            _c("br"),
-                            _vm._v(" "),
-                            _c(
-                              "select",
-                              {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.renglon,
-                                    expression: "renglon"
-                                  }
-                                ],
-                                on: {
-                                  change: function($event) {
-                                    var $$selectedVal = Array.prototype.filter
-                                      .call($event.target.options, function(o) {
-                                        return o.selected
-                                      })
-                                      .map(function(o) {
-                                        var val =
-                                          "_value" in o ? o._value : o.value
-                                        return val
-                                      })
-                                    _vm.renglon = $event.target.multiple
-                                      ? $$selectedVal
-                                      : $$selectedVal[0]
-                                  }
-                                }
-                              },
-                              _vm._l(_vm.renglones, function(renglon) {
-                                return _c(
-                                  "option",
-                                  {
-                                    key: renglon.numero,
-                                    domProps: { value: renglon.numero }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                            " +
-                                        _vm._s(renglon.numero) +
-                                        "\n                          "
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
-                            )
                           ])
                         ])
                       ]
@@ -39595,7 +39784,7 @@ var render = function() {
                     _vm._v(" "),
                     _c("tab-content", { attrs: { title: "Discapacidad" } }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("span", [_vm._v("Sensorial y de la Comunicación")]),
+                        _c("h2", [_vm._v("Sensorial y de la Comunicación")]),
                         _vm._v(" "),
                         _c(
                           "div",
@@ -39702,8 +39891,7 @@ var render = function() {
                               attrs: {
                                 type: "checkbox",
                                 id: "inlineCheckbox3",
-                                value: "option3",
-                                disabled: ""
+                                value: "option3"
                               }
                             }),
                             _vm._v(" "),
@@ -39714,6 +39902,230 @@ var render = function() {
                                 attrs: { for: "inlineCheckbox3" }
                               },
                               [_vm._v("Múltiple")]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("h2", [_vm._v("Motriz")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox1",
+                                value: "option1"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox1" }
+                              },
+                              [_vm._v("Extremidades inferiores")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Extremidades superiores")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Cabeza")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Cuello")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox3",
+                                value: "option3"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox3" }
+                              },
+                              [_vm._v("Tronco")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox3",
+                                value: "option3"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox3" }
+                              },
+                              [_vm._v("Múltiple")]
+                            )
+                          ]
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("h2", [_vm._v("Mental")]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox1",
+                                value: "option1"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox1" }
+                              },
+                              [_vm._v("Intelectual")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Conductual")]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-check form-check-inline" },
+                          [
+                            _c("input", {
+                              staticClass: "form-check-input",
+                              attrs: {
+                                type: "checkbox",
+                                id: "inlineCheckbox2",
+                                value: "option2"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-check-label",
+                                attrs: { for: "inlineCheckbox2" }
+                              },
+                              [_vm._v("Otra")]
                             )
                           ]
                         )
