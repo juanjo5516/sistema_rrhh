@@ -135,7 +135,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                   <a href="/registro-personal" class="nav-link active">
                     <i class="fas fa-address-card nav-icon"></i>
-                    <p>Registro Personal 029</p>
+                    <p>Registro Personal</p>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -148,7 +148,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
 
             <li class="nav-item">
-              <a href="http://bi.mineco.gob.gt/views/RecursosHumanos/Dashboard1?iframeSizedToWindow=true&:embed=y&:showAppBanner=yes&:display_count=no&:showVizHome=no" class="nav-link">
+              <a href="http://bi.mineco.gob.gt/views/RecursosHumanos/Dashboard1?iframeSizedToWindow=true&:embed=y&:showAppBanner=yes&:display_count=no&:showVizHome=no&:refresh=yes" class="nav-link">
                 <i class="nav-icon fas fa-chart-bar"></i>
                 <p>
                   Tablero Renglones
