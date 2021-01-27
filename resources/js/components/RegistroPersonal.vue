@@ -18,7 +18,7 @@
               >
                 <tab-content title="Detalles personales" icon="ti-user">
                   <div class="row justify-content-md-center">
-                    <h4>Selecciona Renglon prespuestario</h4> <br>
+                    <h4>Selecciona Renglon Presupuestario</h4> <br>
                   </div>
                   <div class="row justify-content-md-center">     
                     <div class="form-check form-check-inline">
@@ -40,7 +40,7 @@
                   </div>
 
                   <!-- Input para colocar Primer nombre -->
-                  <div class="form-row" v-if="renglon==='011' || renglon==='022' || renglon==='029' || renglon==='018'">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>DPI:</span>
                       <br />
@@ -53,7 +53,7 @@
                       <!-- <p>Message is: {{ primer_nombre }}</p> -->
                     </div>
                   </div>
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>Primer Nombre:</span>
                       <br />
@@ -78,7 +78,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>Tercer Nombre:</span>
                       <br />
@@ -90,7 +90,7 @@
                     </div>
                     <!-- Input para colocar Segundo nombre -->
                   </div>
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <!-- Input para colocar Primer apellido -->
                       <span>Primer Apellido:</span>
@@ -113,7 +113,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <!-- Input para colocar Segundo apellido -->
                       <span>Apellido de casada:</span>
@@ -125,7 +125,7 @@
                       />
                     </div>
                   </div>
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6">                   
                       <span>Género: </span> <br />
                       <input
@@ -158,7 +158,7 @@
                   </div>
 
                   <!-- Input para colocar nit -->
-                  <div class="form-group">
+                  <div class="form-group" v-if="renglon==='011'">
                     <span>Nit:</span>
                     <input
                       class="form-control"
@@ -168,7 +168,7 @@
                   </div>
                 </tab-content>
                 <tab-content title="Información adicional">
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione Etnia:  </span> <br>
                         <select v-model="etnia">
@@ -196,7 +196,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row">
+                  <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione profesión Universitaria:  </span> <br>
                         <select v-model="profesion">
@@ -215,7 +215,7 @@
 <!-- PASO 3 STEP -->
                 </tab-content>
                 <tab-content title="Discapacidad">
-                  <div class="form-group">
+                  <div class="form-group" v-if="renglon==='011'">
 
                     <h2>Sensorial y de la Comunicación</h2>
                     <div class="form-check form-check-inline">
@@ -240,7 +240,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" v-if="renglon==='011'">
                     <h2>Motriz</h2>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -268,7 +268,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group">
+                  <div class="form-group" v-if="renglon==='011'">
                     <h2>Mental</h2>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">

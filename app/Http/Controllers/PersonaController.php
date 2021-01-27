@@ -56,7 +56,7 @@ class PersonaController extends Controller
 
         //Para enviar correo
 
-        Mail::to('jjaguilal@mineco.gob.gt')->queue(new MensajeCreacion);
+        //Mail::to('jjaguilal@mineco.gob.gt')->queue(new MensajeCreacion);
 
 
         return response()->json('Persona creada',200);
