@@ -40,19 +40,7 @@
                   </div>
 
                   <!-- Input para colocar Primer nombre -->
-                  <div class="form-row" v-if="renglon==='011'">
-                    <div class="col-md-6 py-3">
-                      <span>DPI:</span>
-                      <br />
-                      <input
-                        class="form-control"
-                        v-model="dpi"
-                        placeholder="Dpi"
-                      />
 
-                      <!-- <p>Message is: {{ primer_nombre }}</p> -->
-                    </div>
-                  </div>
                   <div class="form-row" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>Primer Nombre:</span>
@@ -157,6 +145,52 @@
                       </div>               
                   </div>
 
+                  <div class="form-row" v-if="renglon==='011'">
+                    <div class="col-md-6">                   
+                      <span>Estado Civil: </span> <br />
+                      <input
+                        type="radio"
+                        id="one_estado"
+                        value="S"
+                        v-model="estado_civl"
+                      />
+                      <label for="one_estado">Soltero(a)</label>
+                      <br />
+                      <input
+                        type="radio"
+                        id="two_estado"
+                        value="C"
+                        v-model="estado_civl"
+                      />
+                      <label for="two_estado">Casado(a)</label>
+                      <br />    
+                    </div>
+                    <div class="col-md-6">
+                        <span>Lugar de Nacimiento:</span>
+                        <br />
+                        <input
+                          class="form-control"
+                          type="text"
+                          v-model="lugar_nac"
+                          placeholder="Lugar de Nacimiento"
+                        />
+                    </div>               
+                  </div>
+
+                  <div class="form-row" v-if="renglon==='011'">
+                    <div class="col-md-6 py-3">
+                      <span>DPI:</span>
+                      <br />
+                      <input
+                        class="form-control"
+                        v-model="dpi"
+                        placeholder="Dpi"
+                      />
+
+                      <!-- <p>Message is: {{ primer_nombre }}</p> -->
+                    </div>
+                  </div>
+
                   <!-- Input para colocar nit -->
                   <div class="form-group" v-if="renglon==='011'">
                     <span>Nit:</span>
@@ -196,7 +230,12 @@
                     </div>
                   </div>
 
-                  <div class="form-row" v-if="renglon==='011'">
+                </tab-content>
+                
+
+<!-- PASO 3 STEP -->
+                <tab-content title="Información Académica">
+                  <div class="form-group" v-if="renglon==='011'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione profesión Universitaria:  </span> <br>
                         <select v-model="profesion">
@@ -209,11 +248,24 @@
                           </option>
                         </select>
                     </div>
-
                   </div>
 
-<!-- PASO 3 STEP -->
+                  <div class="form-group" v-if="renglon==='011'">
+                    <div class="col-md-6 py-3">
+                      <span>Seleccione el estudio a Nivel Primario:  </span> <br>
+                        <select v-model="nivel_primario_s">
+                          <option v-for="nivel in nivel_primario" v-bind:key="nivel">{{nivel}}</option>
+                        </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group" v-if="renglon==='011'">
+
+                  </div>
                 </tab-content>
+<!-- FINALIZA PASO 3 STEP -->
+
+<!-- PASO 4 STEP -->
                 <tab-content title="Discapacidad">
                   <div class="form-group" v-if="renglon==='011'">
 
@@ -284,7 +336,9 @@
                     </div>
                   </div>
                 </tab-content>
-<!-- FINALIZA PASO 3 STEP -->
+<!-- FINALIZA PASO 4 STEP -->
+
+
 
               </form-wizard>
             </form>
@@ -316,6 +370,7 @@ export default {
       segundo_apellido: "",
       apellido_casada: "",
       picked: "",
+      estado_civl:"",
       nit: "",
       etnias: [],
       comunidades: [],
@@ -330,7 +385,9 @@ export default {
       etnia:"",
       comunidad:"",
       profesion:"",
-      fecha_nac:""
+      fecha_nac:"",
+      nivel_primario:['Primero','Segundo'],
+      nivel_primario_s:[]
 
     };
   },
@@ -362,8 +419,6 @@ export default {
         .then((response) => {
           location.href = "/home";
           console.log(result);
-          
-
         });
 
     },

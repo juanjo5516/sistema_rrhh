@@ -2355,6 +2355,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2374,6 +2428,7 @@ __webpack_require__.r(__webpack_exports__);
       segundo_apellido: "",
       apellido_casada: "",
       picked: "",
+      estado_civl: "",
       nit: "",
       etnias: [],
       comunidades: [],
@@ -2395,7 +2450,9 @@ __webpack_require__.r(__webpack_exports__);
       etnia: "",
       comunidad: "",
       profesion: "",
-      fecha_nac: ""
+      fecha_nac: "",
+      nivel_primario: ['Primero', 'Segundo'],
+      nivel_primario_s: []
     };
   },
   components: {
@@ -39282,38 +39339,6 @@ var render = function() {
                         _vm.renglon === "011"
                           ? _c("div", { staticClass: "form-row" }, [
                               _c("div", { staticClass: "col-md-6 py-3" }, [
-                                _c("span", [_vm._v("DPI:")]),
-                                _vm._v(" "),
-                                _c("br"),
-                                _vm._v(" "),
-                                _c("input", {
-                                  directives: [
-                                    {
-                                      name: "model",
-                                      rawName: "v-model",
-                                      value: _vm.dpi,
-                                      expression: "dpi"
-                                    }
-                                  ],
-                                  staticClass: "form-control",
-                                  attrs: { placeholder: "Dpi" },
-                                  domProps: { value: _vm.dpi },
-                                  on: {
-                                    input: function($event) {
-                                      if ($event.target.composing) {
-                                        return
-                                      }
-                                      _vm.dpi = $event.target.value
-                                    }
-                                  }
-                                })
-                              ])
-                            ])
-                          : _vm._e(),
-                        _vm._v(" "),
-                        _vm.renglon === "011"
-                          ? _c("div", { staticClass: "form-row" }, [
-                              _c("div", { staticClass: "col-md-6 py-3" }, [
                                 _c("span", [_vm._v("Primer Nombre:")]),
                                 _vm._v(" "),
                                 _c("br"),
@@ -39597,6 +39622,139 @@ var render = function() {
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.renglon === "011"
+                          ? _c("div", { staticClass: "form-row" }, [
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c("span", [_vm._v("Estado Civil: ")]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.estado_civl,
+                                      expression: "estado_civl"
+                                    }
+                                  ],
+                                  attrs: {
+                                    type: "radio",
+                                    id: "one_estado",
+                                    value: "S"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.estado_civl, "S")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.estado_civl = "S"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("label", { attrs: { for: "one_estado" } }, [
+                                  _vm._v("Soltero(a)")
+                                ]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.estado_civl,
+                                      expression: "estado_civl"
+                                    }
+                                  ],
+                                  attrs: {
+                                    type: "radio",
+                                    id: "two_estado",
+                                    value: "C"
+                                  },
+                                  domProps: {
+                                    checked: _vm._q(_vm.estado_civl, "C")
+                                  },
+                                  on: {
+                                    change: function($event) {
+                                      _vm.estado_civl = "C"
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c("label", { attrs: { for: "two_estado" } }, [
+                                  _vm._v("Casado(a)")
+                                ]),
+                                _vm._v(" "),
+                                _c("br")
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "col-md-6" }, [
+                                _c("span", [_vm._v("Lugar de Nacimiento:")]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.lugar_nac,
+                                      expression: "lugar_nac"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    placeholder: "Lugar de Nacimiento"
+                                  },
+                                  domProps: { value: _vm.lugar_nac },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.lugar_nac = $event.target.value
+                                    }
+                                  }
+                                })
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.renglon === "011"
+                          ? _c("div", { staticClass: "form-row" }, [
+                              _c("div", { staticClass: "col-md-6 py-3" }, [
+                                _c("span", [_vm._v("DPI:")]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.dpi,
+                                      expression: "dpi"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: { placeholder: "Dpi" },
+                                  domProps: { value: _vm.dpi },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.dpi = $event.target.value
+                                    }
+                                  }
+                                })
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.renglon === "011"
                           ? _c("div", { staticClass: "form-group" }, [
                               _c("span", [_vm._v("Nit:")]),
                               _vm._v(" "),
@@ -39746,10 +39904,16 @@ var render = function() {
                                 )
                               ])
                             ])
-                          : _vm._e(),
-                        _vm._v(" "),
+                          : _vm._e()
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "tab-content",
+                      { attrs: { title: "Información Académica" } },
+                      [
                         _vm.renglon === "011"
-                          ? _c("div", { staticClass: "form-row" }, [
+                          ? _c("div", { staticClass: "form-group" }, [
                               _c("div", { staticClass: "col-md-6 py-3" }, [
                                 _c("span", [
                                   _vm._v(
@@ -39811,6 +39975,63 @@ var render = function() {
                                 )
                               ])
                             ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.renglon === "011"
+                          ? _c("div", { staticClass: "form-group" }, [
+                              _c("div", { staticClass: "col-md-6 py-3" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "Seleccione el estudio a Nivel Primario:  "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.nivel_primario_s,
+                                        expression: "nivel_primario_s"
+                                      }
+                                    ],
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.nivel_primario_s = $event.target
+                                          .multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      }
+                                    }
+                                  },
+                                  _vm._l(_vm.nivel_primario, function(nivel) {
+                                    return _c("option", { key: nivel }, [
+                                      _vm._v(_vm._s(nivel))
+                                    ])
+                                  }),
+                                  0
+                                )
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.renglon === "011"
+                          ? _c("div", { staticClass: "form-group" })
                           : _vm._e()
                       ]
                     ),
