@@ -260,7 +260,27 @@
                   </div>
 
                   <div class="form-group" v-if="renglon==='011'">
+                    <div class="col-md-6 py-3">
+                      <span>Seleccione el estudio a Nivel Básico:  </span> <br>
+                        <select v-model="nivel_basico_s">
+                          <option v-for="nivel in nivel_basico" v-bind:key="nivel">{{nivel}}</option>
+                        </select>
+                    </div>
+                  </div>
 
+                  <div class="form-group" v-if="renglon==='011'">
+                    <div class="col-md-6 py-3">
+                      <span>Seleccione profesión a Nive lDiversificado:  </span> <br>
+                        <select v-model="profesion_diversificado">
+                          <option 
+                            v-for="profesion in profesiones_diversificado"
+                            v-bind:value="profesion.id"
+                            v-bind:key="profesion.id"
+                          >
+                            {{ profesion.profesion_diversificado }}
+                          </option>
+                        </select>
+                    </div>
                   </div>
                 </tab-content>
 <!-- FINALIZA PASO 3 STEP -->
@@ -359,6 +379,7 @@ export default {
     this.obtenerCatalogo('etnias','etnia');
     this.obtenerCatalogo('comunidads','comunidad_linguistica');
     this.obtenerCatalogo('profesions','profesion_universitaria');
+    this.obtenerCatalogo('profesion_diversificados','profesion_diversificado');
   },
   data() {
     return {
@@ -375,6 +396,7 @@ export default {
       etnias: [],
       comunidades: [],
       profesiones: [],
+      profesiones_diversificado:[],
       renglones: [
         {id:1,numero: '011'},
         {id:2,numero: '022'},
@@ -385,9 +407,12 @@ export default {
       etnia:"",
       comunidad:"",
       profesion:"",
+      profesion_diversificado:"",
       fecha_nac:"",
-      nivel_primario:['Primero','Segundo'],
-      nivel_primario_s:[]
+      nivel_primario:['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto','Sin estudio de nivel Primario'],
+      nivel_basico:['Primero Básico','Segundo Básico','Tercero Básico','Sin estudio de nivel Básico'],
+      nivel_primario_s:[],
+      nivel_basico_s:[]
 
     };
   },
@@ -433,6 +458,9 @@ export default {
         }
         else if (table=='profesions'){
           this.profesiones = response.data
+        }
+        else if (table=='profesion_diversificados'){
+          this.profesiones_diversificado = response.data
         }
       })
     }

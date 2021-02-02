@@ -2409,6 +2409,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2417,6 +2437,7 @@ __webpack_require__.r(__webpack_exports__);
     this.obtenerCatalogo('etnias', 'etnia');
     this.obtenerCatalogo('comunidads', 'comunidad_linguistica');
     this.obtenerCatalogo('profesions', 'profesion_universitaria');
+    this.obtenerCatalogo('profesion_diversificados', 'profesion_diversificado');
   },
   data: function data() {
     return {
@@ -2433,6 +2454,7 @@ __webpack_require__.r(__webpack_exports__);
       etnias: [],
       comunidades: [],
       profesiones: [],
+      profesiones_diversificado: [],
       renglones: [{
         id: 1,
         numero: '011'
@@ -2450,9 +2472,12 @@ __webpack_require__.r(__webpack_exports__);
       etnia: "",
       comunidad: "",
       profesion: "",
+      profesion_diversificado: "",
       fecha_nac: "",
-      nivel_primario: ['Primero', 'Segundo'],
-      nivel_primario_s: []
+      nivel_primario: ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto', 'Sexto', 'Sin estudio de nivel Primario'],
+      nivel_basico: ['Primero Básico', 'Segundo Básico', 'Tercero Básico', 'Sin estudio de nivel Básico'],
+      nivel_primario_s: [],
+      nivel_basico_s: []
     };
   },
   components: {
@@ -2493,6 +2518,8 @@ __webpack_require__.r(__webpack_exports__);
           _this.comunidades = response.data;
         } else if (table == 'profesions') {
           _this.profesiones = response.data;
+        } else if (table == 'profesion_diversificados') {
+          _this.profesiones_diversificado = response.data;
         }
       });
     }
@@ -40031,7 +40058,125 @@ var render = function() {
                           : _vm._e(),
                         _vm._v(" "),
                         _vm.renglon === "011"
-                          ? _c("div", { staticClass: "form-group" })
+                          ? _c("div", { staticClass: "form-group" }, [
+                              _c("div", { staticClass: "col-md-6 py-3" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "Seleccione el estudio a Nivel Básico:  "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.nivel_basico_s,
+                                        expression: "nivel_basico_s"
+                                      }
+                                    ],
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.nivel_basico_s = $event.target
+                                          .multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      }
+                                    }
+                                  },
+                                  _vm._l(_vm.nivel_basico, function(nivel) {
+                                    return _c("option", { key: nivel }, [
+                                      _vm._v(_vm._s(nivel))
+                                    ])
+                                  }),
+                                  0
+                                )
+                              ])
+                            ])
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.renglon === "011"
+                          ? _c("div", { staticClass: "form-group" }, [
+                              _c("div", { staticClass: "col-md-6 py-3" }, [
+                                _c("span", [
+                                  _vm._v(
+                                    "Seleccione profesión a Nive lDiversificado:  "
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("br"),
+                                _vm._v(" "),
+                                _c(
+                                  "select",
+                                  {
+                                    directives: [
+                                      {
+                                        name: "model",
+                                        rawName: "v-model",
+                                        value: _vm.profesion_diversificado,
+                                        expression: "profesion_diversificado"
+                                      }
+                                    ],
+                                    on: {
+                                      change: function($event) {
+                                        var $$selectedVal = Array.prototype.filter
+                                          .call($event.target.options, function(
+                                            o
+                                          ) {
+                                            return o.selected
+                                          })
+                                          .map(function(o) {
+                                            var val =
+                                              "_value" in o ? o._value : o.value
+                                            return val
+                                          })
+                                        _vm.profesion_diversificado = $event
+                                          .target.multiple
+                                          ? $$selectedVal
+                                          : $$selectedVal[0]
+                                      }
+                                    }
+                                  },
+                                  _vm._l(
+                                    _vm.profesiones_diversificado,
+                                    function(profesion) {
+                                      return _c(
+                                        "option",
+                                        {
+                                          key: profesion.id,
+                                          domProps: { value: profesion.id }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                            " +
+                                              _vm._s(
+                                                profesion.profesion_diversificado
+                                              ) +
+                                              "\n                          "
+                                          )
+                                        ]
+                                      )
+                                    }
+                                  ),
+                                  0
+                                )
+                              ])
+                            ])
                           : _vm._e()
                       ]
                     ),
