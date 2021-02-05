@@ -28,6 +28,7 @@ Vue.component('personal', require('./components/personal.vue').default);
 Vue.component('registro-personal', require('./components/RegistroPersonal.vue').default);
 Vue.component('registro-rol', require('./components/RegistroRol.vue').default);
 Vue.component('crear-rol', require('./components/CrearRol.vue').default);
+Vue.component('listado-personal', require('./components/ListadoPersonal.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

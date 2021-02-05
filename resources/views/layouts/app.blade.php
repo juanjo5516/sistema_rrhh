@@ -139,7 +139,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="{{route('persona.index')}}" class="nav-link">
+                  <a href="/personal" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
                     <p>Empleados</p>
                   </a>

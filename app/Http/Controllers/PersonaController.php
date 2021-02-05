@@ -16,7 +16,8 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        return view('personal.listadopersonas');
+        // return view('personal.listadopersonas');
+        return response()->json(Persona::all(),200);
     }
 
     /**

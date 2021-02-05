@@ -26,15 +26,15 @@
                       <label class="form-check-label" for="inlineRadio1">011</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="022" v-model="renglon">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="022" v-model="formData.renglon">
                       <label class="form-check-label" for="inlineRadio2">022</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="029" v-model="renglon">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="029" v-model="formData.renglon">
                       <label class="form-check-label" for="inlineRadio3">029</label>
                     </div>
                     <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="018" v-model="renglon">
+                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="018" v-model="formData.renglon">
                       <label class="form-check-label" for="inlineRadio4">Sub-grupo 18</label>
                     </div>
                   </div>

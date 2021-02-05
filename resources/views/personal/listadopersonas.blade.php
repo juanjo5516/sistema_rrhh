@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div id="app">
-                <personal></personal>
+                <listado-personal></listado-personal>
             </div>
         </div>
     </div>
