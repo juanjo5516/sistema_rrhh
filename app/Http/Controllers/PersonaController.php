@@ -52,6 +52,9 @@ class PersonaController extends Controller
         $persona->etnia_id = $request->etnia;
         $persona->comunidadlinguistica_id = $request->comunidad;
         $persona->fecha_nacimiento = $request->fecha_nac;
+        $persona->estado_civil = $request->estado_civil;
+        $persona->lugar_nacimiento = $request->lugar_nacimiento;
+        $persona->nit = $request->nit;
 
         $persona->save();
 

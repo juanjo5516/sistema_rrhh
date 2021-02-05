@@ -1,12 +1,5 @@
 <template>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-12">
-        <div class="card">
-          <div class="card-header">Registro</div>
-          <div class="card-body">
-            <form method="POST" v-on:submit.prevent="">
-              <form-wizard>
+              <form-wizard @onComplete="onComplete" style="width: 70%;"> 
                 <!--@on-complete="crearPersona"
                 title=""
                 subtitle=""
@@ -40,7 +33,7 @@
                   </div>
 
                   <!-- Input para colocar Primer nombre -->
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Primer Nombre:</span>
                       <br />
@@ -75,7 +68,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Tercer Nombre:</span>
                       <br />
@@ -87,7 +80,7 @@
                     </div>
                     <!-- Input para colocar Segundo nombre -->
                   </div>
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <!-- Input para colocar Primer apellido -->
                       <span>Primer Apellido:</span>
@@ -118,7 +111,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <!-- Input para colocar Segundo apellido -->
                       <span>Apellido de casada:</span>
@@ -130,7 +123,7 @@
                       />
                     </div>
                   </div>
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6">                   
                       <span>Género: </span> <br />
                       <input
@@ -170,7 +163,7 @@
                     </div>               
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6">                   
                       <span>Estado Civil: </span> <br />
                       <input
@@ -211,7 +204,7 @@
                     </div>           
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>DPI:</span>
                       <br />
@@ -223,6 +216,8 @@
                       />
                       <div v-if="hasError('dpi')" class="invalid-feedback">
                         <div class="error" v-if="!$v.formData.dpi.required">Campo requerido.</div>
+                        <div class="error" v-if="!$v.formData.dpi.minLength || !$v.formData.dpi.minLength">Ingrese dpi válido.</div>
+                        <div class="error" v-if="!$v.formData.dpi.numeric">Este campo solo debe tener números.</div>
                       </div>
 
                       <!-- <p>Message is: {{ primer_nombre }}</p> -->
@@ -231,7 +226,7 @@
                   </div>
 
                   <!-- Input para colocar nit -->
-                  <div class="form-group" v-if="formData.renglon==='011'">
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <span>Nit:</span>
                     <input
                       class="form-control"
@@ -241,14 +236,16 @@
                     />
                     <div v-if="hasError('nit')" class="invalid-feedback">
                       <div class="error" v-if="!$v.formData.nit.required">Campo requerido.</div>
+                      <div class="error" v-if="!$v.formData.nit.minLength || !$v.formData.dpi.minLength">Ingrese nit válido.</div>
+                      <div class="error" v-if="!$v.formData.nit.numeric">Este campo solo debe tener números.</div>
                     </div>
                   </div>
                 </tab-content>
                 <tab-content title="Información adicional">
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione Etnia:  </span> <br>
-                        <select v-model="etnia">
+                        <select v-model="etnia" class="form-control">
 
                           <option 
                             v-for="etnia in etnias"
@@ -261,7 +258,7 @@
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Seleccione Comunidad Linguistica:  </span> <br>
-                        <select v-model="comunidad">
+                        <select v-model="comunidad" class="form-control">
                           <option 
                             v-for="comunidad in comunidades"
                             v-bind:value="comunidad.id"
@@ -278,10 +275,10 @@
 
 <!-- PASO 3 STEP -->
                 <tab-content title="Información Académica">
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione profesión Universitaria:  </span> <br>
-                        <select v-model="profesion">
+                        <select v-model="profesion" class="form-control">
                           <option 
                             v-for="profesion in profesiones"
                             v-bind:value="profesion.id"
@@ -303,28 +300,28 @@
 
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione el estudio a Nivel Primario:  </span> <br>
-                        <select v-model="nivel_primario_s">
-                          <option v-for="nivel in nivel_primario" v-bind:key="nivel">{{nivel}}</option>
+                        <select v-model="nivel_primario_s" class="form-control">
+                          <option v-for="nivel in formData.nivel_primario" v-bind:key="nivel">{{nivel}}</option>
                         </select>
                     </div>
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione el estudio a Nivel Básico:  </span> <br>
-                        <select v-model="nivel_basico_s">
-                          <option v-for="nivel in nivel_basico" v-bind:key="nivel">{{nivel}}</option>
+                        <select v-model="nivel_basico_s" class="form-control">
+                          <option v-for="nivel in formData.nivel_basico" v-bind:key="nivel">{{nivel}}</option>
                         </select>
                     </div>
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione profesión a Nive Diversificado:  </span> <br>
-                        <select v-model="profesion_diversificado">
+                        <select v-model="profesion_diversificado" class="form-control">
                           <option 
                             v-for="profesion in profesiones_diversificado"
                             v-bind:value="profesion.id"
@@ -340,7 +337,7 @@
 
 <!-- PASO 4 STEP -->
                 <tab-content title="Discapacidad">
-                  <div class="form-group" v-if="formData.renglon==='011'">
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
 
                     <h2>Sensorial y de la Comunicación</h2>
                     <div class="form-check form-check-inline">
@@ -365,7 +362,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group" v-if="formData.renglon==='011'">
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <h2>Motriz</h2>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -393,7 +390,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group" v-if="formData.renglon==='011'">
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <h2>Mental</h2>
                     <div class="form-check form-check-inline">
                       <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
@@ -413,7 +410,7 @@
 
 <!-- PASO 5 STEP -->
                 <tab-content title="Datos Familiares">
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Nombre del padre:</span>
                       <br />
@@ -446,7 +443,7 @@
                   </div>
 
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Nombre de la Madre:</span>
                       <br />
@@ -477,7 +474,7 @@
                     </div>
                   </div>
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Nombre del cónyuge:</span>
                       <br />
@@ -509,7 +506,7 @@
                     </div>
                   </div>
 
-                  <div class="form-group" v-if="formData.renglon==='011'">
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
 
                     <div class="col-md-4 py-3">
                       <span>Cantidad de hijos:</span>
@@ -529,15 +526,18 @@
                 </tab-content>
 <!-- FINALIZA PASO 5 STEP -->
 
+<!-- PASO 6 STEP -->
+                <tab-content title="Historial Contratos" v-if="formData.renglon==='029'">
+                  <div class="form-row" >
+
+
+                  </div>
+                </tab-content>
+<!-- FINALIZA PASO 6 STEP -->
+
 
 
               </form-wizard>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -548,6 +548,8 @@ import 'vue-step-wizard/dist/vue-step-wizard.css'
 
 import { required } from 'vuelidate/lib/validators';
 import { minLength } from 'vuelidate/lib/validators';
+import { maxLength } from 'vuelidate/lib/validators';
+import { numeric } from 'vuelidate/lib/validators';
 
 export default {
   mixins:[ValidationHelper],
@@ -572,6 +574,7 @@ export default {
         estado_civl:"",
         nit: "",
         cantidad_hijos:0,
+        lugar_nac:"",
         etnias: [],
         comunidades: [],
         profesiones: [],
@@ -602,8 +605,8 @@ export default {
         fecha_nac: {required},
         estado_civl: {required},
         lugar_nac: {required},
-        dpi: {required},
-        nit: {required} },  //Validation Rules for step 1
+        dpi: {required,minLength: minLength(13),maxLength: maxLength(13),numeric},
+        nit: {required,minLength: minLength(8),maxLength: maxLength(8),numeric} },  //Validation Rules for step 1
 
     ]
     };
@@ -619,29 +622,6 @@ export default {
   },
   methods: {
     crearPersona: function () {
-      alert("¡Registro Creado satisfactoriamente!");
-      console.log("Funcionando botón");
-      var url = "/persona";
-      axios
-        .post(url, {
-          dpi: this.dpi,
-          nombre1: this.primer_nombre,
-          nombre2: this.segundo_nombre,
-          nombre3: this.tercer_nombre,
-          apellido1: this.primer_apellido,
-          apellido2: this.segundo_apellido,
-          apellido_casada: this.apellido_casada,
-          renglon: this.renglon,
-          genero: this.picked,
-          etnia: this.etnia,
-          comunidad: this.comunidad,
-          profesion: this.profesion,
-          fecha_nac: this.fecha_nac
-        })
-        .then((response) => {
-          location.href = "/home";
-          console.log(result);
-        });
 
     },
     obtenerCatalogo: function(table, column){
@@ -660,6 +640,35 @@ export default {
           this.profesiones_diversificado = response.data
         }
       })
+    },
+    onComplete() {
+      alert("¡Registro Creado satisfactoriamente!");
+      console.log("Funcionando botón");
+      var url = "/persona";
+      axios
+        .post(url, {
+          dpi: this.formData.dpi,
+          nombre1: this.formData.primer_nombre,
+          nombre2: this.formData.segundo_nombre,
+          nombre3: this.formData.tercer_nombre,
+          apellido1: this.formData.primer_apellido,
+          apellido2: this.formData.segundo_apellido,
+          apellido_casada: this.formData.apellido_casada,
+          renglon: this.formData.renglon,
+          genero: this.formData.picked,
+          etnia: this.etnia,
+          comunidad: this.comunidad,
+          profesion: this.profesion,
+          fecha_nac: this.formData.fecha_nac,
+          estado_civil: this.formData.estado_civl,
+          lugar_nacimiento: this.formData.lugar_nac,
+          nit: this.formData.nit
+        })
+        .then((response) => {
+          location.href = "/home";
+          console.log(result);
+        });
+
     }
   },
 };
