@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\MensajeCreacion;
 use App\Persona;
+use App\Contacto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -38,6 +39,21 @@ class PersonaController extends Controller
      */
     public function store(Request $request)
     {
+
+                
+        $contacto = new Contacto();
+        $contacto->nombre_padre = $request->nombre_padre;
+        $contacto->direccion_padre = $request->direccion_padre;
+        $contacto->telefono_padre = $request->telefono_padre;
+        $contacto->nombre_madre = $request->nombre_madre;
+        $contacto->direccion_madre = $request->direccion_madre;
+        $contacto->telefono_madre = $request->telefono_madre;
+        $contacto->nombre_conyuge = $request->nombre_conyuge;
+        $contacto->direccion_conyuge = $request->direccion_conyuge;
+        $contacto->telefono_conyuge = $request->telefono_conyuge;
+        $contacto->save();
+        //return response()->json($contacto,200);
+
         
         $persona = new Persona();
         $persona->dpi = $request->dpi;
@@ -50,11 +66,15 @@ class PersonaController extends Controller
         $persona->renglon = $request->renglon;
         $persona->genero = $request->genero;
         $persona->etnia_id = $request->etnia;
-        $persona->comunidadlinguistica_id = $request->comunidad;
+        $persona->comunidad_id = $request->comunidad;
         $persona->fecha_nacimiento = $request->fecha_nac;
         $persona->estado_civil = $request->estado_civil;
         $persona->lugar_nacimiento = $request->lugar_nacimiento;
         $persona->nit = $request->nit;
+        $persona->sensorial_id = $request->sensorial;
+        $persona->motriz_id = $request->motriz;
+        $persona->mental_id = $request->mental;
+        $persona->contacto_id = $contacto->id;
 
         $persona->save();
 

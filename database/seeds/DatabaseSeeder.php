@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ComunidadLinguisticaSeeder::class);
         $this->call(ProfesionSeeder::class);
         $this->call(ProfesionDiversificadoSeeder::class);
-        
-        
+        $this->call(SensorialSeeder::class);
+        $this->call(MotrizSeeder::class);
+        $this->call(MentalSeeder::class);
     }
 }

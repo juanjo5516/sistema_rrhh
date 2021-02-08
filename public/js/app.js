@@ -2691,6 +2691,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import { FormWizard, TabContent } from "vue-form-wizard";
 //import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
@@ -2749,7 +2769,19 @@ __webpack_require__.r(__webpack_exports__);
         nivel_primario: ['Primero', 'Segundo', 'Tercero', 'Cuarto', 'Quinto', 'Sexto', 'Sin estudio de nivel Primario'],
         nivel_basico: ['Primero Básico', 'Segundo Básico', 'Tercero Básico', 'Sin estudio de nivel Básico'],
         nivel_primario_s: [],
-        nivel_basico_s: []
+        nivel_basico_s: [],
+        sensorial: '',
+        motriz: '',
+        mental: '',
+        nombre_padre: '',
+        direccion_padre: '',
+        telefono_padre: '',
+        nombre_madre: '',
+        direccion_madre: '',
+        telefono_madre: '',
+        nombre_conyuge: '',
+        direccion_conyuge: '',
+        telefono_conyuge: ''
       },
       validationRules: [{
         primer_nombre: {
@@ -2809,13 +2841,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/obtener-catalogo?table=".concat(table, "&column=").concat(column)).then(function (response) {
         if (table == 'etnias') {
-          _this.etnias = response.data;
+          _this.formData.etnias = response.data;
         } else if (table == 'comunidads') {
-          _this.comunidades = response.data;
+          _this.formData.comunidades = response.data;
         } else if (table == 'profesions') {
-          _this.profesiones = response.data;
+          _this.formData.profesiones = response.data;
         } else if (table == 'profesion_diversificados') {
-          _this.profesiones_diversificado = response.data;
+          _this.formData.profesiones_diversificado = response.data;
         }
       });
     },
@@ -2833,15 +2865,27 @@ __webpack_require__.r(__webpack_exports__);
         apellido_casada: this.formData.apellido_casada,
         renglon: this.formData.renglon,
         genero: this.formData.picked,
-        etnia: this.etnia,
-        comunidad: this.comunidad,
-        profesion: this.profesion,
+        etnia: this.formData.etnia,
+        comunidad: this.formData.comunidad,
+        profesion: this.formData.profesion,
         fecha_nac: this.formData.fecha_nac,
         estado_civil: this.formData.estado_civl,
         lugar_nacimiento: this.formData.lugar_nac,
-        nit: this.formData.nit
+        nit: this.formData.nit,
+        sensorial: this.formData.sensorial,
+        motriz: this.formData.motriz,
+        mental: this.formData.mental,
+        nombre_padre: this.formData.nombre_padre,
+        direccion_padre: this.formData.direccion_padre,
+        telefono_padre: this.formData.telefono_padre,
+        nombre_madre: this.formData.nombre_madre,
+        direccion_madre: this.formData.direccion_madre,
+        telefono_madre: this.formData.telefono_madre,
+        nombre_conyuge: this.formData.nombre_conyuge,
+        direccion_conyuge: this.formData.direccion_conyuge,
+        telefono_conyuge: this.formData.telefono_conyuge
       }).then(function (response) {
-        location.href = "/home";
+        //location.href = "/home";
         console.log(result);
       });
     }
@@ -40368,8 +40412,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.etnia,
-                        expression: "etnia"
+                        value: _vm.formData.etnia,
+                        expression: "formData.etnia"
                       }
                     ],
                     staticClass: "form-control",
@@ -40383,20 +40427,24 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.etnia = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.formData,
+                          "etnia",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
-                  _vm._l(_vm.etnias, function(etnia) {
+                  _vm._l(_vm.formData.etnias, function(etniaitem) {
                     return _c(
                       "option",
-                      { key: etnia.id, domProps: { value: etnia.id } },
+                      { key: etniaitem.id, domProps: { value: etniaitem.id } },
                       [
                         _vm._v(
                           "\n                            " +
-                            _vm._s(etnia.etnia) +
+                            _vm._s(etniaitem.etnia) +
                             "\n                          "
                         )
                       ]
@@ -40418,8 +40466,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.comunidad,
-                        expression: "comunidad"
+                        value: _vm.formData.comunidad,
+                        expression: "formData.comunidad"
                       }
                     ],
                     staticClass: "form-control",
@@ -40433,26 +40481,657 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.comunidad = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.formData,
+                          "comunidad",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
-                  _vm._l(_vm.comunidades, function(comunidad) {
+                  _vm._l(_vm.formData.comunidades, function(comunidaditem) {
                     return _c(
                       "option",
-                      { key: comunidad.id, domProps: { value: comunidad.id } },
+                      {
+                        key: comunidaditem.id,
+                        domProps: { value: comunidaditem.id }
+                      },
                       [
                         _vm._v(
                           "\n                            " +
-                            _vm._s(comunidad.comunidad_linguistica) +
+                            _vm._s(comunidaditem.comunidad_linguistica) +
                             "\n                          "
                         )
                       ]
                     )
                   }),
                   0
+                )
+              ])
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c("tab-content", { attrs: { title: "Discapacidad" } }, [
+        _vm.formData.renglon === "011" ||
+        _vm.formData.renglon === "022" ||
+        _vm.formData.renglon === "029" ||
+        _vm.formData.renglon === "018"
+          ? _c("div", { staticClass: "form-group" }, [
+              _c("h2", [_vm._v("Sensorial y de la Comunicación")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.sensorial,
+                      expression: "formData.sensorial"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox1",
+                    name: "syc",
+                    value: "1"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.sensorial, "1") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "sensorial", "1")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox1" }
+                  },
+                  [_vm._v("Visual")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.sensorial,
+                      expression: "formData.sensorial"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox2",
+                    name: "syc",
+                    value: "2"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.sensorial, "2") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "sensorial", "2")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox2" }
+                  },
+                  [_vm._v("Auditiva")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.sensorial,
+                      expression: "formData.sensorial"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox3",
+                    name: "syc",
+                    value: "3"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.sensorial, "3") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "sensorial", "3")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox3" }
+                  },
+                  [_vm._v("Verbal")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.sensorial,
+                      expression: "formData.sensorial"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox4",
+                    name: "syc",
+                    value: "4"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.sensorial, "4") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "sensorial", "4")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox4" }
+                  },
+                  [_vm._v("Comprensión")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.sensorial,
+                      expression: "formData.sensorial"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox5",
+                    name: "syc",
+                    value: "5"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.sensorial, "5") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "sensorial", "5")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox5" }
+                  },
+                  [_vm._v("Múltiple")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.sensorial,
+                      expression: "formData.sensorial"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox6",
+                    name: "syc",
+                    value: "6"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.sensorial, "6") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "sensorial", "6")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox6" }
+                  },
+                  [_vm._v("Ninguna")]
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.formData.renglon === "011" ||
+        _vm.formData.renglon === "022" ||
+        _vm.formData.renglon === "029" ||
+        _vm.formData.renglon === "018"
+          ? _c("div", { staticClass: "form-group" }, [
+              _c("h2", [_vm._v("Motriz")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    name: "motriz",
+                    id: "inlineCheck1",
+                    value: "1"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "1") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "1")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheck1" }
+                  },
+                  [_vm._v("Extremidades inferiores")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    name: "motriz",
+                    id: "inlineCheck2",
+                    value: "2"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "2") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "2")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheck2" }
+                  },
+                  [_vm._v("Extremidades superiores")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    name: "motriz",
+                    id: "inlineCheck3",
+                    value: "3"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "3") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "3")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheck3" }
+                  },
+                  [_vm._v("Cabeza")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    name: "motriz",
+                    id: "inlineCheck4",
+                    value: "4"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "4") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "4")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheck4" }
+                  },
+                  [_vm._v("Cuello")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    name: "motriz",
+                    id: "inlineCheck5",
+                    value: "5"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "5") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "5")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheck5" }
+                  },
+                  [_vm._v("Tronco")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    name: "motriz",
+                    id: "inlineCheck6",
+                    value: "6"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "6") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "6")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheck6" }
+                  },
+                  [_vm._v("Múltiple")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.motriz,
+                      expression: "formData.motriz"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "inlineCheckbox7",
+                    name: "syc",
+                    value: "7"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.motriz, "7") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "motriz", "7")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "inlineCheckbox7" }
+                  },
+                  [_vm._v("Ninguna")]
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.formData.renglon === "011" ||
+        _vm.formData.renglon === "022" ||
+        _vm.formData.renglon === "029" ||
+        _vm.formData.renglon === "018"
+          ? _c("div", { staticClass: "form-group" }, [
+              _c("h2", [_vm._v("Mental")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.mental,
+                      expression: "formData.mental"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "mental1",
+                    name: "mental",
+                    value: "1"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.mental, "1") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "mental", "1")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "mental1" }
+                  },
+                  [_vm._v("Intelectual")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.mental,
+                      expression: "formData.mental"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "mental2",
+                    name: "mental",
+                    value: "2"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.mental, "2") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "mental", "2")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "mental2" }
+                  },
+                  [_vm._v("Conductual")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.mental,
+                      expression: "formData.mental"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "mental3",
+                    name: "mental",
+                    value: "3"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.mental, "3") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "mental", "3")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "mental3" }
+                  },
+                  [_vm._v("Otra")]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "form-check form-check-inline" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.mental,
+                      expression: "formData.mental"
+                    }
+                  ],
+                  staticClass: "form-check-input",
+                  attrs: {
+                    type: "radio",
+                    id: "mental4",
+                    name: "mental",
+                    value: "4"
+                  },
+                  domProps: { checked: _vm._q(_vm.formData.mental, "4") },
+                  on: {
+                    change: function($event) {
+                      return _vm.$set(_vm.formData, "mental", "4")
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-check-label",
+                    attrs: { for: "mental4" }
+                  },
+                  [_vm._v("Ninguna")]
                 )
               ])
             ])
@@ -40498,7 +41177,7 @@ var render = function() {
                       }
                     }
                   },
-                  _vm._l(_vm.profesiones, function(profesion) {
+                  _vm._l(_vm.formData.profesiones, function(profesion) {
                     return _c(
                       "option",
                       { key: profesion.id, domProps: { value: profesion.id } },
@@ -40681,7 +41360,9 @@ var render = function() {
                       }
                     }
                   },
-                  _vm._l(_vm.profesiones_diversificado, function(profesion) {
+                  _vm._l(_vm.formData.profesiones_diversificado, function(
+                    profesion
+                  ) {
                     return _c(
                       "option",
                       { key: profesion.id, domProps: { value: profesion.id } },
@@ -40695,315 +41376,6 @@ var render = function() {
                     )
                   }),
                   0
-                )
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("tab-content", { attrs: { title: "Discapacidad" } }, [
-        _vm.formData.renglon === "011" ||
-        _vm.formData.renglon === "022" ||
-        _vm.formData.renglon === "029" ||
-        _vm.formData.renglon === "018"
-          ? _c("div", { staticClass: "form-group" }, [
-              _c("h2", [_vm._v("Sensorial y de la Comunicación")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox1",
-                    value: "option1"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox1" }
-                  },
-                  [_vm._v("Visual")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Auditiva")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Verbal")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Comprensión")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox3",
-                    value: "option3"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox3" }
-                  },
-                  [_vm._v("Múltiple")]
-                )
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.formData.renglon === "011" ||
-        _vm.formData.renglon === "022" ||
-        _vm.formData.renglon === "029" ||
-        _vm.formData.renglon === "018"
-          ? _c("div", { staticClass: "form-group" }, [
-              _c("h2", [_vm._v("Motriz")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox1",
-                    value: "option1"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox1" }
-                  },
-                  [_vm._v("Extremidades inferiores")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Extremidades superiores")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Cabeza")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Cuello")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox3",
-                    value: "option3"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox3" }
-                  },
-                  [_vm._v("Tronco")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox3",
-                    value: "option3"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox3" }
-                  },
-                  [_vm._v("Múltiple")]
-                )
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.formData.renglon === "011" ||
-        _vm.formData.renglon === "022" ||
-        _vm.formData.renglon === "029" ||
-        _vm.formData.renglon === "018"
-          ? _c("div", { staticClass: "form-group" }, [
-              _c("h2", [_vm._v("Mental")]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox1",
-                    value: "option1"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox1" }
-                  },
-                  [_vm._v("Intelectual")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Conductual")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "checkbox",
-                    id: "inlineCheckbox2",
-                    value: "option2"
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Otra")]
                 )
               ])
             ])
@@ -41026,19 +41398,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.nombre_padre,
-                      expression: "nombre_padre"
+                      value: _vm.formData.nombre_padre,
+                      expression: "formData.nombre_padre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Nombre del Padre" },
-                  domProps: { value: _vm.nombre_padre },
+                  domProps: { value: _vm.formData.nombre_padre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.nombre_padre = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "nombre_padre",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41054,19 +41430,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.direccion_padre,
-                      expression: "direccion_padre"
+                      value: _vm.formData.direccion_padre,
+                      expression: "formData.direccion_padre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Dirección Domiciliar del Padre" },
-                  domProps: { value: _vm.direccion_padre },
+                  domProps: { value: _vm.formData.direccion_padre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.direccion_padre = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "direccion_padre",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41082,19 +41462,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.telefono_padre,
-                      expression: "telefono_padre"
+                      value: _vm.formData.telefono_padre,
+                      expression: "formData.telefono_padre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Teléfono del padre" },
-                  domProps: { value: _vm.telefono_padre },
+                  domProps: { value: _vm.formData.telefono_padre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.telefono_padre = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "telefono_padre",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41117,19 +41501,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.nombre_madre,
-                      expression: "nombre_madre"
+                      value: _vm.formData.nombre_madre,
+                      expression: "formData.nombre_madre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Nombre de la Madre" },
-                  domProps: { value: _vm.nombre_madre },
+                  domProps: { value: _vm.formData.nombre_madre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.nombre_madre = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "nombre_madre",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41145,19 +41533,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.direccion_madre,
-                      expression: "direccion_madre"
+                      value: _vm.formData.direccion_madre,
+                      expression: "formData.direccion_madre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Dirección Domiciliar de la Madre" },
-                  domProps: { value: _vm.direccion_madre },
+                  domProps: { value: _vm.formData.direccion_madre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.direccion_madre = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "direccion_madre",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41173,19 +41565,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.telefono_madre,
-                      expression: "telefono_madre"
+                      value: _vm.formData.telefono_madre,
+                      expression: "formData.telefono_madre"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Teléfono del Madre" },
-                  domProps: { value: _vm.telefono_madre },
+                  domProps: { value: _vm.formData.telefono_madre },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.telefono_madre = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "telefono_madre",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41208,19 +41604,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.nombre_conyuge,
-                      expression: "nombre_conyuge"
+                      value: _vm.formData.nombre_conyuge,
+                      expression: "formData.nombre_conyuge"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Nombre del Cónyuge" },
-                  domProps: { value: _vm.nombre_conyuge },
+                  domProps: { value: _vm.formData.nombre_conyuge },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.nombre_conyuge = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "nombre_conyuge",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41236,19 +41636,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.direccion_conyuge,
-                      expression: "direccion_conyuge"
+                      value: _vm.formData.direccion_conyuge,
+                      expression: "formData.direccion_conyuge"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Dirección Domiciliar del Cónyuge" },
-                  domProps: { value: _vm.direccion_conyuge },
+                  domProps: { value: _vm.formData.direccion_conyuge },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.direccion_conyuge = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "direccion_conyuge",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41264,19 +41668,23 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.telefono_conyugue,
-                      expression: "telefono_conyugue"
+                      value: _vm.formData.telefono_conyugue,
+                      expression: "formData.telefono_conyugue"
                     }
                   ],
                   staticClass: "form-control",
                   attrs: { placeholder: "Teléfono del Cónyuge" },
-                  domProps: { value: _vm.telefono_conyugue },
+                  domProps: { value: _vm.formData.telefono_conyugue },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.telefono_conyugue = $event.target.value
+                      _vm.$set(
+                        _vm.formData,
+                        "telefono_conyugue",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -41338,11 +41746,9 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _vm.formData.renglon === "029"
-        ? _c("tab-content", { attrs: { title: "Historial Contratos" } }, [
-            _c("div", { staticClass: "form-row" })
-          ])
-        : _vm._e()
+      _c("tab-content", { attrs: { title: "Historial Laboral" } }, [
+        _c("div", { staticClass: "form-row" })
+      ])
     ],
     1
   )

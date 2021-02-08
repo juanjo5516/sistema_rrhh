@@ -240,47 +240,139 @@
                       <div class="error" v-if="!$v.formData.nit.numeric">Este campo solo debe tener números.</div>
                     </div>
                   </div>
+
+
+<!-- PASO 2 STEP -->                  
                 </tab-content>
                 <tab-content title="Información adicional">
                   <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione Etnia:  </span> <br>
-                        <select v-model="etnia" class="form-control">
+                        <select v-model="formData.etnia" class="form-control">
 
                           <option 
-                            v-for="etnia in etnias"
-                            v-bind:value="etnia.id"
-                            v-bind:key="etnia.id"
+                            v-for="etniaitem in formData.etnias"
+                            v-bind:value="etniaitem.id"
+                            v-bind:key="etniaitem.id"
                           >
-                            {{ etnia.etnia }}
+                            {{ etniaitem.etnia }}
                           </option>
                         </select>
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Seleccione Comunidad Linguistica:  </span> <br>
-                        <select v-model="comunidad" class="form-control">
+                        <select v-model="formData.comunidad" class="form-control">
                           <option 
-                            v-for="comunidad in comunidades"
-                            v-bind:value="comunidad.id"
-                            v-bind:key="comunidad.id"
+                            v-for="comunidaditem in formData.comunidades"
+                            v-bind:value="comunidaditem.id"
+                            v-bind:key="comunidaditem.id"
                           >
-                            {{ comunidad.comunidad_linguistica }}
+                            {{ comunidaditem.comunidad_linguistica }}
                           </option>
                         </select>
                     </div>
                   </div>
 
                 </tab-content>
+<!-- FINALIZA PASO 2 STEP -->
                 
 
 <!-- PASO 3 STEP -->
+
+<tab-content title="Discapacidad">
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
+
+                    <h2>Sensorial y de la Comunicación</h2>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox1" name="syc" value="1" v-model="formData.sensorial">
+                      <label class="form-check-label" for="inlineCheckbox1">Visual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox2" name="syc" value="2" v-model="formData.sensorial">
+                      <label class="form-check-label" for="inlineCheckbox2">Auditiva</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox3" name="syc" value="3" v-model="formData.sensorial">
+                      <label class="form-check-label" for="inlineCheckbox3">Verbal</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox4" name="syc" value="4" v-model="formData.sensorial">
+                      <label class="form-check-label" for="inlineCheckbox4">Comprensión</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox5" name="syc" value="5" v-model="formData.sensorial">
+                      <label class="form-check-label" for="inlineCheckbox5">Múltiple</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox6" name="syc" value="6" v-model="formData.sensorial">
+                      <label class="form-check-label" for="inlineCheckbox6">Ninguna</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
+                    <h2>Motriz</h2>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="motriz" id="inlineCheck1" value="1" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck1">Extremidades inferiores</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="motriz" id="inlineCheck2" value="2" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck2">Extremidades superiores</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="motriz" id="inlineCheck3" value="3" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck3">Cabeza</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="motriz" id="inlineCheck4" value="4" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck4">Cuello</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="motriz" id="inlineCheck5" value="5" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck5">Tronco</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="motriz" id="inlineCheck6" value="6" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck6">Múltiple</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="inlineCheckbox7" name="syc" value="7" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheckbox7">Ninguna</label>
+                    </div>
+                  </div>
+
+                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
+                    <h2>Mental</h2>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="mental1" name="mental" value="1" v-model="formData.mental">
+                      <label class="form-check-label" for="mental1">Intelectual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="mental2" name="mental" value="2" v-model="formData.mental">
+                      <label class="form-check-label" for="mental2">Conductual</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="mental3" name="mental" value="3" v-model="formData.mental">
+                      <label class="form-check-label" for="mental3">Otra</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" id="mental4" name="mental" value="4" v-model="formData.mental">
+                      <label class="form-check-label" for="mental4">Ninguna</label>
+                    </div>
+                  </div>
+                </tab-content>
+
+<!-- FINALIZA PASO 3 STEP -->
+
+<!-- PASO 4 STEP -->
+
                 <tab-content title="Información Académica">
                   <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione profesión Universitaria:  </span> <br>
                         <select v-model="profesion" class="form-control">
                           <option 
-                            v-for="profesion in profesiones"
+                            v-for="profesion in formData.profesiones"
                             v-bind:value="profesion.id"
                             v-bind:key="profesion.id"
                           >
@@ -323,7 +415,7 @@
                       <span>Seleccione profesión a Nive Diversificado:  </span> <br>
                         <select v-model="profesion_diversificado" class="form-control">
                           <option 
-                            v-for="profesion in profesiones_diversificado"
+                            v-for="profesion in formData.profesiones_diversificado"
                             v-bind:value="profesion.id"
                             v-bind:key="profesion.id"
                           >
@@ -333,79 +425,7 @@
                     </div>
                   </div>
                 </tab-content>
-<!-- FINALIZA PASO 3 STEP -->
-
-<!-- PASO 4 STEP -->
-                <tab-content title="Discapacidad">
-                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
-
-                    <h2>Sensorial y de la Comunicación</h2>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Visual</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Auditiva</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Verbal</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Comprensión</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                      <label class="form-check-label" for="inlineCheckbox3">Múltiple</label>
-                    </div>
-                  </div>
-
-                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
-                    <h2>Motriz</h2>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Extremidades inferiores</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Extremidades superiores</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Cabeza</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Cuello</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                      <label class="form-check-label" for="inlineCheckbox3">Tronco</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                      <label class="form-check-label" for="inlineCheckbox3">Múltiple</label>
-                    </div>
-                  </div>
-
-                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
-                    <h2>Mental</h2>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                      <label class="form-check-label" for="inlineCheckbox1">Intelectual</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Conductual</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                      <label class="form-check-label" for="inlineCheckbox2">Otra</label>
-                    </div>
-                  </div>
-                </tab-content>
+                
 <!-- FINALIZA PASO 4 STEP -->
 
 <!-- PASO 5 STEP -->
@@ -416,7 +436,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="nombre_padre"
+                        v-model="formData.nombre_padre"
                         placeholder="Nombre del Padre"
                       />
                       <!-- <p>Message is: {{ primer_nombre }}</p> -->
@@ -427,7 +447,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="direccion_padre"
+                        v-model="formData.direccion_padre"
                         placeholder="Dirección Domiciliar del Padre"
                       />
                     </div>
@@ -436,7 +456,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="telefono_padre"
+                        v-model="formData.telefono_padre"
                         placeholder="Teléfono del padre"
                       />
                     </div>
@@ -449,7 +469,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="nombre_madre"
+                        v-model="formData.nombre_madre"
                         placeholder="Nombre de la Madre"
                       />
                     </div>
@@ -459,7 +479,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="direccion_madre"
+                        v-model="formData.direccion_madre"
                         placeholder="Dirección Domiciliar de la Madre"
                       />
                     </div>
@@ -468,7 +488,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="telefono_madre"
+                        v-model="formData.telefono_madre"
                         placeholder="Teléfono del Madre"
                       />
                     </div>
@@ -480,7 +500,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="nombre_conyuge"
+                        v-model="formData.nombre_conyuge"
                         placeholder="Nombre del Cónyuge"
                       />
                     </div>
@@ -490,7 +510,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="direccion_conyuge"
+                        v-model="formData.direccion_conyuge"
                         placeholder="Dirección Domiciliar del Cónyuge"
                       />
                     </div>
@@ -500,7 +520,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="telefono_conyugue"
+                        v-model="formData.telefono_conyugue"
                         placeholder="Teléfono del Cónyuge"
                       />
                     </div>
@@ -527,7 +547,7 @@
 <!-- FINALIZA PASO 5 STEP -->
 
 <!-- PASO 6 STEP -->
-                <tab-content title="Historial Contratos" v-if="formData.renglon==='029'">
+                <tab-content title="Historial Laboral">
                   <div class="form-row" >
 
 
@@ -594,7 +614,19 @@ export default {
         nivel_primario:['Primero','Segundo','Tercero','Cuarto','Quinto','Sexto','Sin estudio de nivel Primario'],
         nivel_basico:['Primero Básico','Segundo Básico','Tercero Básico','Sin estudio de nivel Básico'],
         nivel_primario_s:[],
-        nivel_basico_s:[]
+        nivel_basico_s:[],
+        sensorial:'',
+        motriz:'',
+        mental:'',
+        nombre_padre:'',
+        direccion_padre:'',
+        telefono_padre:'',
+        nombre_madre:'',
+        direccion_madre:'',
+        telefono_madre:'',
+        nombre_conyuge:'',
+        direccion_conyuge:'',
+        telefono_conyuge:'',
       },
       validationRules:[
         {primer_nombre: {required,minLength: minLength(3)},
@@ -628,16 +660,16 @@ export default {
       axios.get(`/obtener-catalogo?table=${table}&column=${column}`)
       .then(response=>{
         if (table=='etnias'){
-          this.etnias = response.data
+          this.formData.etnias = response.data
         }
         else if (table=='comunidads'){
-          this.comunidades = response.data
+          this.formData.comunidades = response.data
         }
         else if (table=='profesions'){
-          this.profesiones = response.data
+          this.formData.profesiones = response.data
         }
         else if (table=='profesion_diversificados'){
-          this.profesiones_diversificado = response.data
+          this.formData.profesiones_diversificado = response.data
         }
       })
     },
@@ -656,16 +688,29 @@ export default {
           apellido_casada: this.formData.apellido_casada,
           renglon: this.formData.renglon,
           genero: this.formData.picked,
-          etnia: this.etnia,
-          comunidad: this.comunidad,
-          profesion: this.profesion,
+          etnia: this.formData.etnia,
+          comunidad: this.formData.comunidad,
+          profesion: this.formData.profesion,
           fecha_nac: this.formData.fecha_nac,
           estado_civil: this.formData.estado_civl,
           lugar_nacimiento: this.formData.lugar_nac,
-          nit: this.formData.nit
+          nit: this.formData.nit,
+          sensorial: this.formData.sensorial,
+          motriz: this.formData.motriz,
+          mental: this.formData.mental,
+          nombre_padre: this.formData.nombre_padre,
+          direccion_padre: this.formData.direccion_padre,
+          telefono_padre: this.formData.telefono_padre,
+          nombre_madre: this.formData.nombre_madre,
+          direccion_madre: this.formData.direccion_madre,
+          telefono_madre: this.formData.telefono_madre,
+          nombre_conyuge: this.formData.nombre_conyuge,
+          direccion_conyuge: this.formData.direccion_conyuge,
+          telefono_conyuge: this.formData.telefono_conyuge,
+
         })
         .then((response) => {
-          location.href = "/home";
+          //location.href = "/home";
           console.log(result);
         });
 
