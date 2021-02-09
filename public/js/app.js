@@ -2083,6 +2083,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -2711,6 +2713,113 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import { FormWizard, TabContent } from "vue-form-wizard";
 //import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
@@ -2727,6 +2836,7 @@ __webpack_require__.r(__webpack_exports__);
     this.obtenerCatalogo('comunidads', 'comunidad_linguistica');
     this.obtenerCatalogo('profesions', 'profesion_universitaria');
     this.obtenerCatalogo('profesion_diversificados', 'profesion_diversificado');
+    this.obtenerCatalogo('nominal_positions', 'puesto');
   },
   data: function data() {
     return {
@@ -2781,7 +2891,11 @@ __webpack_require__.r(__webpack_exports__);
         telefono_madre: '',
         nombre_conyuge: '',
         direccion_conyuge: '',
-        telefono_conyuge: ''
+        telefono_conyuge: '',
+        colegiado: '',
+        puestos_nominales: [],
+        puesto_nominal: '',
+        puesto_funcional: ''
       },
       validationRules: [{
         primer_nombre: {
@@ -2821,8 +2935,69 @@ __webpack_require__.r(__webpack_exports__);
           maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(8),
           numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["numeric"]
         }
-      } //Validation Rules for step 1
-      ]
+      }, //Validation Rules for step 1
+      {
+        etnia: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        comunidad: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        }
+      }, {
+        sensorial: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        motriz: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        mental: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        }
+      }, {
+        profesion: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        nivel_primario_s: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        nivel_basico_s: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        profesion_diversificado: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        }
+      }, {
+        nombre_padre: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        direccion_padre: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        telefono_padre: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        nombre_madre: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        direccion_madre: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        telefono_madre: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        nombre_conyuge: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        direccion_conyuge: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        telefono_conyugue: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        },
+        cantidad_hijos: {
+          required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
+        }
+      }]
     };
   },
   watch: {
@@ -2848,6 +3023,8 @@ __webpack_require__.r(__webpack_exports__);
           _this.formData.profesiones = response.data;
         } else if (table == 'profesion_diversificados') {
           _this.formData.profesiones_diversificado = response.data;
+        } else if (table == 'nominal_positions') {
+          _this.formData.puestos_nominales = response.data;
         }
       });
     },
@@ -2883,9 +3060,11 @@ __webpack_require__.r(__webpack_exports__);
         telefono_madre: this.formData.telefono_madre,
         nombre_conyuge: this.formData.nombre_conyuge,
         direccion_conyuge: this.formData.direccion_conyuge,
-        telefono_conyuge: this.formData.telefono_conyuge
+        telefono_conyuge: this.formData.telefono_conyuge,
+        nominal_position: this.formData.puesto_nominal,
+        puesto_funcional: this.formData.puesto_funcional
       }).then(function (response) {
-        //location.href = "/home";
+        location.href = "/home";
         console.log(result);
       });
     }
@@ -39582,7 +39761,9 @@ var render = function() {
           _vm._v(" "),
           _c("td", [_vm._v(_vm._s(persona.dpi))]),
           _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(persona.renglon))])
+          _c("td", [_vm._v(_vm._s(persona.renglon))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(persona.puesto_id))])
         ])
       }),
       0
@@ -39610,7 +39791,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("dpi")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Renglón")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Renglón")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Puesto")])
       ])
     ])
   }
@@ -39906,19 +40089,23 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.tercer_nombre,
-                        expression: "tercer_nombre"
+                        value: _vm.formData.tercer_nombre,
+                        expression: "formData.tercer_nombre"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { placeholder: "Tercer Nombre" },
-                    domProps: { value: _vm.tercer_nombre },
+                    domProps: { value: _vm.formData.tercer_nombre },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.tercer_nombre = $event.target.value
+                        _vm.$set(
+                          _vm.formData,
+                          "tercer_nombre",
+                          $event.target.value
+                        )
                       }
                     }
                   })
@@ -40417,6 +40604,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
+                    class: _vm.hasError("etnia") ? "is-invalid" : "",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -40451,7 +40639,17 @@ var render = function() {
                     )
                   }),
                   0
-                )
+                ),
+                _vm._v(" "),
+                _vm.hasError("etnia")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.etnia.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -40471,6 +40669,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
+                    class: _vm.hasError("comunidad") ? "is-invalid" : "",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -40508,7 +40707,17 @@ var render = function() {
                     )
                   }),
                   0
-                )
+                ),
+                _vm._v(" "),
+                _vm.hasError("comunidad")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.comunidad.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e()
@@ -40522,215 +40731,267 @@ var render = function() {
           ? _c("div", { staticClass: "form-group" }, [
               _c("h2", [_vm._v("Sensorial y de la Comunicación")]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("sensorial") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.sensorial,
+                        expression: "formData.sensorial"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheckbox1",
+                      name: "syc",
+                      value: "1"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.sensorial, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "sensorial", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.sensorial,
-                      expression: "formData.sensorial"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox1",
-                    name: "syc",
-                    value: "1"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.sensorial, "1") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "sensorial", "1")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox1" }
-                  },
-                  [_vm._v("Visual")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheckbox1" }
+                    },
+                    [_vm._v("Visual")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("sensorial") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.sensorial,
+                        expression: "formData.sensorial"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheckbox2",
+                      name: "syc",
+                      value: "2"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.sensorial, "2") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "sensorial", "2")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.sensorial,
-                      expression: "formData.sensorial"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox2",
-                    name: "syc",
-                    value: "2"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.sensorial, "2") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "sensorial", "2")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox2" }
-                  },
-                  [_vm._v("Auditiva")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheckbox2" }
+                    },
+                    [_vm._v("Auditiva")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("sensorial") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.sensorial,
+                        expression: "formData.sensorial"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheckbox3",
+                      name: "syc",
+                      value: "3"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.sensorial, "3") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "sensorial", "3")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.sensorial,
-                      expression: "formData.sensorial"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox3",
-                    name: "syc",
-                    value: "3"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.sensorial, "3") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "sensorial", "3")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox3" }
-                  },
-                  [_vm._v("Verbal")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheckbox3" }
+                    },
+                    [_vm._v("Verbal")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("sensorial") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.sensorial,
+                        expression: "formData.sensorial"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheckbox4",
+                      name: "syc",
+                      value: "4"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.sensorial, "4") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "sensorial", "4")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.sensorial,
-                      expression: "formData.sensorial"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox4",
-                    name: "syc",
-                    value: "4"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.sensorial, "4") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "sensorial", "4")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox4" }
-                  },
-                  [_vm._v("Comprensión")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheckbox4" }
+                    },
+                    [_vm._v("Comprensión")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("sensorial") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.sensorial,
+                        expression: "formData.sensorial"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheckbox5",
+                      name: "syc",
+                      value: "5"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.sensorial, "5") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "sensorial", "5")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.sensorial,
-                      expression: "formData.sensorial"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox5",
-                    name: "syc",
-                    value: "5"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.sensorial, "5") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "sensorial", "5")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox5" }
-                  },
-                  [_vm._v("Múltiple")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheckbox5" }
+                    },
+                    [_vm._v("Múltiple")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("sensorial") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.sensorial,
+                        expression: "formData.sensorial"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheckbox6",
+                      name: "syc",
+                      value: "6"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.sensorial, "6") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "sensorial", "6")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.sensorial,
-                      expression: "formData.sensorial"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox6",
-                    name: "syc",
-                    value: "6"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.sensorial, "6") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "sensorial", "6")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox6" }
-                  },
-                  [_vm._v("Ninguna")]
-                )
-              ])
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheckbox6" }
+                    },
+                    [_vm._v("Ninguna")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.hasError("sensorial")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    !_vm.$v.formData.sensorial.required
+                      ? _c("div", { staticClass: "error" }, [
+                          _vm._v("Campo requerido.")
+                        ])
+                      : _vm._e()
+                  ])
+                : _vm._e()
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -40741,250 +41002,309 @@ var render = function() {
           ? _c("div", { staticClass: "form-group" }, [
               _c("h2", [_vm._v("Motriz")]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "motriz",
+                      id: "inlineCheck1",
+                      value: "1"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "motriz",
-                    id: "inlineCheck1",
-                    value: "1"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "1") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "1")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheck1" }
-                  },
-                  [_vm._v("Extremidades inferiores")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck1" }
+                    },
+                    [_vm._v("Extremidades inferiores")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "motriz",
+                      id: "inlineCheck2",
+                      value: "2"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "2") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "2")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "motriz",
-                    id: "inlineCheck2",
-                    value: "2"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "2") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "2")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheck2" }
-                  },
-                  [_vm._v("Extremidades superiores")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck2" }
+                    },
+                    [_vm._v("Extremidades superiores")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "motriz",
+                      id: "inlineCheck3",
+                      value: "3"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "3") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "3")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "motriz",
-                    id: "inlineCheck3",
-                    value: "3"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "3") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "3")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheck3" }
-                  },
-                  [_vm._v("Cabeza")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck3" }
+                    },
+                    [_vm._v("Cabeza")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "motriz",
+                      id: "inlineCheck4",
+                      value: "4"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "4") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "4")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "motriz",
-                    id: "inlineCheck4",
-                    value: "4"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "4") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "4")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheck4" }
-                  },
-                  [_vm._v("Cuello")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck4" }
+                    },
+                    [_vm._v("Cuello")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "motriz",
+                      id: "inlineCheck5",
+                      value: "5"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "5") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "5")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "motriz",
-                    id: "inlineCheck5",
-                    value: "5"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "5") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "5")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheck5" }
-                  },
-                  [_vm._v("Tronco")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck5" }
+                    },
+                    [_vm._v("Tronco")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      name: "motriz",
+                      id: "inlineCheck6",
+                      value: "6"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "6") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "6")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    name: "motriz",
-                    id: "inlineCheck6",
-                    value: "6"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "6") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "6")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheck6" }
-                  },
-                  [_vm._v("Múltiple")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck6" }
+                    },
+                    [_vm._v("Múltiple")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("motriz") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.motriz,
+                        expression: "formData.motriz"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "inlineCheck7",
+                      name: "motriz",
+                      value: "7"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.motriz, "7") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "motriz", "7")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.motriz,
-                      expression: "formData.motriz"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "inlineCheckbox7",
-                    name: "syc",
-                    value: "7"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.motriz, "7") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "motriz", "7")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "inlineCheckbox7" }
-                  },
-                  [_vm._v("Ninguna")]
-                )
-              ])
+                      staticClass: "form-check-label",
+                      attrs: { for: "inlineCheck7" }
+                    },
+                    [_vm._v("Ninguna")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.hasError("motriz")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    !_vm.$v.formData.motriz.required
+                      ? _c("div", { staticClass: "error" }, [
+                          _vm._v("Campo requerido.")
+                        ])
+                      : _vm._e()
+                  ])
+                : _vm._e()
             ])
           : _vm._e(),
         _vm._v(" "),
@@ -40995,235 +41315,188 @@ var render = function() {
           ? _c("div", { staticClass: "form-group" }, [
               _c("h2", [_vm._v("Mental")]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("mental") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.mental,
+                        expression: "formData.mental"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "mental1",
+                      name: "mental",
+                      value: "1"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.mental, "1") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "mental", "1")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.mental,
-                      expression: "formData.mental"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "mental1",
-                    name: "mental",
-                    value: "1"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.mental, "1") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "mental", "1")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "mental1" }
-                  },
-                  [_vm._v("Intelectual")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "mental1" }
+                    },
+                    [_vm._v("Intelectual")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("mental") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.mental,
+                        expression: "formData.mental"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "mental2",
+                      name: "mental",
+                      value: "2"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.mental, "2") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "mental", "2")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.mental,
-                      expression: "formData.mental"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "mental2",
-                    name: "mental",
-                    value: "2"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.mental, "2") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "mental", "2")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "mental2" }
-                  },
-                  [_vm._v("Conductual")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "mental2" }
+                    },
+                    [_vm._v("Conductual")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("mental") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.mental,
+                        expression: "formData.mental"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "mental3",
+                      name: "mental",
+                      value: "3"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.mental, "3") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "mental", "3")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.mental,
-                      expression: "formData.mental"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "mental3",
-                    name: "mental",
-                    value: "3"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.mental, "3") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "mental", "3")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "mental3" }
-                  },
-                  [_vm._v("Otra")]
-                )
-              ]),
+                      staticClass: "form-check-label",
+                      attrs: { for: "mental3" }
+                    },
+                    [_vm._v("Otra")]
+                  )
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "form-check form-check-inline" }, [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                {
+                  staticClass: "form-check form-check-inline",
+                  class: _vm.hasError("mental") ? "is-invalid" : ""
+                },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.mental,
+                        expression: "formData.mental"
+                      }
+                    ],
+                    staticClass: "form-check-input",
+                    attrs: {
+                      type: "radio",
+                      id: "mental4",
+                      name: "mental",
+                      value: "4"
+                    },
+                    domProps: { checked: _vm._q(_vm.formData.mental, "4") },
+                    on: {
+                      change: function($event) {
+                        return _vm.$set(_vm.formData, "mental", "4")
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.formData.mental,
-                      expression: "formData.mental"
-                    }
-                  ],
-                  staticClass: "form-check-input",
-                  attrs: {
-                    type: "radio",
-                    id: "mental4",
-                    name: "mental",
-                    value: "4"
-                  },
-                  domProps: { checked: _vm._q(_vm.formData.mental, "4") },
-                  on: {
-                    change: function($event) {
-                      return _vm.$set(_vm.formData, "mental", "4")
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "label",
-                  {
-                    staticClass: "form-check-label",
-                    attrs: { for: "mental4" }
-                  },
-                  [_vm._v("Ninguna")]
-                )
-              ])
+                      staticClass: "form-check-label",
+                      attrs: { for: "mental4" }
+                    },
+                    [_vm._v("Ninguna")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _vm.hasError("mental")
+                ? _c("div", { staticClass: "invalid-feedback" }, [
+                    !_vm.$v.formData.mental.required
+                      ? _c("div", { staticClass: "error" }, [
+                          _vm._v("Campo requerido.")
+                        ])
+                      : _vm._e()
+                  ])
+                : _vm._e()
             ])
           : _vm._e()
       ]),
       _vm._v(" "),
       _c("tab-content", { attrs: { title: "Información Académica" } }, [
-        _vm.formData.renglon === "011" ||
-        _vm.formData.renglon === "022" ||
-        _vm.formData.renglon === "029" ||
-        _vm.formData.renglon === "018"
-          ? _c("div", { staticClass: "form-row" }, [
-              _c("div", { staticClass: "col-md-6 py-3" }, [
-                _c("span", [_vm._v("Seleccione profesión Universitaria:  ")]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c(
-                  "select",
-                  {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.profesion,
-                        expression: "profesion"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.profesion = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      }
-                    }
-                  },
-                  _vm._l(_vm.formData.profesiones, function(profesion) {
-                    return _c(
-                      "option",
-                      { key: profesion.id, domProps: { value: profesion.id } },
-                      [
-                        _vm._v(
-                          "\n                            " +
-                            _vm._s(profesion.profesion_universitaria) +
-                            "\n                          "
-                        )
-                      ]
-                    )
-                  }),
-                  0
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-6 py-3" }, [
-                _c("span", [_vm._v("No. Colegiado Activo:")]),
-                _vm._v(" "),
-                _c("br"),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.colegiado,
-                      expression: "colegiado"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  attrs: { placeholder: "No. Colegiado Activo" },
-                  domProps: { value: _vm.colegiado },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.colegiado = $event.target.value
-                    }
-                  }
-                })
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
         _vm.formData.renglon === "011" ||
         _vm.formData.renglon === "022" ||
         _vm.formData.renglon === "029" ||
@@ -41243,11 +41516,12 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.nivel_primario_s,
-                        expression: "nivel_primario_s"
+                        value: _vm.formData.nivel_primario_s,
+                        expression: "formData.nivel_primario_s"
                       }
                     ],
                     staticClass: "form-control",
+                    class: _vm.hasError("nivel_primario_s") ? "is-invalid" : "",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -41258,9 +41532,13 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.nivel_primario_s = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.formData,
+                          "nivel_primario_s",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
@@ -41268,7 +41546,17 @@ var render = function() {
                     return _c("option", { key: nivel }, [_vm._v(_vm._s(nivel))])
                   }),
                   0
-                )
+                ),
+                _vm._v(" "),
+                _vm.hasError("nivel_primario_s")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.nivel_primario_s.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
@@ -41290,11 +41578,12 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.nivel_basico_s,
-                        expression: "nivel_basico_s"
+                        value: _vm.formData.nivel_basico_s,
+                        expression: "formData.nivel_basico_s"
                       }
                     ],
                     staticClass: "form-control",
+                    class: _vm.hasError("nivel_basico_s") ? "is-invalid" : "",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -41305,9 +41594,13 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.nivel_basico_s = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.formData,
+                          "nivel_basico_s",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
@@ -41315,7 +41608,17 @@ var render = function() {
                     return _c("option", { key: nivel }, [_vm._v(_vm._s(nivel))])
                   }),
                   0
-                )
+                ),
+                _vm._v(" "),
+                _vm.hasError("nivel_basico_s")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.nivel_basico_s.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
@@ -41327,7 +41630,7 @@ var render = function() {
           ? _c("div", { staticClass: "form-row" }, [
               _c("div", { staticClass: "col-md-6 py-3" }, [
                 _c("span", [
-                  _vm._v("Seleccione profesión a Nive Diversificado:  ")
+                  _vm._v("Seleccione profesión a Nivel Diversificado:  ")
                 ]),
                 _vm._v(" "),
                 _c("br"),
@@ -41339,11 +41642,14 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.profesion_diversificado,
-                        expression: "profesion_diversificado"
+                        value: _vm.formData.profesion_diversificado,
+                        expression: "formData.profesion_diversificado"
                       }
                     ],
                     staticClass: "form-control",
+                    class: _vm.hasError("profesion_diversificado")
+                      ? "is-invalid"
+                      : "",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -41354,9 +41660,13 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.profesion_diversificado = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.formData,
+                          "profesion_diversificado",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
@@ -41376,8 +41686,132 @@ var render = function() {
                     )
                   }),
                   0
-                )
+                ),
+                _vm._v(" "),
+                _vm.hasError("profesion_diversificado")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.profesion_diversificado.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.formData.renglon === "011" ||
+        _vm.formData.renglon === "022" ||
+        _vm.formData.renglon === "029" ||
+        _vm.formData.renglon === "018"
+          ? _c("div", { staticClass: "form-row" }, [
+              _c("div", { staticClass: "col-md-6 py-3" }, [
+                _c("span", [_vm._v("Seleccione profesión Universitaria:  ")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.profesion,
+                        expression: "formData.profesion"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    class: _vm.hasError("profesion") ? "is-invalid" : "",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.formData,
+                          "profesion",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  _vm._l(_vm.formData.profesiones, function(profesion) {
+                    return _c(
+                      "option",
+                      { key: profesion.id, domProps: { value: profesion.id } },
+                      [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(profesion.profesion_universitaria) +
+                            "\n                          "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                _vm.hasError("profesion")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.profesion.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.formData.profesion != 59,
+                      expression: "formData.profesion!=59"
+                    }
+                  ],
+                  staticClass: "col-md-6 py-3"
+                },
+                [
+                  _c("span", [_vm._v("No. Colegiado Activo:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.colegiado,
+                        expression: "formData.colegiado"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "No. Colegiado Activo" },
+                    domProps: { value: _vm.formData.colegiado },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(_vm.formData, "colegiado", $event.target.value)
+                      }
+                    }
+                  })
+                ]
+              )
             ])
           : _vm._e()
       ]),
@@ -41403,6 +41837,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("nombre_padre") ? "is-invalid" : "",
                   attrs: { placeholder: "Nombre del Padre" },
                   domProps: { value: _vm.formData.nombre_padre },
                   on: {
@@ -41417,7 +41852,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("nombre_padre")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.nombre_padre.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -41435,6 +41880,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("direccion_padre") ? "is-invalid" : "",
                   attrs: { placeholder: "Dirección Domiciliar del Padre" },
                   domProps: { value: _vm.formData.direccion_padre },
                   on: {
@@ -41449,7 +41895,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("direccion_padre")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.direccion_padre.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -41467,6 +41923,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("telefono_padre") ? "is-invalid" : "",
                   attrs: { placeholder: "Teléfono del padre" },
                   domProps: { value: _vm.formData.telefono_padre },
                   on: {
@@ -41481,7 +41938,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("telefono_padre")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.telefono_padre.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
@@ -41506,6 +41973,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("nombre_madre") ? "is-invalid" : "",
                   attrs: { placeholder: "Nombre de la Madre" },
                   domProps: { value: _vm.formData.nombre_madre },
                   on: {
@@ -41520,7 +41988,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("nombre_madre")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.nombre_madre.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -41538,6 +42016,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("nombre_madre") ? "is-invalid" : "",
                   attrs: { placeholder: "Dirección Domiciliar de la Madre" },
                   domProps: { value: _vm.formData.direccion_madre },
                   on: {
@@ -41552,7 +42031,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("direccion_madre")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.direccion_madre.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -41570,6 +42059,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("nombre_madre") ? "is-invalid" : "",
                   attrs: { placeholder: "Teléfono del Madre" },
                   domProps: { value: _vm.formData.telefono_madre },
                   on: {
@@ -41584,7 +42074,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("telefono_madre")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.telefono_madre.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
@@ -41609,6 +42109,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("nombre_conyuge") ? "is-invalid" : "",
                   attrs: { placeholder: "Nombre del Cónyuge" },
                   domProps: { value: _vm.formData.nombre_conyuge },
                   on: {
@@ -41623,7 +42124,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("nombre_conyuge")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.nombre_conyuge.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -41641,6 +42152,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("direccion_conyuge") ? "is-invalid" : "",
                   attrs: { placeholder: "Dirección Domiciliar del Cónyuge" },
                   domProps: { value: _vm.formData.direccion_conyuge },
                   on: {
@@ -41655,7 +42167,17 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("direccion_conyuge")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.direccion_conyuge.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
@@ -41673,6 +42195,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
+                  class: _vm.hasError("telefono_conyugue") ? "is-invalid" : "",
                   attrs: { placeholder: "Teléfono del Cónyuge" },
                   domProps: { value: _vm.formData.telefono_conyugue },
                   on: {
@@ -41687,67 +42210,214 @@ var render = function() {
                       )
                     }
                   }
-                })
+                }),
+                _vm._v(" "),
+                _vm.hasError("telefono_conyugue")
+                  ? _c("div", { staticClass: "invalid-feedback" }, [
+                      !_vm.$v.formData.telefono_conyugue.required
+                        ? _c("div", { staticClass: "error" }, [
+                            _vm._v("Campo requerido.")
+                          ])
+                        : _vm._e()
+                    ])
+                  : _vm._e()
               ])
             ])
           : _vm._e(),
         _vm._v(" "),
-        _vm.formData.renglon === "011" ||
-        _vm.formData.renglon === "022" ||
-        _vm.formData.renglon === "029" ||
-        _vm.formData.renglon === "018"
-          ? _c(
-              "div",
-              { staticClass: "form-group" },
-              [
-                _c("div", { staticClass: "col-md-4 py-3" }, [
-                  _c("span", [_vm._v("Cantidad de hijos:")]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("input", {
+        _c("div", { staticClass: "col-md-4 py-3" }, [
+          _c("span", [_vm._v("Cantidad de hijos:")]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.formData.cantidad_hijos,
+                expression: "formData.cantidad_hijos"
+              }
+            ],
+            staticClass: "form-control",
+            class: _vm.hasError("cantidad_hijos") ? "is-invalid" : "",
+            attrs: { type: "number", placeholder: "¿Cuantos Hijos tienes?" },
+            domProps: { value: _vm.formData.cantidad_hijos },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.formData, "cantidad_hijos", $event.target.value)
+              }
+            }
+          }),
+          _vm._v(" "),
+          _vm.hasError("cantidad_hijos")
+            ? _c("div", { staticClass: "invalid-feedback" }, [
+                !_vm.$v.formData.cantidad_hijos.required
+                  ? _c("div", { staticClass: "error" }, [
+                      _vm._v("Campo requerido.")
+                    ])
+                  : _vm._e()
+              ])
+            : _vm._e()
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tab-content", { attrs: { title: "Información Laboral" } }, [
+        _vm.formData.renglon === "011"
+          ? _c("div", { staticClass: "form-row" }, [
+              _c("span", [_vm._v("El renglón seleccionado es: ")]),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(_vm.formData.renglon))]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6 py-3" }, [
+                _c("span", [_vm._v("Puesto Funcional:")]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.formData.puesto_funcional,
+                      expression: "formData.puesto_funcional"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { placeholder: "Puesto Funcional Actual" },
+                  domProps: { value: _vm.formData.puesto_funcional },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.formData,
+                        "puesto_funcional",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6 py-3" }, [
+                _c("span", [_vm._v("Puesto Nominal:")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.cantidad_hijos,
-                        expression: "cantidad_hijos"
+                        value: _vm.formData.puesto_nominal,
+                        expression: "formData.puesto_nominal"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: {
-                      type: "number",
-                      placeholder: "¿Cuantos Hijos tienes?"
-                    },
-                    domProps: { value: _vm.cantidad_hijos },
                     on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.cantidad_hijos = $event.target.value
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.formData,
+                          "puesto_nominal",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
-                  })
-                ]),
-                _vm._v(" "),
-                _vm._l(_vm.cantidad_hijos, function(i) {
-                  return _c("div", { key: i }, [
-                    _vm._v(
-                      "\n                      " +
-                        _vm._s(i) +
-                        "Hijos\n                    "
+                  },
+                  _vm._l(_vm.formData.puestos_nominales, function(puesto) {
+                    return _c(
+                      "option",
+                      { key: puesto.id, domProps: { value: puesto.id } },
+                      [
+                        _vm._v(
+                          "\n                          " +
+                            _vm._s(puesto.puesto) +
+                            "\n                        "
+                        )
+                      ]
                     )
-                  ])
-                })
-              ],
-              2
-            )
+                  }),
+                  0
+                )
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.formData.renglon === "029"
+          ? _c("div", { staticClass: "form-row" }, [
+              _c("span", [_vm._v("El renglón seleccionado es: ")]),
+              _vm._v(" "),
+              _c("h3", [_vm._v(_vm._s(_vm.formData.renglon))]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6 py-3" }, [
+                _c("span", [_vm._v("Tipo de Servicio:")]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.puesto_nominal,
+                        expression: "formData.puesto_nominal"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.formData,
+                          "puesto_nominal",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", [
+                      _vm._v(
+                        "\n                          Tecnico\n                        "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Profesional")
+                    ])
+                  ]
+                )
+              ])
+            ])
           : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("tab-content", { attrs: { title: "Historial Laboral" } }, [
-        _c("div", { staticClass: "form-row" })
       ])
     ],
     1

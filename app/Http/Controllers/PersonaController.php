@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Mail\MensajeCreacion;
 use App\Persona;
 use App\Contacto;
+use App\Puesto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -54,6 +55,11 @@ class PersonaController extends Controller
         $contacto->save();
         //return response()->json($contacto,200);
 
+        $puesto = new Puesto();
+        $puesto->puesto_funcional= $request->puesto_funcional;
+        $puesto->nominal_position_id= $request->nominal_position;
+        $puesto->save();
+
         
         $persona = new Persona();
         $persona->dpi = $request->dpi;
@@ -75,6 +81,8 @@ class PersonaController extends Controller
         $persona->motriz_id = $request->motriz;
         $persona->mental_id = $request->mental;
         $persona->contacto_id = $contacto->id;
+        $persona->puesto_id = $puesto->id;
+        
 
         $persona->save();
 

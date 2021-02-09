@@ -74,7 +74,7 @@
                       <br />
                       <input
                         class="form-control"
-                        v-model="tercer_nombre"
+                        v-model="formData.tercer_nombre"
                         placeholder="Tercer Nombre"
                       />
                     </div>
@@ -248,7 +248,7 @@
                   <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione Etnia:  </span> <br>
-                        <select v-model="formData.etnia" class="form-control">
+                        <select v-model="formData.etnia" class="form-control" :class="hasError('etnia') ? 'is-invalid' : ''">
 
                           <option 
                             v-for="etniaitem in formData.etnias"
@@ -258,10 +258,13 @@
                             {{ etniaitem.etnia }}
                           </option>
                         </select>
+                        <div v-if="hasError('etnia')" class="invalid-feedback">
+                          <div class="error" v-if="!$v.formData.etnia.required">Campo requerido.</div>
+                        </div>
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Seleccione Comunidad Linguistica:  </span> <br>
-                        <select v-model="formData.comunidad" class="form-control">
+                        <select v-model="formData.comunidad" class="form-control" :class="hasError('comunidad') ? 'is-invalid' : ''">
                           <option 
                             v-for="comunidaditem in formData.comunidades"
                             v-bind:value="comunidaditem.id"
@@ -270,7 +273,11 @@
                             {{ comunidaditem.comunidad_linguistica }}
                           </option>
                         </select>
+                        <div v-if="hasError('comunidad')" class="invalid-feedback">
+                          <div class="error" v-if="!$v.formData.comunidad.required">Campo requerido.</div>
+                        </div>
                     </div>
+
                   </div>
 
                 </tab-content>
@@ -283,81 +290,90 @@
                   <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
 
                     <h2>Sensorial y de la Comunicación</h2>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('sensorial') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="inlineCheckbox1" name="syc" value="1" v-model="formData.sensorial">
                       <label class="form-check-label" for="inlineCheckbox1">Visual</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('sensorial') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="inlineCheckbox2" name="syc" value="2" v-model="formData.sensorial">
                       <label class="form-check-label" for="inlineCheckbox2">Auditiva</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('sensorial') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="inlineCheckbox3" name="syc" value="3" v-model="formData.sensorial">
                       <label class="form-check-label" for="inlineCheckbox3">Verbal</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('sensorial') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="inlineCheckbox4" name="syc" value="4" v-model="formData.sensorial">
                       <label class="form-check-label" for="inlineCheckbox4">Comprensión</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('sensorial') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="inlineCheckbox5" name="syc" value="5" v-model="formData.sensorial">
                       <label class="form-check-label" for="inlineCheckbox5">Múltiple</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('sensorial') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="inlineCheckbox6" name="syc" value="6" v-model="formData.sensorial">
                       <label class="form-check-label" for="inlineCheckbox6">Ninguna</label>
+                    </div>
+                    <div v-if="hasError('sensorial')" class="invalid-feedback">
+                      <div class="error" v-if="!$v.formData.sensorial.required">Campo requerido.</div>
                     </div>
                   </div>
 
                   <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <h2>Motriz</h2>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" name="motriz" id="inlineCheck1" value="1" v-model="formData.motriz">
                       <label class="form-check-label" for="inlineCheck1">Extremidades inferiores</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" name="motriz" id="inlineCheck2" value="2" v-model="formData.motriz">
                       <label class="form-check-label" for="inlineCheck2">Extremidades superiores</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" name="motriz" id="inlineCheck3" value="3" v-model="formData.motriz">
                       <label class="form-check-label" for="inlineCheck3">Cabeza</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" name="motriz" id="inlineCheck4" value="4" v-model="formData.motriz">
                       <label class="form-check-label" for="inlineCheck4">Cuello</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" name="motriz" id="inlineCheck5" value="5" v-model="formData.motriz">
                       <label class="form-check-label" for="inlineCheck5">Tronco</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" name="motriz" id="inlineCheck6" value="6" v-model="formData.motriz">
                       <label class="form-check-label" for="inlineCheck6">Múltiple</label>
                     </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="radio" id="inlineCheckbox7" name="syc" value="7" v-model="formData.motriz">
-                      <label class="form-check-label" for="inlineCheckbox7">Ninguna</label>
+                    <div class="form-check form-check-inline" :class="hasError('motriz') ? 'is-invalid' : ''">
+                      <input class="form-check-input" type="radio" id="inlineCheck7" name="motriz" value="7" v-model="formData.motriz">
+                      <label class="form-check-label" for="inlineCheck7">Ninguna</label>
+                    </div>
+                    <div v-if="hasError('motriz')" class="invalid-feedback">
+                      <div class="error" v-if="!$v.formData.motriz.required">Campo requerido.</div>
                     </div>
                   </div>
 
                   <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <h2>Mental</h2>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('mental') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="mental1" name="mental" value="1" v-model="formData.mental">
                       <label class="form-check-label" for="mental1">Intelectual</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('mental') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="mental2" name="mental" value="2" v-model="formData.mental">
                       <label class="form-check-label" for="mental2">Conductual</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('mental') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="mental3" name="mental" value="3" v-model="formData.mental">
                       <label class="form-check-label" for="mental3">Otra</label>
                     </div>
-                    <div class="form-check form-check-inline">
+                    <div class="form-check form-check-inline" :class="hasError('mental') ? 'is-invalid' : ''">
                       <input class="form-check-input" type="radio" id="mental4" name="mental" value="4" v-model="formData.mental">
                       <label class="form-check-label" for="mental4">Ninguna</label>
+                    </div>
+                    <div v-if="hasError('mental')" class="invalid-feedback">
+                      <div class="error" v-if="!$v.formData.mental.required">Campo requerido.</div>
                     </div>
                   </div>
                 </tab-content>
@@ -369,51 +385,32 @@
                 <tab-content title="Información Académica">
                   <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
-                      <span>Seleccione profesión Universitaria:  </span> <br>
-                        <select v-model="profesion" class="form-control">
-                          <option 
-                            v-for="profesion in formData.profesiones"
-                            v-bind:value="profesion.id"
-                            v-bind:key="profesion.id"
-                          >
-                            {{ profesion.profesion_universitaria }}
-                          </option>
-                        </select>
-                    </div>
-                    <div class="col-md-6 py-3">
-                      <span>No. Colegiado Activo:</span>
-                      <br />
-                      <input
-                        class="form-control"
-                        v-model="colegiado"
-                        placeholder="No. Colegiado Activo"
-                      />
-                    </div>
-
-                  </div>
-
-                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
-                    <div class="col-md-6 py-3">
                       <span>Seleccione el estudio a Nivel Primario:  </span> <br>
-                        <select v-model="nivel_primario_s" class="form-control">
+                        <select v-model="formData.nivel_primario_s" class="form-control" :class="hasError('nivel_primario_s') ? 'is-invalid' : ''">
                           <option v-for="nivel in formData.nivel_primario" v-bind:key="nivel">{{nivel}}</option>
                         </select>
+                        <div v-if="hasError('nivel_primario_s')" class="invalid-feedback">
+                          <div class="error" v-if="!$v.formData.nivel_primario_s.required">Campo requerido.</div>
+                        </div>
                     </div>
                   </div>
 
                   <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
                       <span>Seleccione el estudio a Nivel Básico:  </span> <br>
-                        <select v-model="nivel_basico_s" class="form-control">
+                        <select v-model="formData.nivel_basico_s" class="form-control" :class="hasError('nivel_basico_s') ? 'is-invalid' : ''">
                           <option v-for="nivel in formData.nivel_basico" v-bind:key="nivel">{{nivel}}</option>
                         </select>
+                        <div v-if="hasError('nivel_basico_s')" class="invalid-feedback">
+                          <div class="error" v-if="!$v.formData.nivel_basico_s.required">Campo requerido.</div>
+                        </div>
                     </div>
                   </div>
 
                   <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
                     <div class="col-md-6 py-3">
-                      <span>Seleccione profesión a Nive Diversificado:  </span> <br>
-                        <select v-model="profesion_diversificado" class="form-control">
+                      <span>Seleccione profesión a Nivel Diversificado:  </span> <br>
+                        <select v-model="formData.profesion_diversificado" class="form-control" :class="hasError('profesion_diversificado') ? 'is-invalid' : ''">
                           <option 
                             v-for="profesion in formData.profesiones_diversificado"
                             v-bind:value="profesion.id"
@@ -422,8 +419,40 @@
                             {{ profesion.profesion_diversificado }}
                           </option>
                         </select>
+                        <div v-if="hasError('profesion_diversificado')" class="invalid-feedback">
+                          <div class="error" v-if="!$v.formData.profesion_diversificado.required">Campo requerido.</div>
+                        </div>
                     </div>
                   </div>
+
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
+                    <div class="col-md-6 py-3">
+                      <span>Seleccione profesión Universitaria:  </span> <br>
+                        <select v-model="formData.profesion" class="form-control" :class="hasError('profesion') ? 'is-invalid' : ''">
+                          <option 
+                            v-for="profesion in formData.profesiones"
+                            v-bind:value="profesion.id"
+                            v-bind:key="profesion.id"
+                          >
+                            {{ profesion.profesion_universitaria }}
+                          </option>
+                        </select>
+                        <div v-if="hasError('profesion')" class="invalid-feedback">
+                          <div class="error" v-if="!$v.formData.profesion.required">Campo requerido.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 py-3" v-show="formData.profesion!=59">
+                      <span>No. Colegiado Activo:</span>
+                      <br />
+                      <input
+                        class="form-control"
+                        v-model="formData.colegiado"
+                        placeholder="No. Colegiado Activo"
+                      />
+                    </div>
+                  </div>
+
+
                 </tab-content>
                 
 <!-- FINALIZA PASO 4 STEP -->
@@ -438,8 +467,12 @@
                         class="form-control"
                         v-model="formData.nombre_padre"
                         placeholder="Nombre del Padre"
+                        :class="hasError('nombre_padre') ? 'is-invalid' : ''"
                       />
                       <!-- <p>Message is: {{ primer_nombre }}</p> -->
+                      <div v-if="hasError('nombre_padre')" class="invalid-feedback">
+                        <div class="error" v-if="!$v.formData.nombre_padre.required">Campo requerido.</div>
+                      </div>
                     </div>
                     <div class="col-md-6 py-3">
                       <!-- Input para colocar Segundo nombre -->
@@ -449,7 +482,11 @@
                         class="form-control"
                         v-model="formData.direccion_padre"
                         placeholder="Dirección Domiciliar del Padre"
+                        :class="hasError('direccion_padre') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('direccion_padre')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.direccion_padre.required">Campo requerido.</div>
+                      </div>
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Teléfono:</span>
@@ -458,7 +495,11 @@
                         class="form-control"
                         v-model="formData.telefono_padre"
                         placeholder="Teléfono del padre"
+                        :class="hasError('telefono_padre') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('telefono_padre')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.telefono_padre.required">Campo requerido.</div>
+                      </div>
                     </div>
                   </div>
 
@@ -471,7 +512,11 @@
                         class="form-control"
                         v-model="formData.nombre_madre"
                         placeholder="Nombre de la Madre"
+                        :class="hasError('nombre_madre') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('nombre_madre')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.nombre_madre.required">Campo requerido.</div>
+                      </div>
                     </div>
                     <div class="col-md-6 py-3">
                       <!-- Input para colocar Segundo nombre -->
@@ -481,7 +526,11 @@
                         class="form-control"
                         v-model="formData.direccion_madre"
                         placeholder="Dirección Domiciliar de la Madre"
+                        :class="hasError('nombre_madre') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('direccion_madre')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.direccion_madre.required">Campo requerido.</div>
+                      </div>
                     </div>
                     <div class="col-md-6 py-3">
                       <span>Teléfono:</span>
@@ -490,7 +539,11 @@
                         class="form-control"
                         v-model="formData.telefono_madre"
                         placeholder="Teléfono del Madre"
+                        :class="hasError('nombre_madre') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('telefono_madre')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.telefono_madre.required">Campo requerido.</div>
+                      </div>
                     </div>
                   </div>
 
@@ -502,7 +555,11 @@
                         class="form-control"
                         v-model="formData.nombre_conyuge"
                         placeholder="Nombre del Cónyuge"
+                        :class="hasError('nombre_conyuge') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('nombre_conyuge')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.nombre_conyuge.required">Campo requerido.</div>
+                      </div>
                     </div>
 
                     <div class="col-md-6 py-3">
@@ -512,7 +569,11 @@
                         class="form-control"
                         v-model="formData.direccion_conyuge"
                         placeholder="Dirección Domiciliar del Cónyuge"
+                        :class="hasError('direccion_conyuge') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('direccion_conyuge')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.direccion_conyuge.required">Campo requerido.</div>
+                      </div>
                     </div>
 
                     <div class="col-md-6 py-3">
@@ -522,36 +583,82 @@
                         class="form-control"
                         v-model="formData.telefono_conyugue"
                         placeholder="Teléfono del Cónyuge"
+                        :class="hasError('telefono_conyugue') ? 'is-invalid' : ''"
                       />
+                      <div v-if="hasError('telefono_conyugue')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.telefono_conyugue.required">Campo requerido.</div>
+                      </div>
                     </div>
                   </div>
 
-                  <div class="form-group" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
-
+                  
                     <div class="col-md-4 py-3">
                       <span>Cantidad de hijos:</span>
                       <br />
                       <input
                         class="form-control"
                         type="number"
-                        v-model="cantidad_hijos"
+                        v-model="formData.cantidad_hijos"
                         placeholder="¿Cuantos Hijos tienes?"
+                        :class="hasError('cantidad_hijos') ? 'is-invalid' : ''"
                       />
-                    </div>
-                    <div v-for="i in cantidad_hijos" v-bind:key="i">
-                      {{i}}Hijos
+                      <div v-if="hasError('cantidad_hijos')" class="invalid-feedback">
+	                      <div class="error" v-if="!$v.formData.cantidad_hijos.required">Campo requerido.</div>
+                      </div>
                     </div>
 
-                  </div>
+
+
                 </tab-content>
 <!-- FINALIZA PASO 5 STEP -->
 
 <!-- PASO 6 STEP -->
-                <tab-content title="Historial Laboral">
-                  <div class="form-row" >
+                <tab-content title="Información Laboral">
 
 
+                  <div class="form-row" v-if="formData.renglon==='011'">
+                    <span>El renglón seleccionado es: </span> <h3>{{formData.renglon}}</h3> <br>
+
+                    <div class="col-md-6 py-3">
+                      <span>Puesto Funcional:</span>
+                      <br />
+                      <input
+                        class="form-control"
+                        v-model="formData.puesto_funcional"
+                        placeholder="Puesto Funcional Actual"
+                      />
+                    </div>
+
+                    <div class="col-md-6 py-3">
+                      <span>Puesto Nominal:</span>
+                      <select v-model="formData.puesto_nominal" class="form-control">
+                        <option v-for="puesto in formData.puestos_nominales" v-bind:value="puesto.id" v-bind:key="puesto.id">
+                          {{puesto.puesto}}
+                        </option>
+
+                      </select>
+                    </div>
                   </div>
+
+                  <div class="form-row" v-if="formData.renglon==='029'">
+                    <span>El renglón seleccionado es: </span> <h3>{{formData.renglon}}</h3> <br>
+
+
+
+                    <div class="col-md-6 py-3">
+                      <span>Tipo de Servicio:</span>
+                      <select v-model="formData.puesto_nominal" class="form-control">
+                        <option>
+                          Tecnico
+                        </option>
+                        <option value="">Profesional</option>
+
+                      </select>
+                    </div>
+                  </div>
+
+
+
                 </tab-content>
 <!-- FINALIZA PASO 6 STEP -->
 
@@ -579,6 +686,7 @@ export default {
     this.obtenerCatalogo('comunidads','comunidad_linguistica');
     this.obtenerCatalogo('profesions','profesion_universitaria');
     this.obtenerCatalogo('profesion_diversificados','profesion_diversificado');
+    this.obtenerCatalogo('nominal_positions','puesto');
   },
   data() {
     return {
@@ -627,6 +735,10 @@ export default {
         nombre_conyuge:'',
         direccion_conyuge:'',
         telefono_conyuge:'',
+        colegiado:'',
+        puestos_nominales:[],
+        puesto_nominal:'',
+        puesto_funcional:''
       },
       validationRules:[
         {primer_nombre: {required,minLength: minLength(3)},
@@ -639,8 +751,26 @@ export default {
         lugar_nac: {required},
         dpi: {required,minLength: minLength(13),maxLength: maxLength(13),numeric},
         nit: {required,minLength: minLength(8),maxLength: maxLength(8),numeric} },  //Validation Rules for step 1
-
-    ]
+        {etnia: {required},
+        comunidad: {required}},
+        {sensorial: {required},
+        motriz: {required},
+        mental: {required}},
+        {profesion:{required},
+        nivel_primario_s: {required},
+        nivel_basico_s: {required},
+        profesion_diversificado: {required}},
+        {nombre_padre: {required},
+        direccion_padre: {required},
+        telefono_padre: {required},
+        nombre_madre: {required},
+        direccion_madre: {required},
+        telefono_madre: {required},
+        nombre_conyuge: {required},
+        direccion_conyuge: {required},
+        telefono_conyugue: {required},
+        cantidad_hijos: {required}}
+      ]
     };
   },
   watch:{
@@ -670,6 +800,9 @@ export default {
         }
         else if (table=='profesion_diversificados'){
           this.formData.profesiones_diversificado = response.data
+        }
+        else if (table=='nominal_positions'){
+          this.formData.puestos_nominales = response.data
         }
       })
     },
@@ -707,10 +840,11 @@ export default {
           nombre_conyuge: this.formData.nombre_conyuge,
           direccion_conyuge: this.formData.direccion_conyuge,
           telefono_conyuge: this.formData.telefono_conyuge,
-
+          nominal_position: this.formData.puesto_nominal,
+          puesto_funcional: this.formData.puesto_funcional
         })
         .then((response) => {
-          //location.href = "/home";
+          location.href = "/home";
           console.log(result);
         });
 
