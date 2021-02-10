@@ -15,8 +15,8 @@ class CreatePuestosTable extends Migration
     {
         Schema::create('puestos', function (Blueprint $table) {
             $table->id();
-            $table->string('puesto_funcional');
-            $table->foreignId('nominal_position_id')->constrained();
+            $table->string('puesto_funcional')->nullable();
+            $table->string('nominal_position_id')->nullable();
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_fin')->nullable();
             $table->timestamps();

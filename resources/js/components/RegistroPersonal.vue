@@ -591,7 +591,8 @@
                     </div>
                   </div>
 
-                  
+
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">                
                     <div class="col-md-4 py-3">
                       <span>Cantidad de hijos:</span>
                       <br />
@@ -606,6 +607,7 @@
 	                      <div class="error" v-if="!$v.formData.cantidad_hijos.required">Campo requerido.</div>
                       </div>
                     </div>
+                  </div>
 
 
 
@@ -614,11 +616,16 @@
 
 <!-- PASO 6 STEP -->
                 <tab-content title="Información Laboral">
+                
+                <div v-if="formData.renglon==='011' || formData.renglon==='022'">
 
 
-                  <div class="form-row" v-if="formData.renglon==='011'">
-                    <span>El renglón seleccionado es: </span> <h3>{{formData.renglon}}</h3> <br>
+                  <div class="form-row justify-content-md-center">
+                      El renglón seleccionado es:
+                      <h3>{{formData.renglon}}</h3> 
+                  </div>
 
+                  <div class="form-row justify-content-md-center">
                     <div class="col-md-6 py-3">
                       <span>Puesto Funcional:</span>
                       <br />
@@ -628,7 +635,9 @@
                         placeholder="Puesto Funcional Actual"
                       />
                     </div>
+                  </div>
 
+                  <div class="form-row justify-content-md-center">
                     <div class="col-md-6 py-3">
                       <span>Puesto Nominal:</span>
                       <select v-model="formData.puesto_nominal" class="form-control">
@@ -639,23 +648,47 @@
                       </select>
                     </div>
                   </div>
+                </div>
 
-                  <div class="form-row" v-if="formData.renglon==='029'">
-                    <span>El renglón seleccionado es: </span> <h3>{{formData.renglon}}</h3> <br>
+                <div v-if="formData.renglon==='029'">
+                  <div class="form-row justify-content-md-center"><span>El renglón seleccionado es: </span> <h3>{{formData.renglon}}</h3> </div>
+                  <div class="form-row justify-content-md-center">
+                    <div class="col-md-6 py-3">
+                    <span>Tipo de Servicio:</span>
+                    <select v-model="formData.tipo_servicio" class="form-control">
+                      <option>Técnico</option>
+                      <option value="">Profesional</option>
 
+                    </select>
+                    </div>
+                  </div>
+                </div>
 
-
+                <div v-if="formData.renglon==='018'">
+                  <div class="form-row justify-content-md-center"><span>El renglón seleccionado es: </span> <h3>{{formData.renglon}}</h3></div>
+                  <div class="form-row justify-content-md-center">
                     <div class="col-md-6 py-3">
                       <span>Tipo de Servicio:</span>
-                      <select v-model="formData.puesto_nominal" class="form-control">
-                        <option>
-                          Tecnico
-                        </option>
+                      <select v-model="formData.tipo_servicio" class="form-control">
+                        <option>Técnico</option>
                         <option value="">Profesional</option>
-
                       </select>
                     </div>
                   </div>
+                  <div class="form-row justify-content-md-center">
+                    <div class="col-md-6 py-3">
+                      <span>Especialidad:</span>
+                      <select v-model="formData.especialidad" class="form-control">
+                        <option>Legales</option>
+                        <option value="">Médicos</option>
+                        <option value="">Odontólogicos</option>
+                        <option value="">Oftalmológicos</option>
+                        <option value="">Capacitación</option>
+                        <option value="">Asesoría administrativa</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
 
 
 
@@ -738,7 +771,9 @@ export default {
         colegiado:'',
         puestos_nominales:[],
         puesto_nominal:'',
-        puesto_funcional:''
+        puesto_funcional:'',
+        tipo_servicio:'',
+        especialidad:''
       },
       validationRules:[
         {primer_nombre: {required,minLength: minLength(3)},
