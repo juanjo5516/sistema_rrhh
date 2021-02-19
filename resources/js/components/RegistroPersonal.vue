@@ -11,7 +11,7 @@
               >-->
                 <tab-content title="Detalles personales" icon="ti-user">
                   <div class="row justify-content-md-center">
-                    <h4>Selecciona Renglon Presupuestario</h4> <br>
+                    <h4>Selecciona Renglón Presupuestario</h4> <br>
                   </div>
                   <div class="row justify-content-md-center">     
                     <div class="form-check form-check-inline">
@@ -263,7 +263,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 py-3">
-                      <span>Seleccione Comunidad Linguistica:  </span> <br>
+                      <span>Seleccione Comunidad Lingüística:  </span> <br>
                         <select v-model="formData.comunidad" class="form-control" :class="hasError('comunidad') ? 'is-invalid' : ''">
                           <option 
                             v-for="comunidaditem in formData.comunidades"
@@ -441,17 +441,29 @@
                           <div class="error" v-if="!$v.formData.profesion.required">Campo requerido.</div>
                         </div>
                     </div>
-                    <div class="col-md-6 py-3" v-show="formData.profesion!=59">
+
+                  </div>
+                  <div class="form-row" v-if="formData.renglon==='011' || formData.renglon==='022' || formData.renglon==='029' || formData.renglon==='018'">
+                    <div class="col-md-3 py-3" v-show="formData.profesion!=59">
                       <span>No. Colegiado Activo:</span>
                       <br />
                       <input
                         class="form-control"
-                        v-model="formData.colegiado"
+                        v-model="formData.no_colegiado"
                         placeholder="No. Colegiado Activo"
                       />
                     </div>
+                    <div class="col-md-3 py-3" v-show="formData.profesion!=59">
+                      <span>Fecha Fin Vigencia de Colegiado:</span>
+                      <br />
+                      <input
+                        class="form-control"
+                        type="date"
+                        v-model="formData.fecha_fin_colegiado"
+                        placeholder="Fecha"
+                      />
+                    </div>
                   </div>
-
 
                 </tab-content>
                 
@@ -768,7 +780,9 @@ export default {
         nombre_conyuge:'',
         direccion_conyuge:'',
         telefono_conyuge:'',
-        colegiado:'',
+        no_colegiado:'',
+        fecha_fin_colegiado:'',
+        vigencia_colegiado:'',
         puestos_nominales:[],
         puesto_nominal:'',
         puesto_funcional:'',
@@ -876,7 +890,9 @@ export default {
           direccion_conyuge: this.formData.direccion_conyuge,
           telefono_conyuge: this.formData.telefono_conyuge,
           nominal_position: this.formData.puesto_nominal,
-          puesto_funcional: this.formData.puesto_funcional
+          puesto_funcional: this.formData.puesto_funcional,
+          no_colegiado: this.formData.no_colegiado,
+          fecha_fin_colegiado: this.formData.fecha_fin_colegiado
         })
         .then((response) => {
           location.href = "/home";

@@ -6,6 +6,7 @@ use App\Mail\MensajeCreacion;
 use App\Persona;
 use App\Contacto;
 use App\Puesto;
+use App\Colegiado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -60,6 +61,11 @@ class PersonaController extends Controller
         $puesto->nominal_position_id= $request->nominal_position;
         $puesto->save();
 
+        $colegiado = new Colegiado();
+        $colegiado->no_colegiado=$request->no_colegiado;
+        $colegiado->fecha_fin_vigencia=$request->fecha_fin_colegiado;
+        $colegiado->save();
+
         
         $persona = new Persona();
         $persona->dpi = $request->dpi;
@@ -82,9 +88,12 @@ class PersonaController extends Controller
         $persona->mental_id = $request->mental;
         $persona->contacto_id = $contacto->id;
         $persona->puesto_id = $puesto->id;
+        $persona->colegiado_id = $colegiado->id;
         
 
         $persona->save();
+
+        
 
         //Para enviar correo
 

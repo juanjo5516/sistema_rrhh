@@ -7,9 +7,8 @@
       <th scope="col">Apellidos</th>
       <th scope="col">Nombre Completo</th>
       <th scope="col">dpi</th>
-      <th scope="col">Renglón</th>
-      <th scope="col">Nit</th>
-      <th scope="col">Género</th>
+      <th scope="col">No. Colegiado</th>
+      <th scope="col">Fecha Fin de Vigencia de Colegiado</th>
     </tr>
   </thead>
   <tbody>
@@ -19,9 +18,9 @@
       <td>{{apellidos(persona.apellido1,persona.apellido2,persona.apellido_casada)}}</td>
       <td>{{nombreCompleto(persona.nombre1,persona.nombre2,persona.nombre3,persona.apellido1,persona.apellido2,persona.apellido_casada)}}</td>
       <td>{{persona.dpi}}</td>
-      <td>{{persona.renglon}}</td>
-      <td>{{persona.nit}}</td>
-      <td>{{persona.genero}}</td>
+      <td>{{persona.no_colegiado}}</td>
+      <td>{{persona.fecha_fin_vigencia}}</td>
+
     </tr>
   </tbody>
 </table>
@@ -41,8 +40,8 @@ export default {
   components: {
   },
   methods: {
-      obtenerDatos() {
-      axios.get('/persona')
+      obtenerDatos () {
+      axios.get('/colegiados')
       .then(response=>{
         this.personas = response.data
       })

@@ -24,6 +24,9 @@ Route::view('/personal', 'personal.listadopersonas');
 Route::view('/registro-personal', 'personal.registropersonas');
 
 Route::resource('persona', 'PersonaController');
+Route::resource('colegiados', 'ColegiadoController');
+Route::view('/list-colegiados', 'colegiado.listadocolegiado');
+
 Route::resource('rol', 'RolController');
 
 Route::get('/obtener-catalogo', 'ObtenerCatalogoController@obtenerCatalogo');

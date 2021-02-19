@@ -36,6 +36,7 @@ class CreatePersonasTable extends Migration
             $table->foreignId('mental_id')->constrained();
             $table->foreignId('contacto_id')->constrained();
             $table->foreignId('puesto_id')->constrained();
+            $table->foreignId('colegiado_id')->constrained();
             $table->timestamps();
         });
     }

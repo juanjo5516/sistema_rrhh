@@ -2045,6 +2045,124 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListadoColegiado.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListadoColegiado.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log("Component mounted.");
+    this.obtenerDatos();
+  },
+  data: function data() {
+    return {
+      personas: []
+    };
+  },
+  components: {},
+  methods: {
+    obtenerDatos: function obtenerDatos() {
+      var _this = this;
+
+      axios.get('/colegiados').then(function (response) {
+        _this.personas = response.data;
+      });
+    },
+    nombreCompleto: function nombreCompleto(n1, n2, n3, a1, a2, ac) {
+      if (n1 == null) {
+        n1 = '';
+      }
+
+      if (n2 == null) {
+        n2 = '';
+      }
+
+      if (n3 == null) {
+        n3 = '';
+      }
+
+      if (a1 == null) {
+        a1 = '';
+      }
+
+      if (a2 == null) {
+        a2 = '';
+      }
+
+      if (ac == null) {
+        ac = '';
+      }
+
+      return n1 + " " + n2 + " " + n3 + " " + a1 + " " + a2 + " " + ac;
+    },
+    nombres: function nombres(n1, n2, n3) {
+      if (n1 == null) {
+        n1 = '';
+      }
+
+      if (n2 == null) {
+        n2 = '';
+      }
+
+      if (n3 == null) {
+        n3 = '';
+      }
+
+      return n1 + " " + n2 + " " + n3;
+    },
+    apellidos: function apellidos(a1, a2, ac) {
+      if (a1 == null) {
+        a1 = '';
+      }
+
+      if (a2 == null) {
+        a2 = '';
+      }
+
+      if (ac == null) {
+        ac = '';
+      }
+
+      return a1 + " " + a2 + " " + ac;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListadoPersonal.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListadoPersonal.vue?vue&type=script&lang=js& ***!
@@ -2086,7 +2204,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
-    this.obtenerCatalogo('etnias', 'etnia');
+    this.obtenerDatos();
   },
   data: function data() {
     return {
@@ -2095,7 +2213,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   components: {},
   methods: {
-    obtenerCatalogo: function obtenerCatalogo(table, column) {
+    obtenerDatos: function obtenerDatos() {
       var _this = this;
 
       axios.get('/persona').then(function (response) {
@@ -2881,6 +2999,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //import { FormWizard, TabContent } from "vue-form-wizard";
 //import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
@@ -2953,7 +3083,9 @@ __webpack_require__.r(__webpack_exports__);
         nombre_conyuge: '',
         direccion_conyuge: '',
         telefono_conyuge: '',
-        colegiado: '',
+        no_colegiado: '',
+        fecha_fin_colegiado: '',
+        vigencia_colegiado: '',
         puestos_nominales: [],
         puesto_nominal: '',
         puesto_funcional: '',
@@ -3125,7 +3257,9 @@ __webpack_require__.r(__webpack_exports__);
         direccion_conyuge: this.formData.direccion_conyuge,
         telefono_conyuge: this.formData.telefono_conyuge,
         nominal_position: this.formData.puesto_nominal,
-        puesto_funcional: this.formData.puesto_funcional
+        puesto_funcional: this.formData.puesto_funcional,
+        no_colegiado: this.formData.no_colegiado,
+        fecha_fin_colegiado: this.formData.fecha_fin_colegiado
       }).then(function (response) {
         location.href = "/home";
         console.log(result);
@@ -39775,6 +39909,108 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListadoColegiado.vue?vue&type=template&id=ba99e7fc&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListadoColegiado.vue?vue&type=template&id=ba99e7fc& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("table", { staticClass: "table" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "tbody",
+      _vm._l(_vm.personas, function(persona) {
+        return _c("tr", { key: persona.id }, [
+          _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(persona.id))]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              _vm._s(
+                _vm.nombres(persona.nombre1, persona.nombre2, persona.nombre3)
+              )
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              _vm._s(
+                _vm.apellidos(
+                  persona.apellido1,
+                  persona.apellido2,
+                  persona.apellido_casada
+                )
+              )
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [
+            _vm._v(
+              _vm._s(
+                _vm.nombreCompleto(
+                  persona.nombre1,
+                  persona.nombre2,
+                  persona.nombre3,
+                  persona.apellido1,
+                  persona.apellido2,
+                  persona.apellido_casada
+                )
+              )
+            )
+          ]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(persona.dpi))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(persona.no_colegiado))]),
+          _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(persona.fecha_fin_vigencia))])
+        ])
+      }),
+      0
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", { staticClass: "thead-light" }, [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombres")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Apellidos")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Nombre Completo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("dpi")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("No. Colegiado")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [
+          _vm._v("Fecha Fin de Vigencia de Colegiado")
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListadoPersonal.vue?vue&type=template&id=31887d13&":
 /*!******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/ListadoPersonal.vue?vue&type=template&id=31887d13& ***!
@@ -39903,7 +40139,7 @@ var render = function() {
         { attrs: { title: "Detalles personales", icon: "ti-user" } },
         [
           _c("div", { staticClass: "row justify-content-md-center" }, [
-            _c("h4", [_vm._v("Selecciona Renglon Presupuestario")]),
+            _c("h4", [_vm._v("Selecciona Renglón Presupuestario")]),
             _vm._v(" "),
             _c("br")
           ]),
@@ -40728,7 +40964,7 @@ var render = function() {
               ]),
               _vm._v(" "),
               _c("div", { staticClass: "col-md-6 py-3" }, [
-                _c("span", [_vm._v("Seleccione Comunidad Linguistica:  ")]),
+                _c("span", [_vm._v("Seleccione Comunidad Lingüística:  ")]),
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(" "),
@@ -41844,7 +42080,60 @@ var render = function() {
                         : _vm._e()
                     ])
                   : _vm._e()
-              ]),
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.formData.renglon === "011" ||
+        _vm.formData.renglon === "022" ||
+        _vm.formData.renglon === "029" ||
+        _vm.formData.renglon === "018"
+          ? _c("div", { staticClass: "form-row" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.formData.profesion != 59,
+                      expression: "formData.profesion!=59"
+                    }
+                  ],
+                  staticClass: "col-md-3 py-3"
+                },
+                [
+                  _c("span", [_vm._v("No. Colegiado Activo:")]),
+                  _vm._v(" "),
+                  _c("br"),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.formData.no_colegiado,
+                        expression: "formData.no_colegiado"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    attrs: { placeholder: "No. Colegiado Activo" },
+                    domProps: { value: _vm.formData.no_colegiado },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.formData,
+                          "no_colegiado",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  })
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "div",
@@ -41857,10 +42146,10 @@ var render = function() {
                       expression: "formData.profesion!=59"
                     }
                   ],
-                  staticClass: "col-md-6 py-3"
+                  staticClass: "col-md-3 py-3"
                 },
                 [
-                  _c("span", [_vm._v("No. Colegiado Activo:")]),
+                  _c("span", [_vm._v("Fecha Fin Vigencia de Colegiado:")]),
                   _vm._v(" "),
                   _c("br"),
                   _vm._v(" "),
@@ -41869,19 +42158,23 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.colegiado,
-                        expression: "formData.colegiado"
+                        value: _vm.formData.fecha_fin_colegiado,
+                        expression: "formData.fecha_fin_colegiado"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { placeholder: "No. Colegiado Activo" },
-                    domProps: { value: _vm.formData.colegiado },
+                    attrs: { type: "date", placeholder: "Fecha" },
+                    domProps: { value: _vm.formData.fecha_fin_colegiado },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.formData, "colegiado", $event.target.value)
+                        _vm.$set(
+                          _vm.formData,
+                          "fecha_fin_colegiado",
+                          $event.target.value
+                        )
                       }
                     }
                   })
@@ -59676,6 +59969,7 @@ Vue.component('registro-personal', __webpack_require__(/*! ./components/Registro
 Vue.component('registro-rol', __webpack_require__(/*! ./components/RegistroRol.vue */ "./resources/js/components/RegistroRol.vue")["default"]);
 Vue.component('crear-rol', __webpack_require__(/*! ./components/CrearRol.vue */ "./resources/js/components/CrearRol.vue")["default"]);
 Vue.component('listado-personal', __webpack_require__(/*! ./components/ListadoPersonal.vue */ "./resources/js/components/ListadoPersonal.vue")["default"]);
+Vue.component('listado-colegiado', __webpack_require__(/*! ./components/ListadoColegiado.vue */ "./resources/js/components/ListadoColegiado.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -59872,6 +60166,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ListadoColegiado.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/ListadoColegiado.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ListadoColegiado_vue_vue_type_template_id_ba99e7fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ListadoColegiado.vue?vue&type=template&id=ba99e7fc& */ "./resources/js/components/ListadoColegiado.vue?vue&type=template&id=ba99e7fc&");
+/* harmony import */ var _ListadoColegiado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ListadoColegiado.vue?vue&type=script&lang=js& */ "./resources/js/components/ListadoColegiado.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ListadoColegiado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ListadoColegiado_vue_vue_type_template_id_ba99e7fc___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ListadoColegiado_vue_vue_type_template_id_ba99e7fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ListadoColegiado.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ListadoColegiado.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/ListadoColegiado.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoColegiado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./ListadoColegiado.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListadoColegiado.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoColegiado_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ListadoColegiado.vue?vue&type=template&id=ba99e7fc&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/ListadoColegiado.vue?vue&type=template&id=ba99e7fc& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoColegiado_vue_vue_type_template_id_ba99e7fc___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./ListadoColegiado.vue?vue&type=template&id=ba99e7fc& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/ListadoColegiado.vue?vue&type=template&id=ba99e7fc&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoColegiado_vue_vue_type_template_id_ba99e7fc___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ListadoColegiado_vue_vue_type_template_id_ba99e7fc___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -101,7 +101,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
-              <a href="#" class="nav-link active">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Vacaciones
@@ -138,10 +138,31 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>Registro Personal</p>
                   </a>
                 </li>
+                
+              </ul>
+            </li>
+
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-user-friends"></i>
+                <p>
+                  Listados
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="/personal" class="nav-link">
-                    <i class="fas fa-circle nav-icon"></i>
+
+                    <i class="fas fa-clipboard-list nav-icon"></i>
                     <p>Empleados</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="/list-colegiados" class="nav-link">
+
+                    <i class="fas fa-clipboard-list nav-icon"></i>
+                    <p>Colegiados</p>
                   </a>
                 </li>
               </ul>
