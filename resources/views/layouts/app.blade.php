@@ -100,11 +100,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-<!--             <li class="nav-item has-treeview">
+            <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
-                  Vacaciones
+                  Catálogos
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -112,17 +112,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li class="nav-item">
                   <a href="#" class="nav-link active">
                     <i class="fas fa-circle nav-icon"></i>
-                    <p>Active Page</p>
+                    <p>Ingresos</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="fas fa-circle nav-icon"></i>
-                    <p>Inactive Page</p>
+                    <p>Egresos</p>
                   </a>
                 </li>
               </ul>
-            </li> -->
+            </li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-friends"></i>
