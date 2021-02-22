@@ -28,6 +28,8 @@ Route::resource('persona', 'PersonaController');
 Route::resource('colegiados', 'ColegiadoController');
 Route::view('/list-colegiados', 'colegiado.listadocolegiado');
 
+Route::view('/llenado', 'catalogo.llenado');
+
 Route::resource('rol', 'RolController');
 
 Route::get('/obtener-catalogo', 'ObtenerCatalogoController@obtenerCatalogo');
