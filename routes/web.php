@@ -28,7 +28,8 @@ Route::resource('persona', 'PersonaController');
 Route::resource('colegiados', 'ColegiadoController');
 Route::view('/list-colegiados', 'colegiado.listadocolegiado');
 
-Route::view('/llenado', 'catalogo.llenado');
+Route::view('/ingreso', 'catalogo.ingreso');
+Route::view('/egreso', 'catalogo.egreso');
 
 Route::resource('rol', 'RolController');
 

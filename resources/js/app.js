@@ -10,6 +10,8 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import Vuelidate from 'vuelidate'
+import Form from './Form'
+window.Form = Form;
 
 Vue.use(Vuelidate);
 
@@ -33,7 +35,8 @@ Vue.component('registro-rol', require('./components/RegistroRol.vue').default);
 Vue.component('crear-rol', require('./components/CrearRol.vue').default);
 Vue.component('listado-personal', require('./components/ListadoPersonal.vue').default);
 Vue.component('listado-colegiado', require('./components/ListadoColegiado.vue').default);
-Vue.component('llenado-component', require('./components/LlenadoComponent.vue').default);
+Vue.component('ingreso-component', require('./components/IngresoComponent.vue').default);
+Vue.component('egreso-component', require('./components/EgresoComponent.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
