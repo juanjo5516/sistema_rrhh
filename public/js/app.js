@@ -2008,6 +2008,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2024,14 +2052,25 @@ __webpack_require__.r(__webpack_exports__);
       }],
       form: new Form({
         ingreso: "",
-        id_eliminar: "",
-        tipo_gasto: ''
+        id_eliminar: ""
       }),
-      url: ""
+      url: "",
+      datos: '',
+      datos_select: '',
+      tipo_gasto: ''
     };
   },
   components: {
     ModalComponent: _ModalComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  watch: {
+    tipo_gasto: function tipo_gasto() {
+      if (this.tipo_gasto == 'I') {
+        this.getIngreso();
+      } else {
+        this.getEgreso();
+      }
+    }
   },
   methods: {
     setUrl: function setUrl(url) {
@@ -2041,30 +2080,40 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/ingreso").then(function (res) {
-        _this.ingresos = res.data;
+        _this.datos = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getEgreso: function getEgreso() {
+      var _this2 = this;
+
+      axios.get("/api/egreso").then(function (res) {
+        _this2.datos = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     eliminarData: function eliminarData() {},
     saveData: function saveData() {
-      var _this2 = this;
+      var _this3 = this;
 
       console.log("Listo.");
       var data = new FormData();
-      data.append("ingreso", this.form.ingreso);
+      data.append("renglon", this.renglon_select);
+      data.append("tipo_desglose", this.tipo_gasto);
+      data.append("desglose", this.datos_select);
       console.log(data);
       axios.post("/api/ingreso", data).then(function (res) {
-        _this2.form.reset();
+        _this3.form.reset();
 
-        _this2.getIngreso();
+        _this3.getIngreso();
       })["catch"](function (error) {
-        _this2.form.errors.record(error.response.data.errors);
+        _this3.form.errors.record(error.response.data.errors);
       });
     }
   },
   mounted: function mounted() {
-    this.getIngreso();
     this.nombre_form = "fuente";
     console.log("Component mounted.");
   }
@@ -40215,28 +40264,6 @@ var render = function() {
               [_vm._v("Seleccione Renglon")]
             ),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.ingreso,
-                  expression: "form.ingreso"
-                }
-              ],
-              staticClass: "form-control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.form.ingreso },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "ingreso", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
             _c(
               "select",
               {
@@ -40286,7 +40313,7 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-md-6" }, [
-            _c("span", [_vm._v("Selecciones desglose: ")]),
+            _c("span", [_vm._v("Seleccione desglose: ")]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
@@ -40295,15 +40322,15 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.form.tipo_gasto,
-                  expression: "form.tipo_gasto"
+                  value: _vm.tipo_gasto,
+                  expression: "tipo_gasto"
                 }
               ],
               attrs: { type: "radio", id: "one_estado", value: "I" },
-              domProps: { checked: _vm._q(_vm.form.tipo_gasto, "I") },
+              domProps: { checked: _vm._q(_vm.tipo_gasto, "I") },
               on: {
                 change: function($event) {
-                  return _vm.$set(_vm.form, "tipo_gasto", "I")
+                  _vm.tipo_gasto = "I"
                 }
               }
             }),
@@ -40317,15 +40344,15 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.form.tipo_gasto,
-                  expression: "form.tipo_gasto"
+                  value: _vm.tipo_gasto,
+                  expression: "tipo_gasto"
                 }
               ],
               attrs: { type: "radio", id: "two_estado", value: "E" },
-              domProps: { checked: _vm._q(_vm.form.tipo_gasto, "E") },
+              domProps: { checked: _vm._q(_vm.tipo_gasto, "E") },
               on: {
                 change: function($event) {
-                  return _vm.$set(_vm.form, "tipo_gasto", "E")
+                  _vm.tipo_gasto = "E"
                 }
               }
             }),
@@ -40334,6 +40361,120 @@ var render = function() {
             _vm._v(" "),
             _c("br")
           ]),
+          _vm._v(" "),
+          _vm.tipo_gasto == "I"
+            ? _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleInputPassword1" }
+                  },
+                  [_vm._v("Seleccione Ingreso")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datos_select,
+                        expression: "datos_select"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.datos_select = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  _vm._l(_vm.datos, function(dato) {
+                    return _c(
+                      "option",
+                      { key: dato.id, domProps: { value: dato.ingreso } },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(dato.ingreso) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.tipo_gasto == "E"
+            ? _c("div", { staticClass: "mb-3" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: "form-label",
+                    attrs: { for: "exampleInputPassword1" }
+                  },
+                  [_vm._v("Seleccione Egreso")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.datos_select,
+                        expression: "datos_select"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.datos_select = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  _vm._l(_vm.datos, function(dato) {
+                    return _c(
+                      "option",
+                      { key: dato.id, domProps: { value: dato.egreso } },
+                      [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(dato.egreso) +
+                            "\n                "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
+            : _vm._e(),
           _vm._v(" "),
           _c(
             "button",
@@ -40347,42 +40488,44 @@ var render = function() {
         attrs: { url: _vm.url, nombre_form: _vm.nombre_form }
       }),
       _vm._v(" "),
-      _c("table", { staticClass: "table mt-5" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "tbody",
-          _vm._l(_vm.ingresos, function(ingreso) {
-            return _c("tr", { key: ingreso.id, staticClass: "w-100" }, [
-              _c("td", [_vm._v(_vm._s(ingreso.id))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(ingreso.ingreso))]),
-              _vm._v(" "),
-              _c("td", [
-                _c(
-                  "a",
-                  {
-                    staticClass: "btn btn-outline-danger",
-                    attrs: {
-                      href: "",
-                      type: "button",
-                      "data-toggle": "modal",
-                      "data-target": "#modal_eliminar"
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.setUrl("/api/ingreso/" + ingreso.id)
-                      }
-                    }
-                  },
-                  [_vm._v("Eliminar")]
-                )
-              ])
-            ])
-          }),
-          0
-        )
-      ])
+      _vm.tipo_gasto == "I"
+        ? _c("table", { staticClass: "table mt-5" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.datos, function(dato) {
+                return _c("tr", { key: dato.id, staticClass: "w-100" }, [
+                  _c("td", [_vm._v(_vm._s(dato.id))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(dato.ingreso))]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _c(
+                      "a",
+                      {
+                        staticClass: "btn btn-outline-danger",
+                        attrs: {
+                          href: "",
+                          type: "button",
+                          "data-toggle": "modal",
+                          "data-target": "#modal_eliminar"
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.setUrl("/api/ingreso/" + dato.id)
+                          }
+                        }
+                      },
+                      [_vm._v("Eliminar")]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          ])
+        : _vm._e()
     ],
     1
   )
@@ -40396,9 +40539,11 @@ var staticRenderFns = [
       _c("tr", [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
         _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Renglon")]),
+        _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Ingreso")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Acciones")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Egreso")])
       ])
     ])
   }

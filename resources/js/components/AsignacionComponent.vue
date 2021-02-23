@@ -5,11 +5,6 @@
                 <label for="exampleInputPassword1" class="form-label"
                     >Seleccione Renglon</label
                 >
-                <input
-                    v-model="form.ingreso"
-                    type="text"
-                    class="form-control"
-                />
 
                 <select class="form-control" v-model="renglon_select">
                     <option
@@ -22,12 +17,12 @@
                 </select>
             </div>
             <div class="col-md-6">
-                <span>Selecciones desglose: </span> <br />
+                <span>Seleccione desglose: </span> <br />
                 <input
                     type="radio"
                     id="one_estado"
                     value="I"
-                    v-model="form.tipo_gasto"
+                    v-model="tipo_gasto"
                     
                 />
                 <label for="one_estado">Ingreso</label>
@@ -36,12 +31,42 @@
                     type="radio"
                     id="two_estado"
                     value="E"
-                    v-model="form.tipo_gasto"
+                    v-model="tipo_gasto"
                     
                 />
                 <label for="two_estado">Egreso</label>
                 <br />
 
+            </div>
+
+            <div class="mb-3" v-if="tipo_gasto == 'I'">
+                <label for="exampleInputPassword1" class="form-label"
+                    >Seleccione Ingreso</label
+                >
+                <select class="form-control" v-model="datos_select">
+                    <option
+                        v-for="dato in datos"
+                        v-bind:value="dato.ingreso"
+                        v-bind:key="dato.id"
+                    >
+                        {{ dato.ingreso }}
+                    </option>
+                </select>
+            </div>
+
+            <div class="mb-3" v-if="tipo_gasto == 'E'">
+                <label for="exampleInputPassword1" class="form-label"
+                    >Seleccione Egreso</label
+                >
+                <select class="form-control" v-model="datos_select">
+                    <option
+                        v-for="dato in datos"
+                        v-bind:value="dato.egreso"
+                        v-bind:key="dato.id"
+                    >
+                        {{ dato.egreso }}
+                    </option>
+                </select>
             </div>
 
             <button type="submit" class="btn btn-primary">Guardar</button>
@@ -51,18 +76,20 @@
             v-bind:nombre_form="nombre_form"
         ></modal-component>
 
-        <table class="table mt-5">
+        <table class="table mt-5" v-if="tipo_gasto == 'I'">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
+                    <th scope="col">Renglon</th>
                     <th scope="col">Ingreso</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">Egreso</th>
+
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="ingreso in ingresos" :key="ingreso.id" class="w-100">
-                    <td>{{ ingreso.id }}</td>
-                    <td>{{ ingreso.ingreso }}</td>
+                <tr v-for="dato in datos" :key="dato.id" class="w-100">
+                    <td>{{ dato.id }}</td>
+                    <td>{{ dato.ingreso }}</td>
                     <td>
                         <a
                             href=""
@@ -70,13 +97,14 @@
                             class="btn btn-outline-danger"
                             data-toggle="modal"
                             data-target="#modal_eliminar"
-                            v-on:click="setUrl('/api/ingreso/' + ingreso.id)"
+                            v-on:click="setUrl('/api/ingreso/' + dato.id)"
                             >Eliminar</a
                         >
                     </td>
                 </tr>
             </tbody>
         </table>
+
     </div>
 </template>
 
@@ -96,13 +124,27 @@ export default {
             form: new Form({
                 ingreso: "",
                 id_eliminar: "",
-                tipo_gasto:''
             }),
-            url: ""
+            url: "",
+            datos:'',
+            datos_select:'',
+            tipo_gasto:''
         };
     },
     components: {
         ModalComponent
+    },
+    watch: {
+        tipo_gasto () {
+            if (this.tipo_gasto == 'I'){
+                this.getIngreso();
+            }
+            else {
+                this.getEgreso();
+            }
+            
+
+        }
     },
     methods: {
         setUrl(url) {
@@ -112,7 +154,17 @@ export default {
             axios
                 .get("/api/ingreso")
                 .then(res => {
-                    this.ingresos = res.data;
+                    this.datos = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        getEgreso() {
+            axios
+                .get("/api/egreso")
+                .then(res => {
+                    this.datos = res.data;
                 })
                 .catch(error => {
                     console.log(error);
@@ -122,7 +174,9 @@ export default {
         saveData() {
             console.log("Listo.");
             let data = new FormData();
-            data.append("ingreso", this.form.ingreso);
+            data.append("renglon", this.renglon_select);
+            data.append("tipo_desglose", this.tipo_gasto);
+            data.append("desglose", this.datos_select);
             console.log(data);
             axios
                 .post("/api/ingreso", data)
@@ -136,7 +190,6 @@ export default {
         }
     },
     mounted() {
-        this.getIngreso();
         this.nombre_form = "fuente";
         console.log("Component mounted.");
     }
