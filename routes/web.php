@@ -31,6 +31,8 @@ Route::view('/list-colegiados', 'colegiado.listadocolegiado');
 Route::view('/ingreso', 'catalogo.ingreso');
 Route::view('/egreso', 'catalogo.egreso');
 
+Route::view('/asignacion', 'catalogo.asignacion');
+
 Route::resource('rol', 'RolController');
 
 Route::get('/obtener-catalogo', 'ObtenerCatalogoController@obtenerCatalogo');

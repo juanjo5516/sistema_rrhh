@@ -102,23 +102,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                with font-awesome or any other icon font library -->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon fas fa-wallet"></i>
                 <p>
-                  Catálogos
+                  Desglose de salarios
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="ingreso" class="nav-link active">
-                    <i class="fas fa-circle nav-icon"></i>
+                    <i class="fas fa-file-contract nav-icon"></i>
                     <p>Ingresos</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="egreso" class="nav-link">
-                    <i class="fas fa-circle nav-icon"></i>
+                    <i class="fas fa-file-contract nav-icon"></i>
                     <p>Egresos</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="asignacion" class="nav-link">
+                    <i class="fas fa-user-tag nav-icon"></i>
+                    <p>Asignación</p>
                   </a>
                 </li>
               </ul>
