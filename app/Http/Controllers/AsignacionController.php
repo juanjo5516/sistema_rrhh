@@ -20,6 +20,12 @@ class AsignacionController extends Controller
         if ($request->renglon == '029'){
             return  Asignacion::where('renglon','029')->get();
         }
+        if ($request->renglon == '018'){
+            return  Asignacion::where('renglon','018')->get();
+        }
+        if ($request->renglon == '022'){
+            return  Asignacion::where('renglon','022')->get();
+        }
         else{
             return  Asignacion::latest()->get();
         }
@@ -45,7 +51,12 @@ class AsignacionController extends Controller
      */
     public function store(Request $request)
     {
-        Asignacion::create($request->all());
+        try {
+            Asignacion::create($request->all());
+        } catch (\Illuminate\Database\QueryException $e) {
+            return response()->json("No puedes asignar el mismo ítem a este renglón.",500);
+        }
+        
     }
 
     /**

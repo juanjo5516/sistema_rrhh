@@ -201,13 +201,22 @@ export default {
             axios
                 .post("/api/c-asignacion", data)
                 .then(res => {
+                    Swal.fire({
+                        title: 'Asignación',
+                        text: 'Asignación Registrada Satisfactoriamente'
+                    });
                     this.form.reset();
                     this.getIngreso();
+                    this.getEgreso();
                     this.getAsignacion();
+
                 })
                 .catch(error => {
-                    this.form.errors.record(error.response.data.errors);
-                });
+                    Swal.fire({
+                        title: 'Error',
+                        text: error.response.data
+                    });
+                })
         }
     },
     mounted() {

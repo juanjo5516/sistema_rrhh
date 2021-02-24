@@ -11,6 +11,12 @@ require('./bootstrap');
 window.Vue = require('vue');
 import Vuelidate from 'vuelidate'
 import Form from './Form'
+// ES6 Modules or TypeScript
+import Swal from 'sweetalert2'
+
+//Vue.use(Swal);
+window.Swal = require('sweetalert2');
+
 window.Form = Form;
 
 Vue.use(Vuelidate);
