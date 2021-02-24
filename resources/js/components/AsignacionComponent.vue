@@ -76,31 +76,33 @@
             v-bind:nombre_form="nombre_form"
         ></modal-component>
 
-        <table class="table mt-5" v-if="tipo_gasto == 'I'">
+        <table class="table mt-5" >
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Renglon</th>
-                    <th scope="col">Ingreso</th>
-                    <th scope="col">Egreso</th>
+                    <th scope="col">Tipo Desglose</th>
+                    <th scope="col">Desglose</th>
 
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="dato in datos" :key="dato.id" class="w-100">
-                    <td>{{ dato.id }}</td>
-                    <td>{{ dato.ingreso }}</td>
-                    <td>
+                <tr v-for="asignacion in asignaciones" :key="asignacion.id" class="w-100">
+                    <td>{{ asignacion.id }}</td>
+                    <td>{{ asignacion.renglon }}</td>
+                    <td>{{ asignacion.tipo_desglose }}</td>
+                    <td>{{ asignacion.desglose }}</td>
+<!--                     <td>
                         <a
                             href=""
                             type="button"
                             class="btn btn-outline-danger"
                             data-toggle="modal"
                             data-target="#modal_eliminar"
-                            v-on:click="setUrl('/api/ingreso/' + dato.id)"
+                            v-on:click="setUrl('/api/ingreso/' + asignacion.id)"
                             >Eliminar</a
                         >
-                    </td>
+                    </td> -->
                 </tr>
             </tbody>
         </table>
@@ -128,7 +130,8 @@ export default {
             url: "",
             datos:'',
             datos_select:'',
-            tipo_gasto:''
+            tipo_gasto:'',
+            asignaciones:''
         };
     },
     components: {
@@ -138,12 +141,15 @@ export default {
         tipo_gasto () {
             if (this.tipo_gasto == 'I'){
                 this.getIngreso();
+   
             }
             else {
                 this.getEgreso();
+              
             }
-            
-
+        },
+        renglon_select (){
+            this.getAsignacion();
         }
     },
     methods: {
@@ -170,19 +176,34 @@ export default {
                     console.log(error);
                 });
         },
+        getAsignacion() {
+            axios
+                .get("/api/c-asignacion",{
+                    params: {
+                        'renglon' : this.renglon_select
+                    }
+                })
+                .then(res => {
+                    this.asignaciones = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
         eliminarData() {},
         saveData() {
-            console.log("Listo.");
+            console.log("Empieza método para guardar en BD.");
             let data = new FormData();
             data.append("renglon", this.renglon_select);
             data.append("tipo_desglose", this.tipo_gasto);
             data.append("desglose", this.datos_select);
             console.log(data);
             axios
-                .post("/api/ingreso", data)
+                .post("/api/c-asignacion", data)
                 .then(res => {
                     this.form.reset();
                     this.getIngreso();
+                    this.getAsignacion();
                 })
                 .catch(error => {
                     this.form.errors.record(error.response.data.errors);

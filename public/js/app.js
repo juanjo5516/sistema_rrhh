@@ -2036,6 +2036,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2057,7 +2059,8 @@ __webpack_require__.r(__webpack_exports__);
       url: "",
       datos: '',
       datos_select: '',
-      tipo_gasto: ''
+      tipo_gasto: '',
+      asignaciones: ''
     };
   },
   components: {
@@ -2070,6 +2073,9 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         this.getEgreso();
       }
+    },
+    renglon_select: function renglon_select() {
+      this.getAsignacion();
     }
   },
   methods: {
@@ -2094,22 +2100,37 @@ __webpack_require__.r(__webpack_exports__);
         console.log(error);
       });
     },
-    eliminarData: function eliminarData() {},
-    saveData: function saveData() {
+    getAsignacion: function getAsignacion() {
       var _this3 = this;
 
-      console.log("Listo.");
+      axios.get("/api/c-asignacion", {
+        params: {
+          'renglon': this.renglon_select
+        }
+      }).then(function (res) {
+        _this3.asignaciones = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    eliminarData: function eliminarData() {},
+    saveData: function saveData() {
+      var _this4 = this;
+
+      console.log("Empieza método para guardar en BD.");
       var data = new FormData();
       data.append("renglon", this.renglon_select);
       data.append("tipo_desglose", this.tipo_gasto);
       data.append("desglose", this.datos_select);
       console.log(data);
-      axios.post("/api/ingreso", data).then(function (res) {
-        _this3.form.reset();
+      axios.post("/api/c-asignacion", data).then(function (res) {
+        _this4.form.reset();
 
-        _this3.getIngreso();
+        _this4.getIngreso();
+
+        _this4.getAsignacion();
       })["catch"](function (error) {
-        _this3.form.errors.record(error.response.data.errors);
+        _this4.form.errors.record(error.response.data.errors);
       });
     }
   },
@@ -40301,9 +40322,9 @@ var render = function() {
                   },
                   [
                     _vm._v(
-                      "\n                    " +
+                      "\n                        " +
                         _vm._s(renglon.renglon) +
-                        "\n                "
+                        "\n                    "
                     )
                   ]
                 )
@@ -40407,9 +40428,9 @@ var render = function() {
                       { key: dato.id, domProps: { value: dato.ingreso } },
                       [
                         _vm._v(
-                          "\n                    " +
+                          "\n                        " +
                             _vm._s(dato.ingreso) +
-                            "\n                "
+                            "\n                    "
                         )
                       ]
                     )
@@ -40464,9 +40485,9 @@ var render = function() {
                       { key: dato.id, domProps: { value: dato.egreso } },
                       [
                         _vm._v(
-                          "\n                    " +
+                          "\n                        " +
                             _vm._s(dato.egreso) +
-                            "\n                "
+                            "\n                    "
                         )
                       ]
                     )
@@ -40488,44 +40509,25 @@ var render = function() {
         attrs: { url: _vm.url, nombre_form: _vm.nombre_form }
       }),
       _vm._v(" "),
-      _vm.tipo_gasto == "I"
-        ? _c("table", { staticClass: "table mt-5" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "tbody",
-              _vm._l(_vm.datos, function(dato) {
-                return _c("tr", { key: dato.id, staticClass: "w-100" }, [
-                  _c("td", [_vm._v(_vm._s(dato.id))]),
-                  _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(dato.ingreso))]),
-                  _vm._v(" "),
-                  _c("td", [
-                    _c(
-                      "a",
-                      {
-                        staticClass: "btn btn-outline-danger",
-                        attrs: {
-                          href: "",
-                          type: "button",
-                          "data-toggle": "modal",
-                          "data-target": "#modal_eliminar"
-                        },
-                        on: {
-                          click: function($event) {
-                            return _vm.setUrl("/api/ingreso/" + dato.id)
-                          }
-                        }
-                      },
-                      [_vm._v("Eliminar")]
-                    )
-                  ])
-                ])
-              }),
-              0
-            )
-          ])
-        : _vm._e()
+      _c("table", { staticClass: "table mt-5" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.asignaciones, function(asignacion) {
+            return _c("tr", { key: asignacion.id, staticClass: "w-100" }, [
+              _c("td", [_vm._v(_vm._s(asignacion.id))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(asignacion.renglon))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(asignacion.tipo_desglose))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(asignacion.desglose))])
+            ])
+          }),
+          0
+        )
+      ])
     ],
     1
   )
@@ -40541,9 +40543,9 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Renglon")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Ingreso")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tipo Desglose")]),
         _vm._v(" "),
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("Egreso")])
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Desglose")])
       ])
     ])
   }

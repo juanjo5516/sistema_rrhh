@@ -19,6 +19,8 @@ class CreateAsignacionsTable extends Migration
             $table->string('tipo_desglose',1);
             $table->string('desglose',100);
             $table->timestamps();
+
+            $table->unique(['renglon','desglose']);
         });
     }
 

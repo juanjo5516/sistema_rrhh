@@ -12,9 +12,19 @@ class AsignacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->renglon == '011'){
+            return  Asignacion::where('renglon','011')->get();
+        }
+        if ($request->renglon == '029'){
+            return  Asignacion::where('renglon','029')->get();
+        }
+        else{
+            return  Asignacion::latest()->get();
+        }
+
+        
     }
 
     /**
@@ -35,7 +45,7 @@ class AsignacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Asignacion::create($request->all());
     }
 
     /**
