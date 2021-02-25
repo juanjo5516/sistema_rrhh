@@ -144,6 +144,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <p>Registro Personal</p>
                   </a>
                 </li>
+                <li class="nav-item">
+                  <a href="/personal-historico" class="nav-link active">
+                    <i class="fas fa-address-card nav-icon"></i>
+                    <p>Histórico</p>
+                  </a>
+                </li>
                 
               </ul>
             </li>
@@ -173,6 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            
 
             <li class="nav-item">
               <a href="http://bi.mineco.gob.gt/views/RecursosHumanos/Dashboard1?iframeSizedToWindow=true&:embed=y&:showAppBanner=yes&:display_count=no&:showVizHome=no&:refresh=yes" class="nav-link">

@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::view('/personal', 'personal.listadopersonas');
 Route::view('/registro-personal', 'personal.registropersonas');
+Route::view('/personal-historico', 'personal.historico');
 
 Route::resource('persona', 'PersonaController');
 Route::resource('colegiados', 'ColegiadoController');
