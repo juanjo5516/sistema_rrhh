@@ -17,9 +17,12 @@ class PersonaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         // return view('personal.listadopersonas');
+        if ($request->id != null){
+            return  Persona::where('id',$request->id)->get();
+        }
         return response()->json(Persona::all(),200);
     }
 

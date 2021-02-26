@@ -1916,6 +1916,186 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log("Component mounted.");
+  },
+  props: {
+    id: {
+      type: Number,
+      "default": 0
+    }
+  },
+  data: function data() {
+    return {
+      ingreso: "",
+      renglon_select: "",
+      renglones: [{
+        renglon: "011"
+      }, {
+        renglon: "029"
+      }, {
+        renglon: "018"
+      }, {
+        renglon: "022"
+      }]
+    };
+  },
+  watch: {},
+  components: {},
+  methods: {
+    saveData: function saveData() {}
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AsignacionComponent.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AsignacionComponent.vue?vue&type=script&lang=js& ***!
@@ -2814,6 +2994,200 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mounted: function mounted() {
+    console.log("Component mounted.");
+  },
+  props: {
+    id: {
+      type: Number,
+      "default": 0
+    }
+  },
+  data: function data() {
+    return {
+      historiales: [],
+      historial: true,
+      agregar: false
+    };
+  },
+  watch: {
+    id: function id() {
+      this.obtenerDatos();
+    }
+  },
+  components: {},
+  methods: {
+    addForm: function addForm() {
+      this.agregar = !this.agregar;
+    },
+    mostrarHistorial: function mostrarHistorial() {
+      this.historial = !this.historial;
+    },
+    obtenerDatos: function obtenerDatos() {
+      var _this = this;
+
+      axios.get("/api/historial", {
+        params: {
+          'id': this.id
+        }
+      }).then(function (response) {
+        _this.historiales = response.data;
+      });
+    },
+    nombreCompleto: function nombreCompleto(n1, n2, n3, a1, a2, ac) {
+      if (n1 == null) {
+        n1 = "";
+      }
+
+      if (n2 == null) {
+        n2 = "";
+      }
+
+      if (n3 == null) {
+        n3 = "";
+      }
+
+      if (a1 == null) {
+        a1 = "";
+      }
+
+      if (a2 == null) {
+        a2 = "";
+      }
+
+      if (ac == null) {
+        ac = "";
+      }
+
+      return n1 + " " + n2 + " " + n3 + " " + a1 + " " + a2 + " " + ac;
+    },
+    nombres: function nombres(n1, n2, n3) {
+      if (n1 == null) {
+        n1 = "";
+      }
+
+      if (n2 == null) {
+        n2 = "";
+      }
+
+      if (n3 == null) {
+        n3 = "";
+      }
+
+      return n1 + " " + n2 + " " + n3;
+    },
+    apellidos: function apellidos(a1, a2, ac) {
+      if (a1 == null) {
+        a1 = "";
+      }
+
+      if (a2 == null) {
+        a2 = "";
+      }
+
+      if (ac == null) {
+        ac = "";
+      }
+
+      return a1 + " " + a2 + " " + ac;
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -2821,71 +3195,76 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      personas: []
+      personas: [],
+      historial: false,
+      idSelected: 0
     };
   },
   components: {},
   methods: {
+    mostrarHistorial: function mostrarHistorial(id) {
+      this.idSelected = id;
+    },
     obtenerDatos: function obtenerDatos() {
       var _this = this;
 
-      axios.get('/persona').then(function (response) {
+      axios.get("/persona").then(function (response) {
         _this.personas = response.data;
       });
     },
     nombreCompleto: function nombreCompleto(n1, n2, n3, a1, a2, ac) {
       if (n1 == null) {
-        n1 = '';
+        n1 = "";
       }
 
       if (n2 == null) {
-        n2 = '';
+        n2 = "";
       }
 
       if (n3 == null) {
-        n3 = '';
+        n3 = "";
       }
 
       if (a1 == null) {
-        a1 = '';
+        a1 = "";
       }
 
       if (a2 == null) {
-        a2 = '';
+        a2 = "";
       }
 
       if (ac == null) {
-        ac = '';
+        ac = "";
       }
 
       return n1 + " " + n2 + " " + n3 + " " + a1 + " " + a2 + " " + ac;
     },
     nombres: function nombres(n1, n2, n3) {
       if (n1 == null) {
-        n1 = '';
+        n1 = "";
       }
 
       if (n2 == null) {
-        n2 = '';
+        n2 = "";
       }
 
       if (n3 == null) {
-        n3 = '';
+        n3 = "";
       }
 
       return n1 + " " + n2 + " " + n3;
     },
     apellidos: function apellidos(a1, a2, ac) {
       if (a1 == null) {
-        a1 = '';
+        a1 = "";
       }
 
       if (a2 == null) {
-        a2 = '';
+        a2 = "";
       }
 
       if (ac == null) {
-        ac = '';
+        ac = "";
       }
 
       return a1 + " " + a2 + " " + ac;
@@ -44026,6 +44405,496 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "form",
+    {
+      staticClass: "mb-4",
+      on: {
+        submit: function($event) {
+          $event.preventDefault()
+          return _vm.saveData($event)
+        }
+      }
+    },
+    [
+      _c("div", { staticClass: "mb-3" }, [
+        _c(
+          "label",
+          {
+            staticClass: "form-label",
+            attrs: { for: "exampleInputPassword1" }
+          },
+          [_vm._v("Seleccione Renglon")]
+        ),
+        _vm._v(" "),
+        _c(
+          "select",
+          {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.renglon_select,
+                expression: "renglon_select"
+              }
+            ],
+            staticClass: "form-control",
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.renglon_select = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
+          },
+          _vm._l(_vm.renglones, function(renglon) {
+            return _c(
+              "option",
+              { key: renglon.renglon, domProps: { value: renglon.renglon } },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(renglon.renglon) +
+                    "\n            "
+                )
+              ]
+            )
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _vm.renglon_select == "011" || _vm.renglon_select == "022"
+        ? _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Puesto Funcional")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: this.ingreso,
+                    expression: "this.ingreso"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: this.ingreso },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(this, "ingreso", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Puesto Nominal")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: this.ingreso,
+                    expression: "this.ingreso"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "text" },
+                domProps: { value: this.ingreso },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(this, "ingreso", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.renglon_select == "018" || _vm.renglon_select == "029"
+        ? _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Tipo de Servicio")]
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.renglon_select,
+                      expression: "renglon_select"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.renglon_select = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.renglones, function(renglon) {
+                  return _c(
+                    "option",
+                    {
+                      key: renglon.renglon,
+                      domProps: { value: renglon.renglon }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(renglon.renglon) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.renglon_select == "018" ||
+      _vm.renglon_select == "029" ||
+      _vm.renglon_select == "011" ||
+      _vm.renglon_select == "022"
+        ? _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Fecha Inicio")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: this.ingreso,
+                    expression: "this.ingreso"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "date" },
+                domProps: { value: this.ingreso },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(this, "ingreso", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Fecha Fin")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: this.ingreso,
+                    expression: "this.ingreso"
+                  }
+                ],
+                staticClass: "form-control",
+                attrs: { type: "date" },
+                domProps: { value: this.ingreso },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(this, "ingreso", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.renglon_select == "018" ||
+      _vm.renglon_select == "029" ||
+      _vm.renglon_select == "011" ||
+      _vm.renglon_select == "022"
+        ? _c("div", { staticClass: "mb-3 form-row" }, [
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Ubicación Administrativa")]
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.renglon_select,
+                      expression: "renglon_select"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.renglon_select = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.renglones, function(renglon) {
+                  return _c(
+                    "option",
+                    {
+                      key: renglon.renglon,
+                      domProps: { value: renglon.renglon }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(renglon.renglon) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Ubicación Física")]
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.renglon_select,
+                      expression: "renglon_select"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.renglon_select = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.renglones, function(renglon) {
+                  return _c(
+                    "option",
+                    {
+                      key: renglon.renglon,
+                      domProps: { value: renglon.renglon }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(renglon.renglon) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.renglon_select == "018" ||
+      _vm.renglon_select == "029" ||
+      _vm.renglon_select == "011" ||
+      _vm.renglon_select == "022"
+        ? _c("div", { staticClass: "mb-3 form-row" }, [
+            _c("div", { staticClass: "mb-3 col-6" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "form-label",
+                  attrs: { for: "exampleInputPassword1" }
+                },
+                [_vm._v("Unidad Ejecutora")]
+              ),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.renglon_select,
+                      expression: "renglon_select"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.renglon_select = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
+                  }
+                },
+                _vm._l(_vm.renglones, function(renglon) {
+                  return _c(
+                    "option",
+                    {
+                      key: renglon.renglon,
+                      domProps: { value: renglon.renglon }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(renglon.renglon) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "button",
+        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        [_vm._v("Guardar")]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AsignacionComponent.vue?vue&type=template&id=67e6fb7a&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/AsignacionComponent.vue?vue&type=template&id=67e6fb7a& ***!
@@ -45068,70 +45937,214 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("table", { staticClass: "table" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c(
-      "tbody",
-      _vm._l(_vm.personas, function(persona) {
-        return _c("tr", { key: persona.id }, [
-          _c("th", { attrs: { scope: "row" } }, [_vm._v(_vm._s(persona.id))]),
-          _vm._v(" "),
-          _c("td", [
-            _vm._v(
-              _vm._s(
-                _vm.nombres(persona.nombre1, persona.nombre2, persona.nombre3)
-              )
-            )
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _vm._v(
-              _vm._s(
-                _vm.apellidos(
-                  persona.apellido1,
-                  persona.apellido2,
-                  persona.apellido_casada
-                )
-              )
-            )
-          ]),
-          _vm._v(" "),
-          _c("td", [
-            _vm._v(
-              _vm._s(
-                _vm.nombreCompleto(
-                  persona.nombre1,
-                  persona.nombre2,
-                  persona.nombre3,
-                  persona.apellido1,
-                  persona.apellido2,
-                  persona.apellido_casada
-                )
-              )
-            )
-          ]),
-          _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(persona.dpi))]),
-          _vm._v(" "),
-          _c("td", [_vm._v(_vm._s(persona.renglon))]),
-          _vm._v(" "),
-          _c("td", [
+  return _vm.id > 0
+    ? _c(
+        "div",
+        [
+          _c("div", [
+            _c("h1", [_vm._v("Historial de Empleado")]),
+            _vm._v(" "),
             _c(
               "button",
               {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: { click: function($event) {} }
+                staticClass: "btn btn-primary mb-3",
+                on: { click: _vm.addForm }
               },
-              [_vm._v("Historial")]
+              [_vm._v("Añadir nuevo")]
+            )
+          ]),
+          _vm._v(" "),
+          this.agregar
+            ? _c("add-historico", { attrs: { id: this.id } })
+            : _vm._e(),
+          _vm._v(" "),
+          _c("table", { staticClass: "table table-bordered" }, [
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "tbody",
+              _vm._l(_vm.historiales, function(historial) {
+                return _c("tr", { key: historial.id }, [
+                  _c("th", { attrs: { scope: "row" } }, [
+                    _vm._v(_vm._s(historial.id))
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(historial.periodo_inicio) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(historial.periodo_fin) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(historial.puesto_nominal) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(historial.puesto_funcional))]),
+                  _vm._v(" "),
+                  _c("td", [_vm._v(_vm._s(historial.tipo_servicio))]),
+                  _vm._v(" "),
+                  _c("td")
+                ])
+              }),
+              0
             )
           ])
-        ])
-      }),
-      0
-    )
-  ])
+        ],
+        1
+      )
+    : _vm._e()
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Inicio de Periodo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fin de Periodo")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Puesto Nominal")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Puesto Funcional")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Tipo de Servicio")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Opciones")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=template&id=89895394&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=template&id=89895394& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("table", { staticClass: "table" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          _vm._l(_vm.personas, function(persona) {
+            return _c("tr", { key: persona.id }, [
+              _c("th", { attrs: { scope: "row" } }, [
+                _vm._v(_vm._s(persona.id))
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(
+                      _vm.nombres(
+                        persona.nombre1,
+                        persona.nombre2,
+                        persona.nombre3
+                      )
+                    ) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(
+                      _vm.apellidos(
+                        persona.apellido1,
+                        persona.apellido2,
+                        persona.apellido_casada
+                      )
+                    ) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(
+                      _vm.nombreCompleto(
+                        persona.nombre1,
+                        persona.nombre2,
+                        persona.nombre3,
+                        persona.apellido1,
+                        persona.apellido2,
+                        persona.apellido_casada
+                      )
+                    ) +
+                    "\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(persona.dpi))]),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(persona.renglon))]),
+              _vm._v(" "),
+              _c("td", [
+                _c(
+                  "button",
+                  {
+                    staticClass: "btn btn-success",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.mostrarHistorial(persona.id)
+                      }
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                        Historial\n                    "
+                    )
+                  ]
+                )
+              ])
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("personal-historico", { attrs: { id: this.idSelected } })
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -65267,7 +66280,9 @@ Vue.component('listado-colegiado', __webpack_require__(/*! ./components/ListadoC
 Vue.component('ingreso-component', __webpack_require__(/*! ./components/IngresoComponent.vue */ "./resources/js/components/IngresoComponent.vue")["default"]);
 Vue.component('egreso-component', __webpack_require__(/*! ./components/EgresoComponent.vue */ "./resources/js/components/EgresoComponent.vue")["default"]);
 Vue.component('asignacion-component', __webpack_require__(/*! ./components/AsignacionComponent.vue */ "./resources/js/components/AsignacionComponent.vue")["default"]);
+Vue.component('personal-list-historico', __webpack_require__(/*! ./components/PersonalListHistoricoComponent.vue */ "./resources/js/components/PersonalListHistoricoComponent.vue")["default"]);
 Vue.component('personal-historico', __webpack_require__(/*! ./components/PersonalHistoricoComponent.vue */ "./resources/js/components/PersonalHistoricoComponent.vue")["default"]);
+Vue.component('add-historico', __webpack_require__(/*! ./components/AddHistoricoComponent.vue */ "./resources/js/components/AddHistoricoComponent.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -65328,6 +66343,75 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/AddHistoricoComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/AddHistoricoComponent.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddHistoricoComponent.vue?vue&type=template&id=50485113& */ "./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113&");
+/* harmony import */ var _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddHistoricoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AddHistoricoComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./AddHistoricoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./AddHistoricoComponent.vue?vue&type=template&id=50485113& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -65947,6 +67031,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalHistoricoComponent_vue_vue_type_template_id_23245510___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalHistoricoComponent_vue_vue_type_template_id_23245510___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonalListHistoricoComponent.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/PersonalListHistoricoComponent.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PersonalListHistoricoComponent_vue_vue_type_template_id_89895394___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PersonalListHistoricoComponent.vue?vue&type=template&id=89895394& */ "./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=template&id=89895394&");
+/* harmony import */ var _PersonalListHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PersonalListHistoricoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PersonalListHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PersonalListHistoricoComponent_vue_vue_type_template_id_89895394___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PersonalListHistoricoComponent_vue_vue_type_template_id_89895394___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/PersonalListHistoricoComponent.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalListHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./PersonalListHistoricoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalListHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=template&id=89895394&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=template&id=89895394& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalListHistoricoComponent_vue_vue_type_template_id_89895394___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./PersonalListHistoricoComponent.vue?vue&type=template&id=89895394& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/PersonalListHistoricoComponent.vue?vue&type=template&id=89895394&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalListHistoricoComponent_vue_vue_type_template_id_89895394___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PersonalListHistoricoComponent_vue_vue_type_template_id_89895394___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

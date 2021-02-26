@@ -44,7 +44,9 @@ Vue.component('listado-colegiado', require('./components/ListadoColegiado.vue').
 Vue.component('ingreso-component', require('./components/IngresoComponent.vue').default);
 Vue.component('egreso-component', require('./components/EgresoComponent.vue').default);
 Vue.component('asignacion-component', require('./components/AsignacionComponent.vue').default);
+Vue.component('personal-list-historico', require('./components/PersonalListHistoricoComponent.vue').default);
 Vue.component('personal-historico', require('./components/PersonalHistoricoComponent.vue').default);
+Vue.component('add-historico', require('./components/AddHistoricoComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

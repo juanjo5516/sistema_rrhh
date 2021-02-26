@@ -26,6 +26,7 @@ Route::view('/registro-personal', 'personal.registropersonas');
 Route::view('/personal-historico', 'personal.historico');
 
 Route::resource('persona', 'PersonaController');
+
 Route::resource('colegiados', 'ColegiadoController');
 Route::view('/list-colegiados', 'colegiado.listadocolegiado');
 
