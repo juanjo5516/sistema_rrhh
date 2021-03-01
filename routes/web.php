@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +17,15 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
+    //$role = Role::create(['name' => 'Administrador']);
+    //$permission = Permission::create(['name' => 'Modulo Desglose Salarios']);
+    //$permission = Permission::create(['name' => 'Modulo Personal']);
+    //$permission = Permission::create(['name' => 'Modulo Listados']);
+
+    $role = Role::where('name','Administrador')->first();
+    //$role = Role::find(1);
+    dd($role);
+    $role->givePermissionTo('Modulo Desglose Salarios');
     return view('welcome');
 });
 
