@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
@@ -17,15 +18,32 @@ use Spatie\Permission\Models\Permission;
 */
 
 Route::get('/', function () {
+
+    //ROLES*********************************
     //$role = Role::create(['name' => 'Administrador']);
+    //$role = Role::create(['name' => 'Visor']);
+    //**********************************************************
+
+    //PERMISOS*********************************************************
     //$permission = Permission::create(['name' => 'Modulo Desglose Salarios']);
     //$permission = Permission::create(['name' => 'Modulo Personal']);
     //$permission = Permission::create(['name' => 'Modulo Listados']);
+    //***************************************************************
+    
 
-    $role = Role::where('name','Administrador')->first();
-    //$role = Role::find(1);
-    dd($role);
-    $role->givePermissionTo('Modulo Desglose Salarios');
+    //**************************************************************
+    //Asignar Role a un USUARIO
+    /* $user = User::where('name','Administrador')->first();
+    $user->assignRole('Administrador');  */
+    //**************************************************************
+
+    //**************************************************************
+    //Asignar PERMISOS a un ROL
+    //$role = Role::where('name','Administrador')->first();
+    //$role->givePermissionTo(['Modulo Desglose Salarios','Modulo Personal','Modulo Listados']); 
+    //**************************************************************
+
+    //dd($role);
     return view('welcome');
 });
 

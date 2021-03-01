@@ -2062,9 +2062,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
+    this.getUbicacionAdministrativa();
   },
   props: {
     id: {
@@ -2084,13 +2122,32 @@ __webpack_require__.r(__webpack_exports__);
         renglon: "018"
       }, {
         renglon: "022"
-      }]
+      }],
+      tipo_servicios: [{
+        id: 1,
+        servicio: "Técnico"
+      }, {
+        id: 2,
+        servicio: "Profesional"
+      }],
+      fecha_inicio: "",
+      fecha_fin: "",
+      ubicacion_administrativa: [],
+      ub_admin_select: ''
     };
   },
   watch: {},
   components: {},
   methods: {
-    saveData: function saveData() {}
+    getUbicacionAdministrativa: function getUbicacionAdministrativa() {
+      var _this = this;
+
+      axios.get("/api/ubicacion_administrativa").then(function (res) {
+        _this.ubicacion_administrativa = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    }
   }
 });
 
@@ -44576,8 +44633,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.renglon_select,
-                      expression: "renglon_select"
+                      value: _vm.t_servicio_select,
+                      expression: "t_servicio_select"
                     }
                   ],
                   staticClass: "form-control",
@@ -44591,23 +44648,23 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.renglon_select = $event.target.multiple
+                      _vm.t_servicio_select = $event.target.multiple
                         ? $$selectedVal
                         : $$selectedVal[0]
                     }
                   }
                 },
-                _vm._l(_vm.renglones, function(renglon) {
+                _vm._l(_vm.tipo_servicios, function(servicio) {
                   return _c(
                     "option",
                     {
-                      key: renglon.renglon,
-                      domProps: { value: renglon.renglon }
+                      key: servicio.id,
+                      domProps: { value: servicio.servicio }
                     },
                     [
                       _vm._v(
                         "\n                    " +
-                          _vm._s(renglon.renglon) +
+                          _vm._s(servicio.servicio) +
                           "\n                "
                       )
                     ]
@@ -44639,19 +44696,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.ingreso,
-                    expression: "this.ingreso"
+                    value: this.fecha_inicio,
+                    expression: "this.fecha_inicio"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "date" },
-                domProps: { value: this.ingreso },
+                domProps: { value: this.fecha_inicio },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "ingreso", $event.target.value)
+                    _vm.$set(this, "fecha_inicio", $event.target.value)
                   }
                 }
               })
@@ -44672,19 +44729,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.ingreso,
-                    expression: "this.ingreso"
+                    value: this.fecha_fin,
+                    expression: "this.fecha_fin"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "date" },
-                domProps: { value: this.ingreso },
+                domProps: { value: this.fecha_fin },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "ingreso", $event.target.value)
+                    _vm.$set(this, "fecha_fin", $event.target.value)
                   }
                 }
               })
@@ -44714,8 +44771,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.renglon_select,
-                      expression: "renglon_select"
+                      value: _vm.ub_admin_select,
+                      expression: "ub_admin_select"
                     }
                   ],
                   staticClass: "form-control",
@@ -44729,25 +44786,64 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.renglon_select = $event.target.multiple
+                      _vm.ub_admin_select = $event.target.multiple
                         ? $$selectedVal
                         : $$selectedVal[0]
                     }
                   }
                 },
-                _vm._l(_vm.renglones, function(renglon) {
+                _vm._l(_vm.ubicacion_administrativa, function(ub_admin) {
                   return _c(
                     "option",
                     {
-                      key: renglon.renglon,
-                      domProps: { value: renglon.renglon }
+                      key: ub_admin.id,
+                      class: {
+                        "text-primary font-weight-bold": ub_admin.nivel == 2,
+                        "text-success": ub_admin.nivel == 3,
+                        "text-info": ub_admin.nivel == 4
+                      },
+                      domProps: { value: ub_admin.ubicacion_administrativa }
                     },
                     [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(renglon.renglon) +
-                          "\n                "
-                      )
+                      ub_admin.nivel == "1"
+                        ? _c("span", [
+                            _vm._v(
+                              " * " + _vm._s(ub_admin.ubicacion_administrativa)
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub_admin.nivel == "2"
+                        ? _c("span", [
+                            _c("span", [_vm._v("**")]),
+                            _vm._v(_vm._s(ub_admin.ubicacion_administrativa))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub_admin.nivel == "3"
+                        ? _c("span", [
+                            _c("span", [_vm._v("***")]),
+                            _vm._v(_vm._s(ub_admin.ubicacion_administrativa))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub_admin.nivel == "4"
+                        ? _c("span", [
+                            _c("span", [_vm._v("****")]),
+                            _vm._v(
+                              " " + _vm._s(ub_admin.ubicacion_administrativa)
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub_admin.nivel == "5"
+                        ? _c("span", [
+                            _c("span", [_vm._v("*****")]),
+                            _vm._v(
+                              " " + _vm._s(ub_admin.ubicacion_administrativa)
+                            )
+                          ])
+                        : _vm._e()
                     ]
                   )
                 }),

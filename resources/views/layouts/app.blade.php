@@ -100,6 +100,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
+            @can('Modulo Desglose Salarios')
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-wallet"></i>
@@ -129,6 +130,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
+
+            @can('Modulo Personal')
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-friends"></i>
@@ -153,7 +157,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 
               </ul>
             </li>
+            @endcan
 
+            @can('Modulo Listados')
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-user-friends"></i>
@@ -179,6 +185,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </li>
               </ul>
             </li>
+            @endcan
             
 
             <li class="nav-item">

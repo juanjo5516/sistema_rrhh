@@ -22,3 +22,4 @@ Route::resource('ingreso','IngresoController');
 Route::resource('egreso','EgresoController');
 Route::resource('c-asignacion','AsignacionController');
 Route::resource('historial', 'HistorialController');
+Route::resource('ubicacion_administrativa', 'AdministrativeUbicationController');

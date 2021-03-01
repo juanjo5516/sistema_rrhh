@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MotrizSeeder::class);
         $this->call(MentalSeeder::class);
         $this->call(NominalPositionSeeder::class);
+        $this->call(AdministrativeUbicationSeeder::class);
     }
 }
