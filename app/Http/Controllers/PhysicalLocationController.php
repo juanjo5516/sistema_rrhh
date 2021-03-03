@@ -14,7 +14,7 @@ class PhysicalLocationController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(PhysicalLocation::all(),200);
     }
 
     /**

@@ -23,3 +23,5 @@ Route::resource('egreso','EgresoController');
 Route::resource('c-asignacion','AsignacionController');
 Route::resource('historial', 'HistorialController');
 Route::resource('ubicacion_administrativa', 'AdministrativeUbicationController');
+Route::resource('ubicacion_fisica', 'PhysicalLocationController');
+Route::resource('unidades_ejecutoras', 'UnidadEjecutoraController');

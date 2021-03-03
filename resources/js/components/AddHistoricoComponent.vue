@@ -25,7 +25,7 @@
                     >Puesto Funcional</label
                 >
                 <input
-                    v-model="this.ingreso"
+                    v-model="this.puesto_nominal"
                     type="text"
                     class="form-control"
                 />
@@ -35,7 +35,7 @@
                     >Puesto Nominal</label
                 >
                 <input
-                    v-model="this.ingreso"
+                    v-model="this.puesto_funcional"
                     type="text"
                     class="form-control"
                 />
@@ -54,7 +54,7 @@
                 <select class="form-control" v-model="t_servicio_select">
                     <option
                         v-for="servicio in tipo_servicios"
-                        v-bind:value="servicio.servicio"
+                        v-bind:value="servicio.id"
                         v-bind:key="servicio.id"
                     >
                         {{ servicio.servicio }}
@@ -77,7 +77,7 @@
                     >Fecha Inicio</label
                 >
                 <input
-                    v-model="this.fecha_inicio"
+                    v-model="fecha_inicio"
                     type="date"
                     class="form-control"
                 />
@@ -87,7 +87,7 @@
                     >Fecha Fin</label
                 >
                 <input
-                    v-model="this.fecha_fin"
+                    v-model="fecha_fin"
                     type="date"
                     class="form-control"
                 />
@@ -113,15 +113,32 @@
                         v-for="ub_admin in ubicacion_administrativa"
                         v-bind:value="ub_admin.ubicacion_administrativa"
                         v-bind:key="ub_admin.id"
-                        :class="{'text-primary font-weight-bold' : ub_admin.nivel==2,'text-success': ub_admin.nivel==3,
-                        'text-info':ub_admin.nivel==4, }"
+                        :class="{
+                            'text-primary font-weight-bold':
+                                ub_admin.nivel == 2,
+                            'text-success': ub_admin.nivel == 3,
+                            'text-info': ub_admin.nivel == 4
+                        }"
                     >
-                        <span v-if="ub_admin.nivel=='1'"> * {{ ub_admin.ubicacion_administrativa }}</span>
-                        <span v-if="ub_admin.nivel=='2'"> <span>**</span>{{ ub_admin.ubicacion_administrativa }}</span>
-                        <span v-if="ub_admin.nivel=='3'"> <span>***</span>{{ ub_admin.ubicacion_administrativa }}</span>
-                        <span v-if="ub_admin.nivel=='4'"> <span>****</span> {{ ub_admin.ubicacion_administrativa }}</span>
-                        <span v-if="ub_admin.nivel=='5'"> <span>*****</span> {{ ub_admin.ubicacion_administrativa }}</span>
-                        
+                        <span v-if="ub_admin.nivel == '1'">
+                            * {{ ub_admin.ubicacion_administrativa }}</span
+                        >
+                        <span v-if="ub_admin.nivel == '2'">
+                            <span>**</span
+                            >{{ ub_admin.ubicacion_administrativa }}</span
+                        >
+                        <span v-if="ub_admin.nivel == '3'">
+                            <span>***</span
+                            >{{ ub_admin.ubicacion_administrativa }}</span
+                        >
+                        <span v-if="ub_admin.nivel == '4'">
+                            <span>****</span>
+                            {{ ub_admin.ubicacion_administrativa }}</span
+                        >
+                        <span v-if="ub_admin.nivel == '5'">
+                            <span>*****</span>
+                            {{ ub_admin.ubicacion_administrativa }}</span
+                        >
                     </option>
                 </select>
             </div>
@@ -130,13 +147,40 @@
                     >Ubicación Física</label
                 >
 
-                <select class="form-control" v-model="renglon_select">
+                <select class="form-control" v-model="ub_fis_select">
                     <option
-                        v-for="renglon in renglones"
-                        v-bind:value="renglon.renglon"
-                        v-bind:key="renglon.renglon"
+                        v-for="ub in ubicacion_fisica"
+                        v-bind:value="ub.id"
+                        v-bind:key="ub.id"
+                        :class="{
+                            'text-primary font-weight-bold':
+                                ub.nivel == 2,
+                            'text-success': ub.nivel == 3,
+                            'text-info': ub.nivel == 4
+                        }"
                     >
-                        {{ renglon.renglon }}
+                        
+                        <span v-if="ub.nivel == '1'">
+                            * {{ ub.ubicacion_fisica }}
+                        </span>
+                        <span v-if="ub.nivel == '2'">
+                            <span>**</span
+                            >{{ ub.ubicacion_fisica }}</span
+                        >
+                        <span v-if="ub.nivel == '3'">
+                            <span>***</span
+                            >{{ ub.ubicacion_fisica }}</span
+                        >
+                        <span v-if="ub.nivel == '4'">
+                            <span>****</span>
+                            {{ ub.ubicacion_fisica }}</span
+                        >
+                        <span v-if="ub.nivel == '5'">
+                            <span>*****</span>
+                            {{ ub.ubicacion_fisica }}</span
+                        >
+                        
+
                     </option>
                 </select>
             </div>
@@ -156,19 +200,19 @@
                     >Unidad Ejecutora</label
                 >
 
-                <select class="form-control" v-model="renglon_select">
+                <select class="form-control" v-model="unidad_ejecutora_select">
                     <option
-                        v-for="renglon in renglones"
-                        v-bind:value="renglon.renglon"
-                        v-bind:key="renglon.renglon"
+                        v-for="unidad in unidades_ejecutoras"
+                        v-bind:value="unidad.id"
+                        v-bind:key="unidad.id"
                     >
-                        {{ renglon.renglon }}
+                        {{ unidad.numero }} - {{ unidad.unidad_ejecutora}}
                     </option>
                 </select>
             </div>
         </div>
 
-        <button type="submit" class="btn btn-primary">Guardar</button>
+        <button @click="addHistorial" class="btn btn-primary">Guardar</button>
     </form>
 </template>
 
@@ -177,6 +221,8 @@ export default {
     mounted() {
         console.log("Component mounted.");
         this.getUbicacionAdministrativa();
+        this.getUbicacionFisica();
+        this.getUnidadEjecutora();
     },
     props: {
         id: {
@@ -198,10 +244,17 @@ export default {
                 { id: 1, servicio: "Técnico" },
                 { id: 2, servicio: "Profesional" }
             ],
-            fecha_inicio: "",
-            fecha_fin: "",
+            fecha_inicio: '',
+            fecha_fin: '',
             ubicacion_administrativa: [],
-            ub_admin_select:''
+            ub_admin_select: "",
+            ubicacion_fisica: [],
+            ub_fis_select: "",
+            unidades_ejecutoras: [],
+            unidad_ejecutora_select:'',
+            puesto_nominal:'',
+            puesto_funcional:'',
+            t_servicio_select:''
         };
     },
     watch: {},
@@ -212,6 +265,43 @@ export default {
                 .get("/api/ubicacion_administrativa")
                 .then(res => {
                     this.ubicacion_administrativa = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        getUbicacionFisica() {
+            axios
+                .get("/api/ubicacion_fisica")
+                .then(res => {
+                    this.ubicacion_fisica = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        getUnidadEjecutora() {
+            axios
+                .get("/api/unidades_ejecutoras")
+                .then(res => {
+                    this.unidades_ejecutoras = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        addHistorial(){
+            axios
+                .post("/historico",{
+                    persona_id:this.id,
+                    periodo_inicio:this.fecha_inicio,
+                    periodo_fin: this.fecha_fin,
+                    puesto_nominal: this.puesto_nominal,
+                    puesto_funcional: this.puesto_funcional,
+                    tipo_servicio: this.t_servicio_select
+                })
+                .then(res=>{
+                    console.log('Listo');
                 })
                 .catch(error => {
                     console.log(error);

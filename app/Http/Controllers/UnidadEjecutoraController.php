@@ -14,7 +14,7 @@ class UnidadEjecutoraController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json(UnidadEjecutora::all(),200);
     }
 
     /**

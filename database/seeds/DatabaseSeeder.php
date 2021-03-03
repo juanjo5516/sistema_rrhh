@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AdministrativeUbicationSeeder::class);
         $this->call(PhysicalLocationSeeder::class);
         $this->call(UnidadEjecutoraSeeder::class);
+        $this->call(PermissionsSeeder::class);
     }
 }

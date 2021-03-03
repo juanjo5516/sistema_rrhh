@@ -2099,10 +2099,56 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
     this.getUbicacionAdministrativa();
+    this.getUbicacionFisica();
+    this.getUnidadEjecutora();
   },
   props: {
     id: {
@@ -2130,10 +2176,17 @@ __webpack_require__.r(__webpack_exports__);
         id: 2,
         servicio: "Profesional"
       }],
-      fecha_inicio: "",
-      fecha_fin: "",
+      fecha_inicio: '',
+      fecha_fin: '',
       ubicacion_administrativa: [],
-      ub_admin_select: ''
+      ub_admin_select: "",
+      ubicacion_fisica: [],
+      ub_fis_select: "",
+      unidades_ejecutoras: [],
+      unidad_ejecutora_select: '',
+      puesto_nominal: '',
+      puesto_funcional: '',
+      t_servicio_select: ''
     };
   },
   watch: {},
@@ -2144,6 +2197,38 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get("/api/ubicacion_administrativa").then(function (res) {
         _this.ubicacion_administrativa = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getUbicacionFisica: function getUbicacionFisica() {
+      var _this2 = this;
+
+      axios.get("/api/ubicacion_fisica").then(function (res) {
+        _this2.ubicacion_fisica = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getUnidadEjecutora: function getUnidadEjecutora() {
+      var _this3 = this;
+
+      axios.get("/api/unidades_ejecutoras").then(function (res) {
+        _this3.unidades_ejecutoras = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    addHistorial: function addHistorial() {
+      axios.post("/historico", {
+        persona_id: this.id,
+        periodo_inicio: this.fecha_inicio,
+        periodo_fin: this.fecha_fin,
+        puesto_nominal: this.puesto_nominal,
+        puesto_funcional: this.puesto_funcional,
+        tipo_servicio: this.t_servicio_select
+      }).then(function (res) {
+        console.log('Listo');
       })["catch"](function (error) {
         console.log(error);
       });
@@ -44561,19 +44646,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.ingreso,
-                    expression: "this.ingreso"
+                    value: this.puesto_nominal,
+                    expression: "this.puesto_nominal"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: this.ingreso },
+                domProps: { value: this.puesto_nominal },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "ingreso", $event.target.value)
+                    _vm.$set(this, "puesto_nominal", $event.target.value)
                   }
                 }
               })
@@ -44594,19 +44679,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.ingreso,
-                    expression: "this.ingreso"
+                    value: this.puesto_funcional,
+                    expression: "this.puesto_funcional"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: this.ingreso },
+                domProps: { value: this.puesto_funcional },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "ingreso", $event.target.value)
+                    _vm.$set(this, "puesto_funcional", $event.target.value)
                   }
                 }
               })
@@ -44657,10 +44742,7 @@ var render = function() {
                 _vm._l(_vm.tipo_servicios, function(servicio) {
                   return _c(
                     "option",
-                    {
-                      key: servicio.id,
-                      domProps: { value: servicio.servicio }
-                    },
+                    { key: servicio.id, domProps: { value: servicio.id } },
                     [
                       _vm._v(
                         "\n                    " +
@@ -44696,19 +44778,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.fecha_inicio,
-                    expression: "this.fecha_inicio"
+                    value: _vm.fecha_inicio,
+                    expression: "fecha_inicio"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "date" },
-                domProps: { value: this.fecha_inicio },
+                domProps: { value: _vm.fecha_inicio },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "fecha_inicio", $event.target.value)
+                    _vm.fecha_inicio = $event.target.value
                   }
                 }
               })
@@ -44729,19 +44811,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.fecha_fin,
-                    expression: "this.fecha_fin"
+                    value: _vm.fecha_fin,
+                    expression: "fecha_fin"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "date" },
-                domProps: { value: this.fecha_fin },
+                domProps: { value: _vm.fecha_fin },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "fecha_fin", $event.target.value)
+                    _vm.fecha_fin = $event.target.value
                   }
                 }
               })
@@ -44808,7 +44890,8 @@ var render = function() {
                       ub_admin.nivel == "1"
                         ? _c("span", [
                             _vm._v(
-                              " * " + _vm._s(ub_admin.ubicacion_administrativa)
+                              "\n                        * " +
+                                _vm._s(ub_admin.ubicacion_administrativa)
                             )
                           ])
                         : _vm._e(),
@@ -44831,7 +44914,8 @@ var render = function() {
                         ? _c("span", [
                             _c("span", [_vm._v("****")]),
                             _vm._v(
-                              " " + _vm._s(ub_admin.ubicacion_administrativa)
+                              "\n                        " +
+                                _vm._s(ub_admin.ubicacion_administrativa)
                             )
                           ])
                         : _vm._e(),
@@ -44840,7 +44924,8 @@ var render = function() {
                         ? _c("span", [
                             _c("span", [_vm._v("*****")]),
                             _vm._v(
-                              " " + _vm._s(ub_admin.ubicacion_administrativa)
+                              "\n                        " +
+                                _vm._s(ub_admin.ubicacion_administrativa)
                             )
                           ])
                         : _vm._e()
@@ -44868,8 +44953,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.renglon_select,
-                      expression: "renglon_select"
+                      value: _vm.ub_fis_select,
+                      expression: "ub_fis_select"
                     }
                   ],
                   staticClass: "form-control",
@@ -44883,25 +44968,68 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.renglon_select = $event.target.multiple
+                      _vm.ub_fis_select = $event.target.multiple
                         ? $$selectedVal
                         : $$selectedVal[0]
                     }
                   }
                 },
-                _vm._l(_vm.renglones, function(renglon) {
+                _vm._l(_vm.ubicacion_fisica, function(ub) {
                   return _c(
                     "option",
                     {
-                      key: renglon.renglon,
-                      domProps: { value: renglon.renglon }
+                      key: ub.id,
+                      class: {
+                        "text-primary font-weight-bold": ub.nivel == 2,
+                        "text-success": ub.nivel == 3,
+                        "text-info": ub.nivel == 4
+                      },
+                      domProps: { value: ub.id }
                     },
                     [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(renglon.renglon) +
-                          "\n                "
-                      )
+                      ub.nivel == "1"
+                        ? _c("span", [
+                            _vm._v(
+                              "\n                        * " +
+                                _vm._s(ub.ubicacion_fisica) +
+                                "\n                    "
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub.nivel == "2"
+                        ? _c("span", [
+                            _c("span", [_vm._v("**")]),
+                            _vm._v(_vm._s(ub.ubicacion_fisica))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub.nivel == "3"
+                        ? _c("span", [
+                            _c("span", [_vm._v("***")]),
+                            _vm._v(_vm._s(ub.ubicacion_fisica))
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub.nivel == "4"
+                        ? _c("span", [
+                            _c("span", [_vm._v("****")]),
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(ub.ubicacion_fisica)
+                            )
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      ub.nivel == "5"
+                        ? _c("span", [
+                            _c("span", [_vm._v("*****")]),
+                            _vm._v(
+                              "\n                        " +
+                                _vm._s(ub.ubicacion_fisica)
+                            )
+                          ])
+                        : _vm._e()
                     ]
                   )
                 }),
@@ -44933,8 +45061,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.renglon_select,
-                      expression: "renglon_select"
+                      value: _vm.unidad_ejecutora_select,
+                      expression: "unidad_ejecutora_select"
                     }
                   ],
                   staticClass: "form-control",
@@ -44948,23 +45076,22 @@ var render = function() {
                           var val = "_value" in o ? o._value : o.value
                           return val
                         })
-                      _vm.renglon_select = $event.target.multiple
+                      _vm.unidad_ejecutora_select = $event.target.multiple
                         ? $$selectedVal
                         : $$selectedVal[0]
                     }
                   }
                 },
-                _vm._l(_vm.renglones, function(renglon) {
+                _vm._l(_vm.unidades_ejecutoras, function(unidad) {
                   return _c(
                     "option",
-                    {
-                      key: renglon.renglon,
-                      domProps: { value: renglon.renglon }
-                    },
+                    { key: unidad.id, domProps: { value: unidad.id } },
                     [
                       _vm._v(
                         "\n                    " +
-                          _vm._s(renglon.renglon) +
+                          _vm._s(unidad.numero) +
+                          " - " +
+                          _vm._s(unidad.unidad_ejecutora) +
                           "\n                "
                       )
                     ]
@@ -44978,7 +45105,7 @@ var render = function() {
       _vm._v(" "),
       _c(
         "button",
-        { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+        { staticClass: "btn btn-primary", on: { click: _vm.addHistorial } },
         [_vm._v("Guardar")]
       )
     ]
@@ -66446,14 +66573,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!***********************************************************!*\
   !*** ./resources/js/components/AddHistoricoComponent.vue ***!
   \***********************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddHistoricoComponent.vue?vue&type=template&id=50485113& */ "./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113&");
 /* harmony import */ var _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddHistoricoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -66483,7 +66611,7 @@ component.options.__file = "resources/js/components/AddHistoricoComponent.vue"
 /*!************************************************************************************!*\
   !*** ./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js& ***!
   \************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

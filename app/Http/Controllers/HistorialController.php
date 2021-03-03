@@ -38,7 +38,16 @@ class HistorialController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $historial = new Historial();
+        $historial->persona_id=$request->persona_id;
+        $historial->periodo_inicio=$request->periodo_inicio;
+        $historial->periodo_fin=$request->periodo_fin;
+        $historial->puesto_nominal=$request->puesto_nominal;
+        $historial->puesto_funcional=$request->puesto_funcional;
+        $historial->tipo_servicio=$request->tipo_servicio;
+        $historial->save();
+        return response()->json('Historial agregado',200);
+                   
     }
 
     /**
