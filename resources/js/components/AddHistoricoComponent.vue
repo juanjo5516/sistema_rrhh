@@ -25,7 +25,7 @@
                     >Puesto Funcional</label
                 >
                 <input
-                    v-model="this.puesto_nominal"
+                    v-model="puesto_funcional"
                     type="text"
                     class="form-control"
                 />
@@ -34,11 +34,15 @@
                 <label for="exampleInputPassword1" class="form-label"
                     >Puesto Nominal</label
                 >
-                <input
-                    v-model="this.puesto_funcional"
-                    type="text"
-                    class="form-control"
-                />
+                <select class="form-control" v-model="position_nominal_select">
+                    <option
+                        v-for="puesto in puestos_nominales"
+                        v-bind:value="puesto.id"
+                        v-bind:key="puesto.id"
+                    >
+                        {{ puesto.puesto }}
+                    </option>
+                </select>
             </div>
         </div>
 
@@ -86,11 +90,7 @@
                 <label for="exampleInputPassword1" class="form-label"
                     >Fecha Fin</label
                 >
-                <input
-                    v-model="fecha_fin"
-                    type="date"
-                    class="form-control"
-                />
+                <input v-model="fecha_fin" type="date" class="form-control" />
             </div>
         </div>
 
@@ -153,23 +153,19 @@
                         v-bind:value="ub.id"
                         v-bind:key="ub.id"
                         :class="{
-                            'text-primary font-weight-bold':
-                                ub.nivel == 2,
+                            'text-primary font-weight-bold': ub.nivel == 2,
                             'text-success': ub.nivel == 3,
                             'text-info': ub.nivel == 4
                         }"
                     >
-                        
                         <span v-if="ub.nivel == '1'">
                             * {{ ub.ubicacion_fisica }}
                         </span>
                         <span v-if="ub.nivel == '2'">
-                            <span>**</span
-                            >{{ ub.ubicacion_fisica }}</span
+                            <span>**</span>{{ ub.ubicacion_fisica }}</span
                         >
                         <span v-if="ub.nivel == '3'">
-                            <span>***</span
-                            >{{ ub.ubicacion_fisica }}</span
+                            <span>***</span>{{ ub.ubicacion_fisica }}</span
                         >
                         <span v-if="ub.nivel == '4'">
                             <span>****</span>
@@ -179,8 +175,6 @@
                             <span>*****</span>
                             {{ ub.ubicacion_fisica }}</span
                         >
-                        
-
                     </option>
                 </select>
             </div>
@@ -206,7 +200,7 @@
                         v-bind:value="unidad.id"
                         v-bind:key="unidad.id"
                     >
-                        {{ unidad.numero }} - {{ unidad.unidad_ejecutora}}
+                        {{ unidad.numero }} - {{ unidad.unidad_ejecutora }}
                     </option>
                 </select>
             </div>
@@ -223,6 +217,7 @@ export default {
         this.getUbicacionAdministrativa();
         this.getUbicacionFisica();
         this.getUnidadEjecutora();
+        this.obtenerCatalogo('nominal_positions','puesto');
     },
     props: {
         id: {
@@ -244,22 +239,33 @@ export default {
                 { id: 1, servicio: "Técnico" },
                 { id: 2, servicio: "Profesional" }
             ],
-            fecha_inicio: '',
-            fecha_fin: '',
+            fecha_inicio: "",
+            fecha_fin: "",
             ubicacion_administrativa: [],
             ub_admin_select: "",
             ubicacion_fisica: [],
             ub_fis_select: "",
             unidades_ejecutoras: [],
-            unidad_ejecutora_select:'',
-            puesto_nominal:'',
-            puesto_funcional:'',
-            t_servicio_select:''
+            unidad_ejecutora_select: "",
+            puesto_nominal: "",
+            puesto_funcional: "",
+            t_servicio_select: "",
+            puestos_nominales: [],
+            position_nominal_select:''
         };
     },
     watch: {},
     components: {},
     methods: {
+        obtenerCatalogo: function(table, column) {
+            axios
+                .get(`/obtener-catalogo?table=${table}&column=${column}`)
+                .then(response => {
+                    if (table == "nominal_positions") {
+                        this.puestos_nominales = response.data;
+                    }
+                });
+        },
         getUbicacionAdministrativa() {
             axios
                 .get("/api/ubicacion_administrativa")
@@ -290,18 +296,19 @@ export default {
                     console.log(error);
                 });
         },
-        addHistorial(){
+        addHistorial() {
             axios
-                .post("/historico",{
-                    persona_id:this.id,
-                    periodo_inicio:this.fecha_inicio,
+                .post("/historico", {
+                    renglon: this.renglon_select,
+                    persona_id: this.id,
+                    periodo_inicio: this.fecha_inicio,
                     periodo_fin: this.fecha_fin,
-                    puesto_nominal: this.puesto_nominal,
+                    puesto_nominal: this.position_nominal_select,
                     puesto_funcional: this.puesto_funcional,
                     tipo_servicio: this.t_servicio_select
                 })
-                .then(res=>{
-                    console.log('Listo');
+                .then(res => {
+                    console.log("Listo");
                 })
                 .catch(error => {
                     console.log(error);

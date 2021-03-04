@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <tr v-for="historial in historiales" v-bind:key="historial.id">
-                    <th scope="row">{{ historial.id }}</th>
+                    <th scope="row">{{ historial.id }} <span class="badge badge-success">{{ historial.renglon }}</span></th>
                     <td>
                         {{ historial.periodo_inicio}}
                     </td>
@@ -30,10 +30,14 @@
                         {{ historial.periodo_fin}}
                     </td>
                     <td>
-                        {{ historial.puesto_nominal }}
+                        {{ historial.puesto }}
                     </td>
                     <td>{{ historial.puesto_funcional }}</td>
-                    <td>{{ historial.tipo_servicio }}</td>
+
+                    <td v-if="historial.tipo_servicio == '1'">Técnico</td>
+                    <td v-if="historial.tipo_servicio == '2'">Profesional</td>
+                    <td v-if="historial.tipo_servicio == null"></td>
+
                     <td></td>
                 </tr>
             </tbody>

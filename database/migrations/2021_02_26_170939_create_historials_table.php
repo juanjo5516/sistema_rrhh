@@ -16,11 +16,13 @@ class CreateHistorialsTable extends Migration
         Schema::create('historials', function (Blueprint $table) {
             $table->id();
             $table->foreignId('persona_id')->constrained('personas');
+            $table->string('renglon',3);
             $table->date('periodo_inicio');
             $table->date('periodo_fin')->nullable();
             $table->string('puesto_nominal',100)->nullable();
             $table->string('puesto_funcional',100)->nullable();
             $table->string('tipo_servicio',100)->nullable();
+            
 
             $table->timestamps();
         });

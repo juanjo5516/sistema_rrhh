@@ -2137,18 +2137,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
     this.getUbicacionAdministrativa();
     this.getUbicacionFisica();
     this.getUnidadEjecutora();
+    this.obtenerCatalogo('nominal_positions', 'puesto');
   },
   props: {
     id: {
@@ -2176,59 +2171,71 @@ __webpack_require__.r(__webpack_exports__);
         id: 2,
         servicio: "Profesional"
       }],
-      fecha_inicio: '',
-      fecha_fin: '',
+      fecha_inicio: "",
+      fecha_fin: "",
       ubicacion_administrativa: [],
       ub_admin_select: "",
       ubicacion_fisica: [],
       ub_fis_select: "",
       unidades_ejecutoras: [],
-      unidad_ejecutora_select: '',
-      puesto_nominal: '',
-      puesto_funcional: '',
-      t_servicio_select: ''
+      unidad_ejecutora_select: "",
+      puesto_nominal: "",
+      puesto_funcional: "",
+      t_servicio_select: "",
+      puestos_nominales: [],
+      position_nominal_select: ''
     };
   },
   watch: {},
   components: {},
   methods: {
-    getUbicacionAdministrativa: function getUbicacionAdministrativa() {
+    obtenerCatalogo: function obtenerCatalogo(table, column) {
       var _this = this;
 
+      axios.get("/obtener-catalogo?table=".concat(table, "&column=").concat(column)).then(function (response) {
+        if (table == "nominal_positions") {
+          _this.puestos_nominales = response.data;
+        }
+      });
+    },
+    getUbicacionAdministrativa: function getUbicacionAdministrativa() {
+      var _this2 = this;
+
       axios.get("/api/ubicacion_administrativa").then(function (res) {
-        _this.ubicacion_administrativa = res.data;
+        _this2.ubicacion_administrativa = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getUbicacionFisica: function getUbicacionFisica() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/ubicacion_fisica").then(function (res) {
-        _this2.ubicacion_fisica = res.data;
+        _this3.ubicacion_fisica = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getUnidadEjecutora: function getUnidadEjecutora() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/unidades_ejecutoras").then(function (res) {
-        _this3.unidades_ejecutoras = res.data;
+        _this4.unidades_ejecutoras = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     addHistorial: function addHistorial() {
       axios.post("/historico", {
+        renglon: this.renglon_select,
         persona_id: this.id,
         periodo_inicio: this.fecha_inicio,
         periodo_fin: this.fecha_fin,
-        puesto_nominal: this.puesto_nominal,
+        puesto_nominal: this.position_nominal_select,
         puesto_funcional: this.puesto_funcional,
         tipo_servicio: this.t_servicio_select
       }).then(function (res) {
-        console.log('Listo');
+        console.log("Listo");
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3105,6 +3112,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -44646,19 +44657,19 @@ var render = function() {
                   {
                     name: "model",
                     rawName: "v-model",
-                    value: this.puesto_nominal,
-                    expression: "this.puesto_nominal"
+                    value: _vm.puesto_funcional,
+                    expression: "puesto_funcional"
                   }
                 ],
                 staticClass: "form-control",
                 attrs: { type: "text" },
-                domProps: { value: this.puesto_nominal },
+                domProps: { value: _vm.puesto_funcional },
                 on: {
                   input: function($event) {
                     if ($event.target.composing) {
                       return
                     }
-                    _vm.$set(this, "puesto_nominal", $event.target.value)
+                    _vm.puesto_funcional = $event.target.value
                   }
                 }
               })
@@ -44674,27 +44685,49 @@ var render = function() {
                 [_vm._v("Puesto Nominal")]
               ),
               _vm._v(" "),
-              _c("input", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: this.puesto_funcional,
-                    expression: "this.puesto_funcional"
-                  }
-                ],
-                staticClass: "form-control",
-                attrs: { type: "text" },
-                domProps: { value: this.puesto_funcional },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.position_nominal_select,
+                      expression: "position_nominal_select"
                     }
-                    _vm.$set(this, "puesto_funcional", $event.target.value)
+                  ],
+                  staticClass: "form-control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.position_nominal_select = $event.target.multiple
+                        ? $$selectedVal
+                        : $$selectedVal[0]
+                    }
                   }
-                }
-              })
+                },
+                _vm._l(_vm.puestos_nominales, function(puesto) {
+                  return _c(
+                    "option",
+                    { key: puesto.id, domProps: { value: puesto.id } },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(puesto.puesto) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                }),
+                0
+              )
             ])
           ])
         : _vm._e(),
@@ -46189,7 +46222,10 @@ var render = function() {
               _vm._l(_vm.historiales, function(historial) {
                 return _c("tr", { key: historial.id }, [
                   _c("th", { attrs: { scope: "row" } }, [
-                    _vm._v(_vm._s(historial.id))
+                    _vm._v(_vm._s(historial.id) + " "),
+                    _c("span", { staticClass: "badge badge-success" }, [
+                      _vm._v(_vm._s(historial.renglon))
+                    ])
                   ]),
                   _vm._v(" "),
                   _c("td", [
@@ -46211,14 +46247,22 @@ var render = function() {
                   _c("td", [
                     _vm._v(
                       "\n                    " +
-                        _vm._s(historial.puesto_nominal) +
+                        _vm._s(historial.puesto) +
                         "\n                "
                     )
                   ]),
                   _vm._v(" "),
                   _c("td", [_vm._v(_vm._s(historial.puesto_funcional))]),
                   _vm._v(" "),
-                  _c("td", [_vm._v(_vm._s(historial.tipo_servicio))]),
+                  historial.tipo_servicio == "1"
+                    ? _c("td", [_vm._v("Técnico")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  historial.tipo_servicio == "2"
+                    ? _c("td", [_vm._v("Profesional")])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  historial.tipo_servicio == null ? _c("td") : _vm._e(),
                   _vm._v(" "),
                   _c("td")
                 ])

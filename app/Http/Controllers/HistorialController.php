@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Historial;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HistorialController extends Controller
 {
@@ -15,7 +16,12 @@ class HistorialController extends Controller
     public function index(Request $request)
     {
         if ($request->id){
-            return  Historial::where('persona_id',$request->id)->get();
+            //return  Historial::where('persona_id',$request->id)->get();
+            return DB::table('historials')
+            ->join('nominal_positions','historials.puesto_nominal','=','nominal_positions.id')
+            ->select('historials.*','nominal_positions.*')
+            ->where('persona_id',$request->id)
+            ->get();
         }
         return response()->json(Historial::all(),200);
     }
@@ -39,6 +45,7 @@ class HistorialController extends Controller
     public function store(Request $request)
     {
         $historial = new Historial();
+        $historial->renglon = $request->renglon;
         $historial->persona_id=$request->persona_id;
         $historial->periodo_inicio=$request->periodo_inicio;
         $historial->periodo_fin=$request->periodo_fin;
