@@ -11,7 +11,7 @@
         <table class="table table-bordered" >
             <thead>
                 <tr>
-                    <th scope="col">#</th>
+                    <th scope="col">Renglón</th>
                     <th scope="col">Inicio de Periodo</th>
                     <th scope="col">Fin de Periodo</th>
                     <th scope="col">Puesto Nominal</th>
@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <tr v-for="historial in historiales" v-bind:key="historial.id">
-                    <th scope="row">{{ historial.id }} <span class="badge badge-success">{{ historial.renglon }}</span></th>
+                    <th scope="row"><!-- {{ historial.idHistorial }} --> <span class="badge badge-success">{{ historial.renglon }}</span></th>
                     <td>
                         {{ historial.periodo_inicio}}
                     </td>
@@ -38,7 +38,12 @@
                     <td v-if="historial.tipo_servicio == '2'">Profesional</td>
                     <td v-if="historial.tipo_servicio == null"></td>
 
-                    <td></td>
+                    <td>
+                        <button class="btn btn-primary">Editar</button>
+                        <button class="btn btn-danger">Eliminar</button>
+                    </td>
+
+
                 </tr>
             </tbody>
         </table>

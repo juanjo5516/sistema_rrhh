@@ -3159,6 +3159,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -46222,7 +46227,6 @@ var render = function() {
               _vm._l(_vm.historiales, function(historial) {
                 return _c("tr", { key: historial.id }, [
                   _c("th", { attrs: { scope: "row" } }, [
-                    _vm._v(_vm._s(historial.id) + " "),
                     _c("span", { staticClass: "badge badge-success" }, [
                       _vm._v(_vm._s(historial.renglon))
                     ])
@@ -46264,7 +46268,7 @@ var render = function() {
                   _vm._v(" "),
                   historial.tipo_servicio == null ? _c("td") : _vm._e(),
                   _vm._v(" "),
-                  _c("td")
+                  _vm._m(1, true)
                 ])
               }),
               0
@@ -46282,7 +46286,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("thead", [
       _c("tr", [
-        _c("th", { attrs: { scope: "col" } }, [_vm._v("#")]),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Renglón")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Inicio de Periodo")]),
         _vm._v(" "),
@@ -46296,6 +46300,16 @@ var staticRenderFns = [
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Opciones")])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", [
+      _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Editar")]),
+      _vm._v(" "),
+      _c("button", { staticClass: "btn btn-danger" }, [_vm._v("Eliminar")])
     ])
   }
 ]
@@ -66617,15 +66631,14 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /*!***********************************************************!*\
   !*** ./resources/js/components/AddHistoricoComponent.vue ***!
   \***********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _AddHistoricoComponent_vue_vue_type_template_id_50485113___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AddHistoricoComponent.vue?vue&type=template&id=50485113& */ "./resources/js/components/AddHistoricoComponent.vue?vue&type=template&id=50485113&");
 /* harmony import */ var _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AddHistoricoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _AddHistoricoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -66655,7 +66668,7 @@ component.options.__file = "resources/js/components/AddHistoricoComponent.vue"
 /*!************************************************************************************!*\
   !*** ./resources/js/components/AddHistoricoComponent.vue?vue&type=script&lang=js& ***!
   \************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

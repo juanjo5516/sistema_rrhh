@@ -18,8 +18,8 @@ class HistorialController extends Controller
         if ($request->id){
             //return  Historial::where('persona_id',$request->id)->get();
             return DB::table('historials')
-            ->join('nominal_positions','historials.puesto_nominal','=','nominal_positions.id')
-            ->select('historials.*','nominal_positions.*')
+            ->leftjoin('nominal_positions','historials.puesto_nominal','=','nominal_positions.id')
+            ->select('historials.id as idHistorial','historials.*','nominal_positions.*')
             ->where('persona_id',$request->id)
             ->get();
         }
