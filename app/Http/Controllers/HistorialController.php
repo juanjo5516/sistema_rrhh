@@ -76,7 +76,11 @@ class HistorialController extends Controller
      */
     public function edit($id)
     {
-        return Historial::find($id);        
+        return response()->json(DB::table('historials')
+            ->leftjoin('nominal_positions','historials.puesto_nominal','=','nominal_positions.id')
+            ->select('historials.id as idHistorial','historials.*','nominal_positions.*')
+            ->where('historials.id',$id)
+            ->first(),200);    
     }
 
     /**

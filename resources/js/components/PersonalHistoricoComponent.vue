@@ -1,6 +1,6 @@
 <template>
     <div v-if="id>0">
-        <edit-history-component></edit-history-component>
+        <edit-history-component :objeto="editar"></edit-history-component>
         <div>
             <h1>Historial de Empleado</h1>
             <button class="btn btn-primary mb-3" @click="addForm">Añadir nuevo</button>
@@ -8,7 +8,6 @@
 
         <add-historico :id="this.id" v-if="this.agregar"> </add-historico>
         
-
         <table class="table table-bordered" >
             <thead>
                 <tr>
@@ -56,7 +55,8 @@ import EditHistoryComponent from './EditHistoryComponent';
 
 export default {
     mounted() {
-        console.log("Component mounted.");
+        console.log("Component mounted - PersonalHistorico."+ this.editar);
+
     },
     props: {
         id: {
@@ -67,7 +67,7 @@ export default {
     data() {
         return {
             historiales: [],
-            historial_editar: '',
+            editar: {},
             historial: true,
             agregar: false
         };
@@ -85,8 +85,9 @@ export default {
         mostrarEdit(id_historial){
             axios.get(`/api/historial/${id_historial}/edit`)
             .then(response => {
-                this.historial_editar = response.data;
-                //$('#modal_editar').modal('show');
+                this.editar = response.data;
+                $('#modal_editar').modal('show');
+                console.log(this.editar);
             });
         },
         addForm(){

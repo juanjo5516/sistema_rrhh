@@ -2861,19 +2861,41 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  // props: ['url','nombre_form'],
+  props: {
+    objeto: {
+      type: Object
+    }
+  },
   data: function data() {
-    return {};
+    return {
+      puestos_nominales: '',
+      ubicacion_administrativa: '',
+      ubicacion_fisica: '',
+      unidades_ejecutoras: '',
+      tipo_servicios: [{
+        id: 1,
+        servicio: "Técnico"
+      }, {
+        id: 2,
+        servicio: "Profesional"
+      }],
+      renglones: [{
+        renglon: "011"
+      }, {
+        renglon: "029"
+      }, {
+        renglon: "018"
+      }, {
+        renglon: "022"
+      }]
+    };
+  },
+  mounted: function mounted() {
+    this.getUbicacionAdministrativa();
+    this.getUbicacionFisica();
+    this.getUnidadEjecutora();
+    this.obtenerCatalogo('nominal_positions', 'puesto');
   },
   methods: {
     borrar: function borrar() {
@@ -2882,6 +2904,42 @@ __webpack_require__.r(__webpack_exports__);
       }).cath(function (error) {
         console.log(error);
         alert("ocurrió un error.");
+      });
+    },
+    obtenerCatalogo: function obtenerCatalogo(table, column) {
+      var _this = this;
+
+      axios.get("/obtener-catalogo?table=".concat(table, "&column=").concat(column)).then(function (response) {
+        if (table == "nominal_positions") {
+          _this.puestos_nominales = response.data;
+        }
+      });
+    },
+    getUbicacionAdministrativa: function getUbicacionAdministrativa() {
+      var _this2 = this;
+
+      axios.get("/api/ubicacion_administrativa").then(function (res) {
+        _this2.ubicacion_administrativa = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getUbicacionFisica: function getUbicacionFisica() {
+      var _this3 = this;
+
+      axios.get("/api/ubicacion_fisica").then(function (res) {
+        _this3.ubicacion_fisica = res.data;
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    getUnidadEjecutora: function getUnidadEjecutora() {
+      var _this4 = this;
+
+      axios.get("/api/unidades_ejecutoras").then(function (res) {
+        _this4.unidades_ejecutoras = res.data;
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   }
@@ -3477,11 +3535,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
-    console.log("Component mounted.");
+    console.log("Component mounted - PersonalHistorico." + this.editar);
   },
   props: {
     id: {
@@ -3492,7 +3549,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       historiales: [],
-      historial_editar: '',
+      editar: {},
       historial: true,
       agregar: false
     };
@@ -3510,7 +3567,9 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       axios.get("/api/historial/".concat(id_historial, "/edit")).then(function (response) {
-        _this.historial_editar = response.data; //$('#modal_editar').modal('show');
+        _this.editar = response.data;
+        $('#modal_editar').modal('show');
+        console.log(_this.editar);
       });
     },
     addForm: function addForm() {
@@ -45924,6 +45983,8 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
+              _c("pre", [_vm._v(_vm._s(_vm.objeto))]),
+              _vm._v(" "),
               _c("div", { staticClass: "mb-3" }, [
                 _c(
                   "label",
@@ -45941,8 +46002,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.renglon_select,
-                        expression: "renglon_select"
+                        value: _vm.objeto.renglon,
+                        expression: "objeto.renglon"
                       }
                     ],
                     staticClass: "form-control",
@@ -45956,9 +46017,13 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.renglon_select = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.objeto,
+                          "renglon",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
@@ -45998,19 +46063,23 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.puesto_funcional,
-                        expression: "puesto_funcional"
+                        value: _vm.objeto.puesto_funcional,
+                        expression: "objeto.puesto_funcional"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "text" },
-                    domProps: { value: _vm.puesto_funcional },
+                    domProps: { value: _vm.objeto.puesto_funcional },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.puesto_funcional = $event.target.value
+                        _vm.$set(
+                          _vm.objeto,
+                          "puesto_funcional",
+                          $event.target.value
+                        )
                       }
                     }
                   })
@@ -46033,8 +46102,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.position_nominal_select,
-                          expression: "position_nominal_select"
+                          value: _vm.objeto.puesto_nominal,
+                          expression: "objeto.puesto_nominal"
                         }
                       ],
                       staticClass: "form-control",
@@ -46048,9 +46117,13 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.position_nominal_select = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            _vm.objeto,
+                            "puesto_nominal",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
@@ -46090,8 +46163,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.t_servicio_select,
-                          expression: "t_servicio_select"
+                          value: _vm.objeto.tipo_servicio,
+                          expression: "objeto.tipo_servicio"
                         }
                       ],
                       staticClass: "form-control",
@@ -46105,9 +46178,13 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.t_servicio_select = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            _vm.objeto,
+                            "tipo_servicio",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
@@ -46145,19 +46222,23 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.fecha_inicio,
-                        expression: "fecha_inicio"
+                        value: _vm.objeto.periodo_inicio,
+                        expression: "objeto.periodo_inicio"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date" },
-                    domProps: { value: _vm.fecha_inicio },
+                    domProps: { value: _vm.objeto.periodo_inicio },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.fecha_inicio = $event.target.value
+                        _vm.$set(
+                          _vm.objeto,
+                          "periodo_inicio",
+                          $event.target.value
+                        )
                       }
                     }
                   })
@@ -46178,19 +46259,19 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.fecha_fin,
-                        expression: "fecha_fin"
+                        value: _vm.objeto.periodo_fin,
+                        expression: "objeto.periodo_fin"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { type: "date" },
-                    domProps: { value: _vm.fecha_fin },
+                    domProps: { value: _vm.objeto.periodo_fin },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.fecha_fin = $event.target.value
+                        _vm.$set(_vm.objeto, "periodo_fin", $event.target.value)
                       }
                     }
                   })
@@ -46474,7 +46555,7 @@ var render = function() {
                 },
                 [
                   _vm._v(
-                    "\n                        Editar\n                    "
+                    "\n                        Actualizar\n                    "
                   )
                 ]
               ),
@@ -47164,7 +47245,7 @@ var render = function() {
     ? _c(
         "div",
         [
-          _c("edit-history-component"),
+          _c("edit-history-component", { attrs: { objeto: _vm.editar } }),
           _vm._v(" "),
           _c("div", [
             _c("h1", [_vm._v("Historial de Empleado")]),

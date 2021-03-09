@@ -21,6 +21,7 @@
                         ></button>
                     </div>
                     <div class="modal-body">
+                        <pre>{{ objeto }}</pre>
                         <div class="mb-3">
                             <label
                                 for="exampleInputPassword1"
@@ -30,7 +31,7 @@
 
                             <select
                                 class="form-control"
-                                v-model="renglon_select"
+                                v-model="objeto.renglon"
                             >
                                 <option
                                     v-for="renglon in renglones"
@@ -42,9 +43,7 @@
                             </select>
                         </div>
 
-                        <div
-                            class="form-row"
-                        >
+                        <div class="form-row">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"
@@ -52,7 +51,7 @@
                                     >Puesto Funcional</label
                                 >
                                 <input
-                                    v-model="puesto_funcional"
+                                    v-model="objeto.puesto_funcional"
                                     type="text"
                                     class="form-control"
                                 />
@@ -65,7 +64,7 @@
                                 >
                                 <select
                                     class="form-control"
-                                    v-model="position_nominal_select"
+                                    v-model="objeto.puesto_nominal"
                                 >
                                     <option
                                         v-for="puesto in puestos_nominales"
@@ -78,9 +77,7 @@
                             </div>
                         </div>
 
-                        <div
-                            class="form-row"
-                        >
+                        <div class="form-row">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"
@@ -90,7 +87,7 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="t_servicio_select"
+                                    v-model="objeto.tipo_servicio"
                                 >
                                     <option
                                         v-for="servicio in tipo_servicios"
@@ -103,9 +100,7 @@
                             </div>
                         </div>
 
-                        <div
-                            class="form-row"
-                        >
+                        <div class="form-row">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"
@@ -113,7 +108,7 @@
                                     >Fecha Inicio</label
                                 >
                                 <input
-                                    v-model="fecha_inicio"
+                                    v-model="objeto.periodo_inicio"
                                     type="date"
                                     class="form-control"
                                 />
@@ -125,16 +120,14 @@
                                     >Fecha Fin</label
                                 >
                                 <input
-                                    v-model="fecha_fin"
+                                    v-model="objeto.periodo_fin"
                                     type="date"
                                     class="form-control"
                                 />
                             </div>
                         </div>
 
-                        <div
-                            class="mb-3 form-row"
-                        >
+                        <div class="mb-3 form-row">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"
@@ -238,9 +231,7 @@
                             </div>
                         </div>
 
-                        <div
-                            class="mb-3 form-row"
-                        >
+                        <div class="mb-3 form-row">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"
@@ -270,7 +261,7 @@
                             class="btn btn-secondary"
                             data-bs-dismiss="modal"
                         >
-                            Editar
+                            Actualizar
                         </button>
                         <button class="btn btn-primary" v-on:click="borrar">
                             Cancelar
@@ -283,12 +274,35 @@
 </template>
 <script>
 export default {
-    // props: ['url','nombre_form'],
+    props: {
+        objeto: {
+            type: Object
+        }
+    },
     data () {
         return{
-            
+            puestos_nominales:'',
+            ubicacion_administrativa:'',
+            ubicacion_fisica:'',
+            unidades_ejecutoras:'',
+            tipo_servicios: [
+                { id: 1, servicio: "Técnico" },
+                { id: 2, servicio: "Profesional" }
+            ],
+            renglones: [
+                { renglon: "011" },
+                { renglon: "029" },
+                { renglon: "018" },
+                { renglon: "022" }
+            ],
         }
 
+    },
+    mounted (){
+        this.getUbicacionAdministrativa();
+        this.getUbicacionFisica();
+        this.getUnidadEjecutora();
+        this.obtenerCatalogo('nominal_positions','puesto');
     },
     methods: {
         borrar() {
@@ -301,7 +315,46 @@ export default {
                     console.log(error);
                     alert("ocurrió un error.");
                 });
-        }
+        },
+        obtenerCatalogo: function(table, column) {
+            axios
+                .get(`/obtener-catalogo?table=${table}&column=${column}`)
+                .then(response => {
+                    if (table == "nominal_positions") {
+                        this.puestos_nominales = response.data;
+                    }
+                });
+        },
+        getUbicacionAdministrativa() {
+            axios
+                .get("/api/ubicacion_administrativa")
+                .then(res => {
+                    this.ubicacion_administrativa = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        getUbicacionFisica() {
+            axios
+                .get("/api/ubicacion_fisica")
+                .then(res => {
+                    this.ubicacion_fisica = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
+        getUnidadEjecutora() {
+            axios
+                .get("/api/unidades_ejecutoras")
+                .then(res => {
+                    this.unidades_ejecutoras = res.data;
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+        },
     }
 };
 </script>
