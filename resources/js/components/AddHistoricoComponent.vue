@@ -309,6 +309,7 @@ export default {
                 })
                 .then(res => {
                     console.log("Listo");
+                    location.href = "";
                 })
                 .catch(error => {
                     console.log(error);

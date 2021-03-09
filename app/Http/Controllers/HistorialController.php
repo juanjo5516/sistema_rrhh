@@ -74,9 +74,9 @@ class HistorialController extends Controller
      * @param  \App\Historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function edit(Historial $historial)
+    public function edit($id)
     {
-        //
+        return Historial::find($id);        
     }
 
     /**
