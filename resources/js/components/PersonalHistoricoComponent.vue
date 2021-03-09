@@ -1,6 +1,8 @@
 <template>
     <div v-if="id>0">
+
         <edit-history-component :objeto="editar"></edit-history-component>
+        
         <div>
             <h1>Historial de Empleado</h1>
             <button class="btn btn-primary mb-3" @click="addForm">Añadir nuevo</button>

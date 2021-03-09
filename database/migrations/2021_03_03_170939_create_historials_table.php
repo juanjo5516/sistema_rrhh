@@ -19,12 +19,18 @@ class CreateHistorialsTable extends Migration
             $table->string('renglon',3);
             $table->date('periodo_inicio');
             $table->date('periodo_fin')->nullable();
-            $table->string('puesto_nominal',100)->nullable();
+            $table->unsignedBigInteger('nominal_position_id')->nullable();
             $table->string('puesto_funcional',100)->nullable();
             $table->string('tipo_servicio',100)->nullable();
-            
-
+            $table->unsignedBigInteger('administrative_ubication_id')->nullable();
+            $table->unsignedBigInteger('physical_location_id')->nullable();
+            $table->unsignedBigInteger('unidad_ejecutora_id')->nullable();
             $table->timestamps();
+
+            $table->foreign('nominal_position_id')->references('id')->on('nominal_positions');
+            $table->foreign('administrative_ubication_id')->references('id')->on('administrative_ubications');
+            $table->foreign('physical_location_id')->references('id')->on('physical_locations');
+            $table->foreign('unidad_ejecutora_id')->references('id')->on('unidad_ejecutoras');
         });
     }
 

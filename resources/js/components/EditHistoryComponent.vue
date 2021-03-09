@@ -21,7 +21,7 @@
                         ></button>
                     </div>
                     <div class="modal-body">
-                        <pre>{{ objeto }}</pre>
+                        <!-- <pre>{{ objeto }}</pre> -->
                         <div class="mb-3">
                             <label
                                 for="exampleInputPassword1"
@@ -137,7 +137,7 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="ub_admin_select"
+                                    v-model="objeto.ubicacion_administrativa"
                                 >
                                     <option
                                         v-for="ub_admin in ubicacion_administrativa"
@@ -194,11 +194,11 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="ub_fis_select"
+                                    v-model="objeto.ubicacion_fisica"
                                 >
                                     <option
                                         v-for="ub in ubicacion_fisica"
-                                        v-bind:value="ub.id"
+                                        v-bind:value="ub.ubicacion_fisica"
                                         v-bind:key="ub.id"
                                         :class="{
                                             'text-primary font-weight-bold':
@@ -241,11 +241,11 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="unidad_ejecutora_select"
+                                    v-model="objeto.unidad_ejecutora"
                                 >
                                     <option
                                         v-for="unidad in unidades_ejecutoras"
-                                        v-bind:value="unidad.id"
+                                        v-bind:value="unidad.unidad_ejecutora"
                                         v-bind:key="unidad.id"
                                     >
                                         {{ unidad.numero }} -

@@ -2233,7 +2233,10 @@ __webpack_require__.r(__webpack_exports__);
         periodo_fin: this.fecha_fin,
         puesto_nominal: this.position_nominal_select,
         puesto_funcional: this.puesto_funcional,
-        tipo_servicio: this.t_servicio_select
+        tipo_servicio: this.t_servicio_select,
+        ub_admin: this.ub_admin_select,
+        ub_fisica: this.ub_fis_select,
+        unidad_ejecutora: this.unidad_ejecutora_select
       }).then(function (res) {
         console.log("Listo");
         location.href = "";
@@ -3483,6 +3486,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditHistoryComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditHistoryComponent */ "./resources/js/components/EditHistoryComponent.vue");
+//
+//
 //
 //
 //
@@ -45306,7 +45311,7 @@ var render = function() {
                         "text-success": ub_admin.nivel == 3,
                         "text-info": ub_admin.nivel == 4
                       },
-                      domProps: { value: ub_admin.ubicacion_administrativa }
+                      domProps: { value: ub_admin.id }
                     },
                     [
                       ub_admin.nivel == "1"
@@ -45983,8 +45988,6 @@ var render = function() {
             _vm._m(0),
             _vm._v(" "),
             _c("div", { staticClass: "modal-body" }, [
-              _c("pre", [_vm._v(_vm._s(_vm.objeto))]),
-              _vm._v(" "),
               _c("div", { staticClass: "mb-3" }, [
                 _c(
                   "label",
@@ -46296,8 +46299,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.ub_admin_select,
-                          expression: "ub_admin_select"
+                          value: _vm.objeto.ubicacion_administrativa,
+                          expression: "objeto.ubicacion_administrativa"
                         }
                       ],
                       staticClass: "form-control",
@@ -46311,9 +46314,13 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.ub_admin_select = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            _vm.objeto,
+                            "ubicacion_administrativa",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
@@ -46401,8 +46408,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.ub_fis_select,
-                          expression: "ub_fis_select"
+                          value: _vm.objeto.ubicacion_fisica,
+                          expression: "objeto.ubicacion_fisica"
                         }
                       ],
                       staticClass: "form-control",
@@ -46416,9 +46423,13 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.ub_fis_select = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            _vm.objeto,
+                            "ubicacion_fisica",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
@@ -46432,7 +46443,7 @@ var render = function() {
                             "text-success": ub.nivel == 3,
                             "text-info": ub.nivel == 4
                           },
-                          domProps: { value: ub.id }
+                          domProps: { value: ub.ubicacion_fisica }
                         },
                         [
                           ub.nivel == "1"
@@ -46504,8 +46515,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.unidad_ejecutora_select,
-                          expression: "unidad_ejecutora_select"
+                          value: _vm.objeto.unidad_ejecutora,
+                          expression: "objeto.unidad_ejecutora"
                         }
                       ],
                       staticClass: "form-control",
@@ -46519,16 +46530,23 @@ var render = function() {
                               var val = "_value" in o ? o._value : o.value
                               return val
                             })
-                          _vm.unidad_ejecutora_select = $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
+                          _vm.$set(
+                            _vm.objeto,
+                            "unidad_ejecutora",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
                         }
                       }
                     },
                     _vm._l(_vm.unidades_ejecutoras, function(unidad) {
                       return _c(
                         "option",
-                        { key: unidad.id, domProps: { value: unidad.id } },
+                        {
+                          key: unidad.id,
+                          domProps: { value: unidad.unidad_ejecutora }
+                        },
                         [
                           _vm._v(
                             "\n                                    " +

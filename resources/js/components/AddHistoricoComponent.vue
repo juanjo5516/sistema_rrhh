@@ -111,7 +111,7 @@
                 <select class="form-control" v-model="ub_admin_select">
                     <option
                         v-for="ub_admin in ubicacion_administrativa"
-                        v-bind:value="ub_admin.ubicacion_administrativa"
+                        v-bind:value="ub_admin.id"
                         v-bind:key="ub_admin.id"
                         :class="{
                             'text-primary font-weight-bold':
@@ -305,7 +305,10 @@ export default {
                     periodo_fin: this.fecha_fin,
                     puesto_nominal: this.position_nominal_select,
                     puesto_funcional: this.puesto_funcional,
-                    tipo_servicio: this.t_servicio_select
+                    tipo_servicio: this.t_servicio_select,
+                    ub_admin: this.ub_admin_select,
+                    ub_fisica: this.ub_fis_select,
+                    unidad_ejecutora: this.unidad_ejecutora_select
                 })
                 .then(res => {
                     console.log("Listo");

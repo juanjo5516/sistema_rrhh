@@ -18,7 +18,7 @@ class HistorialController extends Controller
         if ($request->id){
             //return  Historial::where('persona_id',$request->id)->get();
             return DB::table('historials')
-            ->leftjoin('nominal_positions','historials.puesto_nominal','=','nominal_positions.id')
+            ->leftjoin('nominal_positions','historials.nominal_position_id','=','nominal_positions.id')
             ->select('historials.id as idHistorial','historials.*','nominal_positions.*')
             ->where('persona_id',$request->id)
             ->get();
@@ -49,9 +49,12 @@ class HistorialController extends Controller
         $historial->persona_id=$request->persona_id;
         $historial->periodo_inicio=$request->periodo_inicio;
         $historial->periodo_fin=$request->periodo_fin;
-        $historial->puesto_nominal=$request->puesto_nominal;
+        $historial->nominal_position_id=$request->puesto_nominal;
         $historial->puesto_funcional=$request->puesto_funcional;
         $historial->tipo_servicio=$request->tipo_servicio;
+        $historial->administrative_ubication_id=$request->ub_admin;
+        $historial->physical_location_id=$request->ub_fisica;
+        $historial->unidad_ejecutora_id=$request->unidad_ejecutora;
         $historial->save();
         return response()->json('Historial agregado',200);
                    
@@ -77,8 +80,11 @@ class HistorialController extends Controller
     public function edit($id)
     {
         return response()->json(DB::table('historials')
-            ->leftjoin('nominal_positions','historials.puesto_nominal','=','nominal_positions.id')
-            ->select('historials.id as idHistorial','historials.*','nominal_positions.*')
+            ->leftjoin('nominal_positions','historials.nominal_position_id','=','nominal_positions.id')
+            ->leftjoin('administrative_ubications','historials.administrative_ubication_id','=','administrative_ubications.id')
+            ->leftjoin('physical_locations','historials.physical_location_id','=','physical_locations.id')
+            ->leftjoin('unidad_ejecutoras','historials.unidad_ejecutora_id','=','unidad_ejecutoras.id')
+            ->select('historials.id as idHistorial','historials.*','nominal_positions.*','administrative_ubications.ubicacion_administrativa','physical_locations.ubicacion_fisica','unidad_ejecutoras.unidad_ejecutora')
             ->where('historials.id',$id)
             ->first(),200);    
     }
