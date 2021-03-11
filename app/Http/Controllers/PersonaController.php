@@ -9,6 +9,7 @@ use App\Puesto;
 use App\Colegiado;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class PersonaController extends Controller
 {

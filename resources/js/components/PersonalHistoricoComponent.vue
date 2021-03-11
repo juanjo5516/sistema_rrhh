@@ -19,6 +19,7 @@
                     <th scope="col">Puesto Nominal</th>
                     <th scope="col">Puesto Funcional</th>
                     <th scope="col">Tipo de Servicio</th>
+                    <!-- <th scope="col">Ubicación Administrativa</th> -->
                     <th scope="col">Opciones</th>
                 </tr>
             </thead>
@@ -39,6 +40,8 @@
                     <td v-if="historial.tipo_servicio == '1'">Técnico</td>
                     <td v-if="historial.tipo_servicio == '2'">Profesional</td>
                     <td v-if="historial.tipo_servicio == null"></td>
+
+                    <!-- <td>{{ historial.ubicacion_administrativa }}</td> -->
 
                     <td>
                         <button class="btn btn-primary" @click="mostrarEdit(historial.idHistorial)">Editar</button>

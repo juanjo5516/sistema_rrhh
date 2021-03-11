@@ -19,7 +19,10 @@ class HistorialController extends Controller
             //return  Historial::where('persona_id',$request->id)->get();
             return DB::table('historials')
             ->leftjoin('nominal_positions','historials.nominal_position_id','=','nominal_positions.id')
-            ->select('historials.id as idHistorial','historials.*','nominal_positions.*')
+            ->leftjoin('administrative_ubications','historials.administrative_ubication_id','=','administrative_ubications.id')
+            ->leftjoin('physical_locations','historials.physical_location_id','=','physical_locations.id')
+            ->leftjoin('unidad_ejecutoras','historials.unidad_ejecutora_id','=','unidad_ejecutoras.id')
+            ->select('historials.id as idHistorial','historials.*','nominal_positions.*','administrative_ubications.ubicacion_administrativa','physical_locations.ubicacion_fisica','unidad_ejecutoras.unidad_ejecutora')
             ->where('persona_id',$request->id)
             ->get();
         }
@@ -98,7 +101,12 @@ class HistorialController extends Controller
      */
     public function update(Request $request, Historial $historial)
     {
-        //
+        Historial::find($request->idHistorial)->update($request->all());
+        return response()->json("Actualizado Correctamente",200);
+
+
+        
+        //return $request->data['idHistorial'];
     }
 
     /**

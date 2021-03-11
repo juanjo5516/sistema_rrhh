@@ -8,6 +8,7 @@
       <th scope="col">Nombre Completo</th>
       <th scope="col">dpi</th>
       <th scope="col">Renglón</th>
+      <th scope="col">Fecha Nacimiento</th>
       <th scope="col">Nit</th>
       <th scope="col">Género</th>
     </tr>
@@ -20,6 +21,7 @@
       <td>{{nombreCompleto(persona.nombre1,persona.nombre2,persona.nombre3,persona.apellido1,persona.apellido2,persona.apellido_casada)}}</td>
       <td>{{persona.dpi}}</td>
       <td>{{persona.renglon}}</td>
+      <td>{{persona.fecha_nacimiento}}</td>
       <td>{{persona.nit}}</td>
       <td>{{persona.genero}}</td>
     </tr>

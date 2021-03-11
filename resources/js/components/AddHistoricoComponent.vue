@@ -217,7 +217,7 @@ export default {
         this.getUbicacionAdministrativa();
         this.getUbicacionFisica();
         this.getUnidadEjecutora();
-        this.obtenerCatalogo('nominal_positions','puesto');
+        this.obtenerCatalogo("nominal_positions", "puesto");
     },
     props: {
         id: {
@@ -251,7 +251,7 @@ export default {
             puesto_funcional: "",
             t_servicio_select: "",
             puestos_nominales: [],
-            position_nominal_select:''
+            position_nominal_select: ""
         };
     },
     watch: {},
@@ -311,8 +311,15 @@ export default {
                     unidad_ejecutora: this.unidad_ejecutora_select
                 })
                 .then(res => {
-                    console.log("Listo");
-                    location.href = "";
+                    //console.log("Listo");
+                    
+                    Swal.fire({
+                        title: "Guardar",
+                        text: "Histórico Almacenado Correctamente"
+                    });
+                    
+
+                    
                 })
                 .catch(error => {
                     console.log(error);

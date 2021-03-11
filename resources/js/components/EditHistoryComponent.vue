@@ -64,7 +64,7 @@
                                 >
                                 <select
                                     class="form-control"
-                                    v-model="objeto.puesto_nominal"
+                                    v-model="objeto.nominal_position_id"
                                 >
                                     <option
                                         v-for="puesto in puestos_nominales"
@@ -137,12 +137,12 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="objeto.ubicacion_administrativa"
+                                    v-model="objeto.administrative_ubication_id"
                                 >
                                     <option
                                         v-for="ub_admin in ubicacion_administrativa"
                                         v-bind:value="
-                                            ub_admin.ubicacion_administrativa
+                                            ub_admin.id
                                         "
                                         v-bind:key="ub_admin.id"
                                         :class="{
@@ -194,11 +194,11 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="objeto.ubicacion_fisica"
+                                    v-model="objeto.physical_location_id"
                                 >
                                     <option
                                         v-for="ub in ubicacion_fisica"
-                                        v-bind:value="ub.ubicacion_fisica"
+                                        v-bind:value="ub.id"
                                         v-bind:key="ub.id"
                                         :class="{
                                             'text-primary font-weight-bold':
@@ -241,11 +241,11 @@
 
                                 <select
                                     class="form-control"
-                                    v-model="objeto.unidad_ejecutora"
+                                    v-model="objeto.unidad_ejecutora_id"
                                 >
                                     <option
                                         v-for="unidad in unidades_ejecutoras"
-                                        v-bind:value="unidad.unidad_ejecutora"
+                                        v-bind:value="unidad.id"
                                         v-bind:key="unidad.id"
                                     >
                                         {{ unidad.numero }} -
@@ -260,10 +260,11 @@
                             type="button"
                             class="btn btn-secondary"
                             data-bs-dismiss="modal"
+                            @click="actualizarHistorial"
                         >
                             Actualizar
                         </button>
-                        <button class="btn btn-primary" v-on:click="borrar">
+                        <button class="btn btn-primary" v-on:click="cerrarModal">
                             Cancelar
                         </button>
                     </div>
@@ -305,6 +306,26 @@ export default {
         this.obtenerCatalogo('nominal_positions','puesto');
     },
     methods: {
+        actualizarHistorial(){
+            console.log("Método actualizar historial");
+            console.log(this.objeto);
+            axios.put(`/api/historial/${this.objeto.idHistorial}`,
+                this.objeto
+
+            )
+            .then(response => {
+                this.cerrarModal();
+                Swal.fire({
+                    title: 'Actualización',
+                    text: 'Registro Actualizado Correctamente'
+                });
+            }).catch(error => {
+
+            });
+        },
+        cerrarModal(){
+            $('#modal_editar').modal('hide');
+        },
         borrar() {
             axios
                 .delete(this.url)

@@ -2143,7 +2143,7 @@ __webpack_require__.r(__webpack_exports__);
     this.getUbicacionAdministrativa();
     this.getUbicacionFisica();
     this.getUnidadEjecutora();
-    this.obtenerCatalogo('nominal_positions', 'puesto');
+    this.obtenerCatalogo("nominal_positions", "puesto");
   },
   props: {
     id: {
@@ -2183,7 +2183,7 @@ __webpack_require__.r(__webpack_exports__);
       puesto_funcional: "",
       t_servicio_select: "",
       puestos_nominales: [],
-      position_nominal_select: ''
+      position_nominal_select: ""
     };
   },
   watch: {},
@@ -2238,8 +2238,11 @@ __webpack_require__.r(__webpack_exports__);
         ub_fisica: this.ub_fis_select,
         unidad_ejecutora: this.unidad_ejecutora_select
       }).then(function (res) {
-        console.log("Listo");
-        location.href = "";
+        //console.log("Listo");
+        Swal.fire({
+          title: "Guardar",
+          text: "Histórico Almacenado Correctamente"
+        });
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2864,6 +2867,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     objeto: {
@@ -2901,6 +2905,23 @@ __webpack_require__.r(__webpack_exports__);
     this.obtenerCatalogo('nominal_positions', 'puesto');
   },
   methods: {
+    actualizarHistorial: function actualizarHistorial() {
+      var _this = this;
+
+      console.log("Método actualizar historial");
+      console.log(this.objeto);
+      axios.put("/api/historial/".concat(this.objeto.idHistorial), this.objeto).then(function (response) {
+        _this.cerrarModal();
+
+        Swal.fire({
+          title: 'Actualización',
+          text: 'Registro Actualizado Correctamente'
+        });
+      })["catch"](function (error) {});
+    },
+    cerrarModal: function cerrarModal() {
+      $('#modal_editar').modal('hide');
+    },
     borrar: function borrar() {
       axios["delete"](this.url).then(function (response) {
         location.href = "";
@@ -2910,37 +2931,37 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     obtenerCatalogo: function obtenerCatalogo(table, column) {
-      var _this = this;
+      var _this2 = this;
 
       axios.get("/obtener-catalogo?table=".concat(table, "&column=").concat(column)).then(function (response) {
         if (table == "nominal_positions") {
-          _this.puestos_nominales = response.data;
+          _this2.puestos_nominales = response.data;
         }
       });
     },
     getUbicacionAdministrativa: function getUbicacionAdministrativa() {
-      var _this2 = this;
+      var _this3 = this;
 
       axios.get("/api/ubicacion_administrativa").then(function (res) {
-        _this2.ubicacion_administrativa = res.data;
+        _this3.ubicacion_administrativa = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getUbicacionFisica: function getUbicacionFisica() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get("/api/ubicacion_fisica").then(function (res) {
-        _this3.ubicacion_fisica = res.data;
+        _this4.ubicacion_fisica = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
     },
     getUnidadEjecutora: function getUnidadEjecutora() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get("/api/unidades_ejecutoras").then(function (res) {
-        _this4.unidades_ejecutoras = res.data;
+        _this5.unidades_ejecutoras = res.data;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -3348,6 +3369,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -3486,6 +3509,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditHistoryComponent__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditHistoryComponent */ "./resources/js/components/EditHistoryComponent.vue");
+//
+//
+//
 //
 //
 //
@@ -46105,8 +46131,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.objeto.puesto_nominal,
-                          expression: "objeto.puesto_nominal"
+                          value: _vm.objeto.nominal_position_id,
+                          expression: "objeto.nominal_position_id"
                         }
                       ],
                       staticClass: "form-control",
@@ -46122,7 +46148,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.objeto,
-                            "puesto_nominal",
+                            "nominal_position_id",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -46299,8 +46325,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.objeto.ubicacion_administrativa,
-                          expression: "objeto.ubicacion_administrativa"
+                          value: _vm.objeto.administrative_ubication_id,
+                          expression: "objeto.administrative_ubication_id"
                         }
                       ],
                       staticClass: "form-control",
@@ -46316,7 +46342,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.objeto,
-                            "ubicacion_administrativa",
+                            "administrative_ubication_id",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -46335,7 +46361,7 @@ var render = function() {
                             "text-success": ub_admin.nivel == 3,
                             "text-info": ub_admin.nivel == 4
                           },
-                          domProps: { value: ub_admin.ubicacion_administrativa }
+                          domProps: { value: ub_admin.id }
                         },
                         [
                           ub_admin.nivel == "1"
@@ -46408,8 +46434,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.objeto.ubicacion_fisica,
-                          expression: "objeto.ubicacion_fisica"
+                          value: _vm.objeto.physical_location_id,
+                          expression: "objeto.physical_location_id"
                         }
                       ],
                       staticClass: "form-control",
@@ -46425,7 +46451,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.objeto,
-                            "ubicacion_fisica",
+                            "physical_location_id",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -46443,7 +46469,7 @@ var render = function() {
                             "text-success": ub.nivel == 3,
                             "text-info": ub.nivel == 4
                           },
-                          domProps: { value: ub.ubicacion_fisica }
+                          domProps: { value: ub.id }
                         },
                         [
                           ub.nivel == "1"
@@ -46515,8 +46541,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.objeto.unidad_ejecutora,
-                          expression: "objeto.unidad_ejecutora"
+                          value: _vm.objeto.unidad_ejecutora_id,
+                          expression: "objeto.unidad_ejecutora_id"
                         }
                       ],
                       staticClass: "form-control",
@@ -46532,7 +46558,7 @@ var render = function() {
                             })
                           _vm.$set(
                             _vm.objeto,
-                            "unidad_ejecutora",
+                            "unidad_ejecutora_id",
                             $event.target.multiple
                               ? $$selectedVal
                               : $$selectedVal[0]
@@ -46543,10 +46569,7 @@ var render = function() {
                     _vm._l(_vm.unidades_ejecutoras, function(unidad) {
                       return _c(
                         "option",
-                        {
-                          key: unidad.id,
-                          domProps: { value: unidad.unidad_ejecutora }
-                        },
+                        { key: unidad.id, domProps: { value: unidad.id } },
                         [
                           _vm._v(
                             "\n                                    " +
@@ -46569,7 +46592,8 @@ var render = function() {
                 "button",
                 {
                   staticClass: "btn btn-secondary",
-                  attrs: { type: "button", "data-bs-dismiss": "modal" }
+                  attrs: { type: "button", "data-bs-dismiss": "modal" },
+                  on: { click: _vm.actualizarHistorial }
                 },
                 [
                   _vm._v(
@@ -46580,7 +46604,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "button",
-                { staticClass: "btn btn-primary", on: { click: _vm.borrar } },
+                {
+                  staticClass: "btn btn-primary",
+                  on: { click: _vm.cerrarModal }
+                },
                 [
                   _vm._v(
                     "\n                        Cancelar\n                    "
@@ -47113,6 +47140,8 @@ var render = function() {
           _vm._v(" "),
           _c("td", [_vm._v(_vm._s(persona.renglon))]),
           _vm._v(" "),
+          _c("td", [_vm._v(_vm._s(persona.fecha_nacimiento))]),
+          _vm._v(" "),
           _c("td", [_vm._v(_vm._s(persona.nit))]),
           _vm._v(" "),
           _c("td", [_vm._v(_vm._s(persona.genero))])
@@ -47140,6 +47169,8 @@ var staticRenderFns = [
         _c("th", { attrs: { scope: "col" } }, [_vm._v("dpi")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Renglón")]),
+        _vm._v(" "),
+        _c("th", { attrs: { scope: "col" } }, [_vm._v("Fecha Nacimiento")]),
         _vm._v(" "),
         _c("th", { attrs: { scope: "col" } }, [_vm._v("Nit")]),
         _vm._v(" "),
@@ -67908,15 +67939,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**********************************************************!*\
   !*** ./resources/js/components/EditHistoryComponent.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _EditHistoryComponent_vue_vue_type_template_id_46d65c5e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditHistoryComponent.vue?vue&type=template&id=46d65c5e& */ "./resources/js/components/EditHistoryComponent.vue?vue&type=template&id=46d65c5e&");
 /* harmony import */ var _EditHistoryComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditHistoryComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/EditHistoryComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _EditHistoryComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _EditHistoryComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -67946,7 +67976,7 @@ component.options.__file = "resources/js/components/EditHistoryComponent.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/EditHistoryComponent.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
