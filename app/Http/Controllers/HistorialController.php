@@ -18,6 +18,7 @@ class HistorialController extends Controller
         if ($request->id){
             //return  Historial::where('persona_id',$request->id)->get();
             return DB::table('historials')
+            ->orderBy('periodo_inicio','desc')
             ->leftjoin('nominal_positions','historials.nominal_position_id','=','nominal_positions.id')
             ->leftjoin('administrative_ubications','historials.administrative_ubication_id','=','administrative_ubications.id')
             ->leftjoin('physical_locations','historials.physical_location_id','=','physical_locations.id')
@@ -115,8 +116,9 @@ class HistorialController extends Controller
      * @param  \App\Historial  $historial
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Historial $historial)
+    public function destroy($id)
     {
-        //
+        Historial::findOrFail($id)->delete();
+        return response()->json('Histórico Eliminado',200);
     }
 }

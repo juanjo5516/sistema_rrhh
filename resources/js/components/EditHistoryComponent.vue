@@ -315,6 +315,7 @@ export default {
             )
             .then(response => {
                 this.cerrarModal();
+                this.$emit('refrescar-tabla-historico');
                 Swal.fire({
                     title: 'Actualización',
                     text: 'Registro Actualizado Correctamente'

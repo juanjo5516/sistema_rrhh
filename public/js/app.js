@@ -2226,6 +2226,8 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addHistorial: function addHistorial() {
+      var _this5 = this;
+
       axios.post("/historico", {
         renglon: this.renglon_select,
         persona_id: this.id,
@@ -2243,6 +2245,8 @@ __webpack_require__.r(__webpack_exports__);
           title: "Guardar",
           text: "Histórico Almacenado Correctamente"
         });
+
+        _this5.$emit('refrescar');
       })["catch"](function (error) {
         console.log(error);
       });
@@ -2913,6 +2917,8 @@ __webpack_require__.r(__webpack_exports__);
       axios.put("/api/historial/".concat(this.objeto.idHistorial), this.objeto).then(function (response) {
         _this.cerrarModal();
 
+        _this.$emit('refrescar-tabla-historico');
+
         Swal.fire({
           title: 'Actualización',
           text: 'Registro Actualizado Correctamente'
@@ -3566,6 +3572,34 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
@@ -3575,6 +3609,10 @@ __webpack_require__.r(__webpack_exports__);
     id: {
       type: Number,
       "default": 0
+    },
+    nombre: {
+      type: String,
+      "default": ""
     }
   },
   data: function data() {
@@ -3594,13 +3632,43 @@ __webpack_require__.r(__webpack_exports__);
     EditHistoryComponent: _EditHistoryComponent__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
-    mostrarEdit: function mostrarEdit(id_historial) {
+    eliminarRegistro: function eliminarRegistro(id_historial) {
       var _this = this;
 
+      /*  */
+      Swal.fire({
+        title: "¿Estas seguro(a) de eliminar este registro?",
+        showCancelButton: true,
+        confirmButtonText: "Si",
+        denyButtonText: "Don't save"
+      }).then(function (result) {
+        if (result.isConfirmed) {
+          axios["delete"]("/api/historial/".concat(id_historial)).then(function (response) {})["catch"](function (error) {
+            console.log(error);
+          });
+
+          _this.obtenerDatos();
+
+          Swal.fire("Eliminado!", "", "success");
+        } else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
+    },
+    refrescarTablaHistorico: function refrescarTablaHistorico() {
+      this.obtenerDatos();
+    },
+    refrescar: function refrescar() {
+      this.agregar = !this.agregar;
+      this.obtenerDatos();
+    },
+    mostrarEdit: function mostrarEdit(id_historial) {
+      var _this2 = this;
+
       axios.get("/api/historial/".concat(id_historial, "/edit")).then(function (response) {
-        _this.editar = response.data;
-        $('#modal_editar').modal('show');
-        console.log(_this.editar);
+        _this2.editar = response.data;
+        $("#modal_editar").modal("show");
+        console.log(_this2.editar);
       });
     },
     addForm: function addForm() {
@@ -3610,14 +3678,15 @@ __webpack_require__.r(__webpack_exports__);
       this.historial = !this.historial;
     },
     obtenerDatos: function obtenerDatos() {
-      var _this2 = this;
+      var _this3 = this;
 
+      console.log("Obteniendo datos");
       axios.get("/api/historial", {
         params: {
-          'id': this.id
+          id: this.id
         }
       }).then(function (response) {
-        _this2.historiales = response.data;
+        _this3.historiales = response.data;
       });
     },
     nombreCompleto: function nombreCompleto(n1, n2, n3, a1, a2, ac) {
@@ -3761,6 +3830,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   mounted: function mounted() {
     console.log("Component mounted.");
@@ -3770,13 +3846,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       personas: [],
       historial: false,
-      idSelected: 0
+      idSelected: 0,
+      nombre: ''
     };
   },
   components: {},
   methods: {
-    mostrarHistorial: function mostrarHistorial(id) {
+    mostrarHistorial: function mostrarHistorial(id, nombre) {
       this.idSelected = id;
+      this.nombre = nombre;
     },
     obtenerDatos: function obtenerDatos() {
       var _this = this;
@@ -47294,10 +47372,18 @@ var render = function() {
     ? _c(
         "div",
         [
-          _c("edit-history-component", { attrs: { objeto: _vm.editar } }),
+          _c("edit-history-component", {
+            attrs: { objeto: _vm.editar },
+            on: { "refrescar-tabla-historico": _vm.refrescarTablaHistorico }
+          }),
           _vm._v(" "),
           _c("div", [
-            _c("h1", [_vm._v("Historial de Empleado")]),
+            _c("h1", [
+              _vm._v("\n            Historial de Empleado\n            "),
+              _c("span", { staticClass: "badge badge-success" }, [
+                _vm._v(_vm._s(this.nombre))
+              ])
+            ]),
             _vm._v(" "),
             _c(
               "button",
@@ -47305,12 +47391,15 @@ var render = function() {
                 staticClass: "btn btn-primary mb-3",
                 on: { click: _vm.addForm }
               },
-              [_vm._v("Añadir nuevo")]
+              [_vm._v("\n            Añadir nuevo\n        ")]
             )
           ]),
           _vm._v(" "),
           this.agregar
-            ? _c("add-historico", { attrs: { id: this.id } })
+            ? _c("add-historico", {
+                attrs: { id: this.id },
+                on: { refrescar: _vm.refrescar }
+              })
             : _vm._e(),
           _vm._v(" "),
           _c("table", { staticClass: "table table-bordered" }, [
@@ -47321,9 +47410,21 @@ var render = function() {
               _vm._l(_vm.historiales, function(historial) {
                 return _c("tr", { key: historial.id }, [
                   _c("th", { attrs: { scope: "row" } }, [
-                    _c("span", { staticClass: "badge badge-success" }, [
-                      _vm._v(_vm._s(historial.renglon))
-                    ])
+                    historial.renglon == "011"
+                      ? _c(
+                          "span",
+                          { staticClass: "font-weight-bolder text-primary" },
+                          [_vm._v(_vm._s(historial.renglon))]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    historial.renglon == "029"
+                      ? _c(
+                          "span",
+                          { staticClass: "font-weight-bolder text-secondary" },
+                          [_vm._v(_vm._s(historial.renglon))]
+                        )
+                      : _vm._e()
                   ]),
                   _vm._v(" "),
                   _c("td", [
@@ -47373,12 +47474,29 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("Editar")]
+                      [
+                        _vm._v(
+                          "\n                        Editar\n                    "
+                        )
+                      ]
                     ),
                     _vm._v(" "),
-                    _c("button", { staticClass: "btn btn-danger" }, [
-                      _vm._v("Eliminar")
-                    ])
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        on: {
+                          click: function($event) {
+                            return _vm.eliminarRegistro(historial.idHistorial)
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        Eliminar\n                    "
+                        )
+                      ]
+                    )
                   ])
                 ])
               }),
@@ -47506,7 +47624,17 @@ var render = function() {
                     attrs: { type: "button" },
                     on: {
                       click: function($event) {
-                        return _vm.mostrarHistorial(persona.id)
+                        _vm.mostrarHistorial(
+                          persona.id,
+                          _vm.nombreCompleto(
+                            persona.nombre1,
+                            persona.nombre2,
+                            persona.nombre3,
+                            persona.apellido1,
+                            persona.apellido2,
+                            persona.apellido_casada
+                          )
+                        )
                       }
                     }
                   },
@@ -47523,7 +47651,9 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _c("personal-historico", { attrs: { id: this.idSelected } })
+      _c("personal-historico", {
+        attrs: { id: this.idSelected, nombre: this.nombre }
+      })
     ],
     1
   )

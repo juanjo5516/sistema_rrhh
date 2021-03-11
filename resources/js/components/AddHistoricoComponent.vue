@@ -317,7 +317,7 @@ export default {
                         title: "Guardar",
                         text: "Histórico Almacenado Correctamente"
                     });
-                    
+                    this.$emit('refrescar')
 
                     
                 })

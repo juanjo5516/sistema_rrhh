@@ -51,7 +51,14 @@
                         <button
                             type="button"
                             class="btn btn-success"
-                            @click="mostrarHistorial(persona.id)"
+                            @click="mostrarHistorial(persona.id,nombreCompleto(
+                                persona.nombre1,
+                                persona.nombre2,
+                                persona.nombre3,
+                                persona.apellido1,
+                                persona.apellido2,
+                                persona.apellido_casada
+                            ))"
                         >
                             Historial
                         </button>
@@ -60,7 +67,7 @@
             </tbody>
         </table>
 
-        <personal-historico :id="this.idSelected"></personal-historico>
+        <personal-historico :id="this.idSelected" :nombre="this.nombre"></personal-historico>
 
 
     </div>
@@ -78,14 +85,16 @@ export default {
         return {
             personas: [],
             historial: false,
-            idSelected: 0
+            idSelected: 0,
+            nombre:''
         };
     },
     components: {},
     methods: {
-        mostrarHistorial(id) {
+        mostrarHistorial(id,nombre) {
 
             this.idSelected = id;
+            this.nombre = nombre;
         },
 
         obtenerDatos() {
