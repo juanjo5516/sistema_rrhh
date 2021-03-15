@@ -46906,164 +46906,171 @@ var render = function() {
                 )
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "mb-3 col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "exampleInputPassword1" }
-                    },
-                    [_vm._v("Puesto Funcional")]
-                  ),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.objeto.puesto_funcional,
-                        expression: "objeto.puesto_funcional"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { type: "text" },
-                    domProps: { value: _vm.objeto.puesto_funcional },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.objeto,
-                          "puesto_funcional",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "mb-3 col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "exampleInputPassword1" }
-                    },
-                    [_vm._v("Puesto Nominal")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
+              _vm.objeto.renglon == "011" || _vm.objeto.renglon == "022"
+                ? _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "mb-3 col-6" }, [
+                      _c(
+                        "label",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.objeto.nominal_position_id,
-                          expression: "objeto.nominal_position_id"
+                          staticClass: "form-label",
+                          attrs: { for: "exampleInputPassword1" }
+                        },
+                        [_vm._v("Puesto Funcional")]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.objeto.puesto_funcional,
+                            expression: "objeto.puesto_funcional"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { type: "text" },
+                        domProps: { value: _vm.objeto.puesto_funcional },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.objeto,
+                              "puesto_funcional",
+                              $event.target.value
+                            )
+                          }
                         }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.objeto,
-                            "nominal_position_id",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mb-3 col-6" }, [
+                      _c(
+                        "label",
+                        {
+                          staticClass: "form-label",
+                          attrs: { for: "exampleInputPassword1" }
+                        },
+                        [_vm._v("Puesto Nominal")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.objeto.nominal_position_id,
+                              expression: "objeto.nominal_position_id"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.objeto,
+                                "nominal_position_id",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        _vm._l(_vm.puestos_nominales, function(puesto) {
+                          return _c(
+                            "option",
+                            { key: puesto.id, domProps: { value: puesto.id } },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(puesto.puesto) +
+                                  "\n                                "
+                              )
+                            ]
                           )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.puestos_nominales, function(puesto) {
-                      return _c(
-                        "option",
-                        { key: puesto.id, domProps: { value: puesto.id } },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(puesto.puesto) +
-                              "\n                                "
-                          )
-                        ]
+                        }),
+                        0
                       )
-                    }),
-                    0
-                  )
-                ])
-              ]),
+                    ])
+                  ])
+                : _vm._e(),
               _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "mb-3 col-6" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "form-label",
-                      attrs: { for: "exampleInputPassword1" }
-                    },
-                    [_vm._v("Tipo de Servicio")]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
+              _vm.objeto.renglon == "029" || _vm.objeto.renglon == "018"
+                ? _c("div", { staticClass: "form-row" }, [
+                    _c("div", { staticClass: "mb-3 col-6" }, [
+                      _c(
+                        "label",
                         {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.objeto.tipo_servicio,
-                          expression: "objeto.tipo_servicio"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.objeto,
-                            "tipo_servicio",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
+                          staticClass: "form-label",
+                          attrs: { for: "exampleInputPassword1" }
+                        },
+                        [_vm._v("Tipo de Servicio")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.objeto.tipo_servicio,
+                              expression: "objeto.tipo_servicio"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          on: {
+                            change: function($event) {
+                              var $$selectedVal = Array.prototype.filter
+                                .call($event.target.options, function(o) {
+                                  return o.selected
+                                })
+                                .map(function(o) {
+                                  var val = "_value" in o ? o._value : o.value
+                                  return val
+                                })
+                              _vm.$set(
+                                _vm.objeto,
+                                "tipo_servicio",
+                                $event.target.multiple
+                                  ? $$selectedVal
+                                  : $$selectedVal[0]
+                              )
+                            }
+                          }
+                        },
+                        _vm._l(_vm.tipo_servicios, function(servicio) {
+                          return _c(
+                            "option",
+                            {
+                              key: servicio.id,
+                              domProps: { value: servicio.id }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(servicio.servicio) +
+                                  "\n                                "
+                              )
+                            ]
                           )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.tipo_servicios, function(servicio) {
-                      return _c(
-                        "option",
-                        { key: servicio.id, domProps: { value: servicio.id } },
-                        [
-                          _vm._v(
-                            "\n                                    " +
-                              _vm._s(servicio.servicio) +
-                              "\n                                "
-                          )
-                        ]
+                        }),
+                        0
                       )
-                    }),
-                    0
-                  )
-                ])
-              ]),
+                    ])
+                  ])
+                : _vm._e(),
               _vm._v(" "),
               _c("div", { staticClass: "form-row" }, [
                 _c("div", { staticClass: "mb-3 col-6" }, [
@@ -50331,7 +50338,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    class: _vm.hasError("profesion_diversificado")
+                    class: _vm.hasError("profesion_diversificado_s")
                       ? "is-invalid"
                       : "",
                     on: {
@@ -50473,8 +50480,8 @@ var render = function() {
                     {
                       name: "show",
                       rawName: "v-show",
-                      value: _vm.formData.profesion != 59,
-                      expression: "formData.profesion != 59"
+                      value: _vm.formData.profesion_s != 59,
+                      expression: "formData.profesion_s != 59"
                     }
                   ],
                   staticClass: "col-md-3 py-3"
@@ -50519,8 +50526,8 @@ var render = function() {
                     {
                       name: "show",
                       rawName: "v-show",
-                      value: _vm.formData.profesion != 59,
-                      expression: "formData.profesion != 59"
+                      value: _vm.formData.profesion_s != 59,
+                      expression: "formData.profesion_s != 59"
                     }
                   ],
                   staticClass: "col-md-3 py-3"
@@ -50786,7 +50793,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: _vm.hasError("nombre_madre") ? "is-invalid" : "",
+                  class: _vm.hasError("direccion_madre") ? "is-invalid" : "",
                   attrs: { placeholder: "Dirección Domiciliar de la Madre" },
                   domProps: { value: _vm.formData.direccion_madre },
                   on: {
@@ -50831,7 +50838,7 @@ var render = function() {
                     }
                   ],
                   staticClass: "form-control",
-                  class: _vm.hasError("nombre_madre") ? "is-invalid" : "",
+                  class: _vm.hasError("telefono_madre") ? "is-invalid" : "",
                   attrs: { placeholder: "Teléfono del Madre" },
                   domProps: { value: _vm.formData.telefono_madre },
                   on: {

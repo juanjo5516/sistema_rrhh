@@ -43,7 +43,7 @@
                             </select>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row" v-if="objeto.renglon == '011' || objeto.renglon == '022'">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"
@@ -77,7 +77,7 @@
                             </div>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row" v-if="objeto.renglon == '029' || objeto.renglon == '018'">
                             <div class="mb-3 col-6">
                                 <label
                                     for="exampleInputPassword1"

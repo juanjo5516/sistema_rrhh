@@ -904,7 +904,7 @@
                         v-model="formData.profesion_diversificado_s"
                         class="form-control"
                         :class="
-                            hasError('profesion_diversificado')
+                            hasError('profesion_diversificado_s')
                                 ? 'is-invalid'
                                 : ''
                         "
@@ -974,7 +974,7 @@
                         formData.renglon === '018'
                 "
             >
-                <div class="col-md-3 py-3" v-show="formData.profesion != 59">
+                <div class="col-md-3 py-3" v-show="formData.profesion_s != 59">
                     <span>No. Colegiado Activo:</span>
                     <br />
                     <input
@@ -983,7 +983,7 @@
                         placeholder="No. Colegiado Activo"
                     />
                 </div>
-                <div class="col-md-3 py-3" v-show="formData.profesion != 59">
+                <div class="col-md-3 py-3" v-show="formData.profesion_s != 59">
                     <span>Fecha Fin Vigencia de Colegiado:</span>
                     <br />
                     <input
@@ -1129,7 +1129,7 @@
                         class="form-control"
                         v-model="formData.direccion_madre"
                         placeholder="Dirección Domiciliar de la Madre"
-                        :class="hasError('nombre_madre') ? 'is-invalid' : ''"
+                        :class="hasError('direccion_madre') ? 'is-invalid' : ''"
                     />
                     <div
                         v-if="hasError('direccion_madre')"
@@ -1150,7 +1150,7 @@
                         class="form-control"
                         v-model="formData.telefono_madre"
                         placeholder="Teléfono del Madre"
-                        :class="hasError('nombre_madre') ? 'is-invalid' : ''"
+                        :class="hasError('telefono_madre') ? 'is-invalid' : ''"
                     />
                     <div
                         v-if="hasError('telefono_madre')"
