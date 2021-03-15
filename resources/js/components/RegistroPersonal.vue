@@ -415,9 +415,9 @@
                     >
                         Ingrese nit válido.
                     </div>
-                    <div class="error" v-if="!$v.formData.nit.numeric">
+<!--                     <div class="error" v-if="!$v.formData.nit.numeric">
                         Este campo solo debe tener números.
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -945,7 +945,7 @@
                     <select
                         v-model="formData.profesion_s"
                         class="form-control"
-                        :class="hasError('profesion') ? 'is-invalid' : ''"
+                        :class="hasError('profesion_s') ? 'is-invalid' : ''"
                     >
                         <option
                             v-for="profesion in formData.profesiones"
@@ -1184,10 +1184,11 @@
             <div
                 class="form-row"
                 v-if="
-                    formData.renglon === '011' ||
+                    (formData.renglon === '011' ||
                         formData.renglon === '022' ||
                         formData.renglon === '029' ||
-                        formData.renglon === '018'
+                        formData.renglon === '018') &&
+                        (formData.estado_civl == 'C')
                 "
             >
                 <div class="col-md-6 py-3">
@@ -1312,7 +1313,7 @@
         <!-- FINALIZA PASO 5 STEP -->
 
         <!-- PASO 6 STEP -->
-        <tab-content title="Información Laboral">
+<!--         <tab-content title="Información Laboral">
             <div
                 v-if="formData.renglon === '011' || formData.renglon === '022'"
             >
@@ -1405,7 +1406,7 @@
                     </div>
                 </div>
             </div>
-        </tab-content>
+        </tab-content> -->
         <!-- FINALIZA PASO 6 STEP -->
     </form-wizard>
 </template>
@@ -1523,9 +1524,9 @@ export default {
                     },
                     nit: {
                         required,
-                        minLength: minLength(8),
-                        maxLength: maxLength(8),
-                        numeric
+                        minLength: minLength(5),
+                        maxLength: maxLength(10),
+                        
                     }
                 }, //Validation Rules for step 1
                 { etnia: { required }, comunidad: { required } },

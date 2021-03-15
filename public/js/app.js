@@ -5352,6 +5352,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 //import { FormWizard, TabContent } from "vue-form-wizard";
 //import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
@@ -5502,9 +5503,8 @@ __webpack_require__.r(__webpack_exports__);
         },
         nit: {
           required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"],
-          minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(8),
-          maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(8),
-          numeric: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["numeric"]
+          minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["minLength"])(5),
+          maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["maxLength"])(10)
         }
       }, //Validation Rules for step 1
       {
@@ -48653,7 +48653,7 @@ var render = function() {
                         !_vm.$v.formData.primer_nombre.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e(),
@@ -48661,7 +48661,7 @@ var render = function() {
                         !_vm.$v.formData.primer_nombre.minLength
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        El campo debe tener más de 2 caracteres.\n                    "
+                                "\n                            El campo debe tener más de 2 caracteres.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -48706,7 +48706,7 @@ var render = function() {
                         !_vm.$v.formData.segundo_nombre.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -48797,7 +48797,7 @@ var render = function() {
                         !_vm.$v.formData.primer_apellido.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -48842,7 +48842,7 @@ var render = function() {
                         !_vm.$v.formData.segundo_apellido.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -48952,7 +48952,7 @@ var render = function() {
                         !_vm.$v.formData.picked.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -48993,7 +48993,7 @@ var render = function() {
                         !_vm.$v.formData.fecha_nac.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -49072,7 +49072,7 @@ var render = function() {
                         !_vm.$v.formData.estado_civl.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -49114,7 +49114,7 @@ var render = function() {
                       !_vm.$v.formData.lugar_nac.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                    Campo requerido.\n                "
+                              "\n                        Campo requerido.\n                    "
                             )
                           ])
                         : _vm._e()
@@ -49161,7 +49161,7 @@ var render = function() {
                         !_vm.$v.formData.dpi.required
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Campo requerido.\n                    "
+                                "\n                            Campo requerido.\n                        "
                               )
                             ])
                           : _vm._e(),
@@ -49170,7 +49170,7 @@ var render = function() {
                         !_vm.$v.formData.dpi.minLength
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Ingrese dpi válido.\n                    "
+                                "\n                            Ingrese dpi válido.\n                        "
                               )
                             ])
                           : _vm._e(),
@@ -49178,7 +49178,7 @@ var render = function() {
                         !_vm.$v.formData.dpi.numeric
                           ? _c("div", { staticClass: "error" }, [
                               _vm._v(
-                                "\n                        Este campo solo debe tener números.\n                    "
+                                "\n                            Este campo solo debe tener números.\n                        "
                               )
                             ])
                           : _vm._e()
@@ -49223,7 +49223,7 @@ var render = function() {
                       !_vm.$v.formData.nit.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                    Campo requerido.\n                "
+                              "\n                        Campo requerido.\n                    "
                             )
                           ])
                         : _vm._e(),
@@ -49232,15 +49232,7 @@ var render = function() {
                       !_vm.$v.formData.dpi.minLength
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                    Ingrese nit válido.\n                "
-                            )
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      !_vm.$v.formData.nit.numeric
-                        ? _c("div", { staticClass: "error" }, [
-                            _vm._v(
-                              "\n                    Este campo solo debe tener números.\n                "
+                              "\n                        Ingrese nit válido.\n                    "
                             )
                           ])
                         : _vm._e()
@@ -49301,9 +49293,9 @@ var render = function() {
                       { key: etniaitem.id, domProps: { value: etniaitem.id } },
                       [
                         _vm._v(
-                          "\n                        " +
+                          "\n                            " +
                             _vm._s(etniaitem.etnia) +
-                            "\n                    "
+                            "\n                        "
                         )
                       ]
                     )
@@ -49316,7 +49308,7 @@ var render = function() {
                       !_vm.$v.formData.etnia.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -49371,9 +49363,9 @@ var render = function() {
                       },
                       [
                         _vm._v(
-                          "\n                        " +
+                          "\n                            " +
                             _vm._s(comunidaditem.comunidad_linguistica) +
-                            "\n                    "
+                            "\n                        "
                         )
                       ]
                     )
@@ -49386,7 +49378,7 @@ var render = function() {
                       !_vm.$v.formData.comunidad.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -49662,7 +49654,7 @@ var render = function() {
                     !_vm.$v.formData.sensorial.required
                       ? _c("div", { staticClass: "error" }, [
                           _vm._v(
-                            "\n                    Campo requerido.\n                "
+                            "\n                        Campo requerido.\n                    "
                           )
                         ])
                       : _vm._e()
@@ -49977,7 +49969,7 @@ var render = function() {
                     !_vm.$v.formData.motriz.required
                       ? _c("div", { staticClass: "error" }, [
                           _vm._v(
-                            "\n                    Campo requerido.\n                "
+                            "\n                        Campo requerido.\n                    "
                           )
                         ])
                       : _vm._e()
@@ -50166,7 +50158,7 @@ var render = function() {
                     !_vm.$v.formData.mental.required
                       ? _c("div", { staticClass: "error" }, [
                           _vm._v(
-                            "\n                    Campo requerido.\n                "
+                            "\n                        Campo requerido.\n                    "
                           )
                         ])
                       : _vm._e()
@@ -50237,7 +50229,7 @@ var render = function() {
                       !_vm.$v.formData.nivel_primario_s.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50305,7 +50297,7 @@ var render = function() {
                       !_vm.$v.formData.nivel_basico_s.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50370,9 +50362,9 @@ var render = function() {
                       { key: profesion.id, domProps: { value: profesion.id } },
                       [
                         _vm._v(
-                          "\n                        " +
+                          "\n                            " +
                             _vm._s(profesion.profesion_diversificado) +
-                            "\n                    "
+                            "\n                        "
                         )
                       ]
                     )
@@ -50385,7 +50377,7 @@ var render = function() {
                       !_vm.$v.formData.profesion_diversificado_s.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50417,7 +50409,7 @@ var render = function() {
                       }
                     ],
                     staticClass: "form-control",
-                    class: _vm.hasError("profesion") ? "is-invalid" : "",
+                    class: _vm.hasError("profesion_s") ? "is-invalid" : "",
                     on: {
                       change: function($event) {
                         var $$selectedVal = Array.prototype.filter
@@ -50444,9 +50436,9 @@ var render = function() {
                       { key: profesion.id, domProps: { value: profesion.id } },
                       [
                         _vm._v(
-                          "\n                        " +
+                          "\n                            " +
                             _vm._s(profesion.profesion_universitaria) +
-                            "\n                    "
+                            "\n                        "
                         )
                       ]
                     )
@@ -50459,7 +50451,7 @@ var render = function() {
                       !_vm.$v.formData.profesion_s.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50612,7 +50604,7 @@ var render = function() {
                       !_vm.$v.formData.nombre_padre.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50657,7 +50649,7 @@ var render = function() {
                       !_vm.$v.formData.direccion_padre.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50702,7 +50694,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_padre.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -50711,7 +50703,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_padre.maxLength
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Ingrese No. de teléfono válido.\n                    "
+                              "\n                            Ingrese No. de teléfono válido.\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -50719,7 +50711,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_padre.numeric
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Este campo solo debe tener números.\n                    "
+                              "\n                            Este campo solo debe tener números.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50771,7 +50763,7 @@ var render = function() {
                       !_vm.$v.formData.nombre_madre.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50816,7 +50808,7 @@ var render = function() {
                       !_vm.$v.formData.direccion_madre.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50861,7 +50853,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_madre.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -50870,7 +50862,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_madre.maxLength
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Ingrese No. de teléfono válido.\n                    "
+                              "\n                            Ingrese No. de teléfono válido.\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -50878,7 +50870,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_madre.numeric
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Este campo solo debe tener números.\n                    "
+                              "\n                            Este campo solo debe tener números.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50888,10 +50880,11 @@ var render = function() {
             ])
           : _vm._e(),
         _vm._v(" "),
-        _vm.formData.renglon === "011" ||
-        _vm.formData.renglon === "022" ||
-        _vm.formData.renglon === "029" ||
-        _vm.formData.renglon === "018"
+        (_vm.formData.renglon === "011" ||
+          _vm.formData.renglon === "022" ||
+          _vm.formData.renglon === "029" ||
+          _vm.formData.renglon === "018") &&
+        _vm.formData.estado_civl == "C"
           ? _c("div", { staticClass: "form-row" }, [
               _c("div", { staticClass: "col-md-6 py-3" }, [
                 _c("span", [_vm._v("Nombre del cónyuge:")]),
@@ -50930,7 +50923,7 @@ var render = function() {
                       !_vm.$v.formData.nombre_conyuge.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -50975,7 +50968,7 @@ var render = function() {
                       !_vm.$v.formData.direccion_conyuge.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -51020,7 +51013,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_conyugue.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -51029,7 +51022,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_conyugue.maxLength
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Ingrese No. de teléfono válido.\n                    "
+                              "\n                            Ingrese No. de teléfono válido.\n                        "
                             )
                           ])
                         : _vm._e(),
@@ -51037,7 +51030,7 @@ var render = function() {
                       !_vm.$v.formData.telefono_conyugue.numeric
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Este campo solo debe tener números.\n                    "
+                              "\n                            Este campo solo debe tener números.\n                        "
                             )
                           ])
                         : _vm._e()
@@ -51092,290 +51085,12 @@ var render = function() {
                       !_vm.$v.formData.cantidad_hijos.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
-                              "\n                        Campo requerido.\n                    "
+                              "\n                            Campo requerido.\n                        "
                             )
                           ])
                         : _vm._e()
                     ])
                   : _vm._e()
-              ])
-            ])
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("tab-content", { attrs: { title: "Información Laboral" } }, [
-        _vm.formData.renglon === "011" || _vm.formData.renglon === "022"
-          ? _c("div", [
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _vm._v(
-                  "\n                El renglón seleccionado es:\n                "
-                ),
-                _c("h3", [_vm._v(_vm._s(_vm.formData.renglon))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("div", { staticClass: "col-md-6 py-3" }, [
-                  _c("span", [_vm._v("Puesto Funcional:")]),
-                  _vm._v(" "),
-                  _c("br"),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formData.puesto_funcional,
-                        expression: "formData.puesto_funcional"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { placeholder: "Puesto Funcional Actual" },
-                    domProps: { value: _vm.formData.puesto_funcional },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.formData,
-                          "puesto_funcional",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("div", { staticClass: "col-md-6 py-3" }, [
-                  _c("span", [_vm._v("Puesto Nominal:")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.puesto_nominal,
-                          expression: "formData.puesto_nominal"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.formData,
-                            "puesto_nominal",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    _vm._l(_vm.formData.puestos_nominales, function(puesto) {
-                      return _c(
-                        "option",
-                        { key: puesto.id, domProps: { value: puesto.id } },
-                        [
-                          _vm._v(
-                            "\n                            " +
-                              _vm._s(puesto.puesto) +
-                              "\n                        "
-                          )
-                        ]
-                      )
-                    }),
-                    0
-                  )
-                ])
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.formData.renglon === "029"
-          ? _c("div", [
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("span", [_vm._v("El renglón seleccionado es: ")]),
-                _vm._v(" "),
-                _c("h3", [_vm._v(_vm._s(_vm.formData.renglon))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("div", { staticClass: "col-md-6 py-3" }, [
-                  _c("span", [_vm._v("Tipo de Servicio:")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.tipo_servicio,
-                          expression: "formData.tipo_servicio"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.formData,
-                            "tipo_servicio",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", [_vm._v("Técnico")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Profesional")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          : _vm._e(),
-        _vm._v(" "),
-        _vm.formData.renglon === "018"
-          ? _c("div", [
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("span", [_vm._v("El renglón seleccionado es: ")]),
-                _vm._v(" "),
-                _c("h3", [_vm._v(_vm._s(_vm.formData.renglon))])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("div", { staticClass: "col-md-6 py-3" }, [
-                  _c("span", [_vm._v("Tipo de Servicio:")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.tipo_servicio,
-                          expression: "formData.tipo_servicio"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.formData,
-                            "tipo_servicio",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", [_vm._v("Técnico")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Profesional")
-                      ])
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row justify-content-md-center" }, [
-                _c("div", { staticClass: "col-md-6 py-3" }, [
-                  _c("span", [_vm._v("Especialidad:")]),
-                  _vm._v(" "),
-                  _c(
-                    "select",
-                    {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.formData.especialidad,
-                          expression: "formData.especialidad"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      on: {
-                        change: function($event) {
-                          var $$selectedVal = Array.prototype.filter
-                            .call($event.target.options, function(o) {
-                              return o.selected
-                            })
-                            .map(function(o) {
-                              var val = "_value" in o ? o._value : o.value
-                              return val
-                            })
-                          _vm.$set(
-                            _vm.formData,
-                            "especialidad",
-                            $event.target.multiple
-                              ? $$selectedVal
-                              : $$selectedVal[0]
-                          )
-                        }
-                      }
-                    },
-                    [
-                      _c("option", [_vm._v("Legales")]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Médicos")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Odontólogicos")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Oftalmológicos")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Capacitación")
-                      ]),
-                      _vm._v(" "),
-                      _c("option", { attrs: { value: "" } }, [
-                        _vm._v("Asesoría administrativa")
-                      ])
-                    ]
-                  )
-                ])
               ])
             ])
           : _vm._e()
