@@ -5350,6 +5350,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 //import { FormWizard, TabContent } from "vue-form-wizard";
 //import "vue-form-wizard/dist/vue-form-wizard.min.css";
 
@@ -5406,8 +5408,41 @@ __webpack_require__.r(__webpack_exports__);
         profesion: "",
         profesion_diversificado: "",
         fecha_nac: "",
-        nivel_primario: ["Primero", "Segundo", "Tercero", "Cuarto", "Quinto", "Sexto", "Sin estudio de nivel Primario"],
-        nivel_basico: ["Primero Básico", "Segundo Básico", "Tercero Básico", "Sin estudio de nivel Básico"],
+        nivel_primario: [{
+          id: '1',
+          nivel: 'Primero'
+        }, {
+          id: '2',
+          nivel: 'Segundo'
+        }, {
+          id: '3',
+          nivel: 'Tercero'
+        }, {
+          id: '4',
+          nivel: 'Cuarto'
+        }, {
+          id: '5',
+          nivel: 'Quinto'
+        }, {
+          id: '6',
+          nivel: 'Sexto'
+        }, {
+          id: '0',
+          nivel: 'Sin estudio de nivel Primario'
+        }],
+        nivel_basico: [{
+          id: '1',
+          nivel: 'Primero Básico'
+        }, {
+          id: '2',
+          nivel: 'Segundo Básico'
+        }, {
+          id: '3',
+          nivel: 'Tercero Básico'
+        }, {
+          id: '0',
+          nivel: 'Sin estudio de nivel Básico'
+        }],
         nivel_primario_s: [],
         nivel_basico_s: [],
         sensorial: "",
@@ -5429,7 +5464,9 @@ __webpack_require__.r(__webpack_exports__);
         puesto_nominal: "",
         puesto_funcional: "",
         tipo_servicio: "",
-        especialidad: ""
+        especialidad: "",
+        profesion_diversificado_s: '',
+        profesion_s: ''
       },
       validationRules: [{
         primer_nombre: {
@@ -5488,7 +5525,7 @@ __webpack_require__.r(__webpack_exports__);
           required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
         }
       }, {
-        profesion: {
+        profesion_s: {
           required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
         },
         nivel_primario_s: {
@@ -5497,7 +5534,7 @@ __webpack_require__.r(__webpack_exports__);
         nivel_basico_s: {
           required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
         },
-        profesion_diversificado: {
+        profesion_diversificado_s: {
           required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_2__["required"]
         }
       }, {
@@ -5602,7 +5639,12 @@ __webpack_require__.r(__webpack_exports__);
         nominal_position: this.formData.puesto_nominal,
         puesto_funcional: this.formData.puesto_funcional,
         no_colegiado: this.formData.no_colegiado,
-        fecha_fin_colegiado: this.formData.fecha_fin_colegiado
+        fecha_fin_colegiado: this.formData.fecha_fin_colegiado,
+        nivel_primario: this.formData.nivel_primario_s,
+        nivel_basico: this.formData.nivel_basico_s,
+        nivel_diversificado: this.formData.profesion_diversificado_s,
+        nivel_universitario: this.formData.profesion_s,
+        no_hijos: this.formData.no_hijos
       }).then(function (response) {
         Swal.fire({
           title: "Guardar",
@@ -50181,7 +50223,11 @@ var render = function() {
                     }
                   },
                   _vm._l(_vm.formData.nivel_primario, function(nivel) {
-                    return _c("option", { key: nivel }, [_vm._v(_vm._s(nivel))])
+                    return _c(
+                      "option",
+                      { key: nivel.id, domProps: { value: nivel.id } },
+                      [_vm._v(_vm._s(nivel.nivel))]
+                    )
                   }),
                   0
                 ),
@@ -50245,7 +50291,11 @@ var render = function() {
                     }
                   },
                   _vm._l(_vm.formData.nivel_basico, function(nivel) {
-                    return _c("option", { key: nivel }, [_vm._v(_vm._s(nivel))])
+                    return _c(
+                      "option",
+                      { key: nivel.id, domProps: { value: nivel.id } },
+                      [_vm._v(_vm._s(nivel.nivel))]
+                    )
                   }),
                   0
                 ),
@@ -50284,8 +50334,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.profesion_diversificado,
-                        expression: "formData.profesion_diversificado"
+                        value: _vm.formData.profesion_diversificado_s,
+                        expression: "formData.profesion_diversificado_s"
                       }
                     ],
                     staticClass: "form-control",
@@ -50304,7 +50354,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.formData,
-                          "profesion_diversificado",
+                          "profesion_diversificado_s",
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
@@ -50330,9 +50380,9 @@ var render = function() {
                   0
                 ),
                 _vm._v(" "),
-                _vm.hasError("profesion_diversificado")
+                _vm.hasError("profesion_diversificado_s")
                   ? _c("div", { staticClass: "invalid-feedback" }, [
-                      !_vm.$v.formData.profesion_diversificado.required
+                      !_vm.$v.formData.profesion_diversificado_s.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
                               "\n                        Campo requerido.\n                    "
@@ -50362,8 +50412,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.profesion,
-                        expression: "formData.profesion"
+                        value: _vm.formData.profesion_s,
+                        expression: "formData.profesion_s"
                       }
                     ],
                     staticClass: "form-control",
@@ -50380,7 +50430,7 @@ var render = function() {
                           })
                         _vm.$set(
                           _vm.formData,
-                          "profesion",
+                          "profesion_s",
                           $event.target.multiple
                             ? $$selectedVal
                             : $$selectedVal[0]
@@ -50404,9 +50454,9 @@ var render = function() {
                   0
                 ),
                 _vm._v(" "),
-                _vm.hasError("profesion")
+                _vm.hasError("profesion_s")
                   ? _c("div", { staticClass: "invalid-feedback" }, [
-                      !_vm.$v.formData.profesion.required
+                      !_vm.$v.formData.profesion_s.required
                         ? _c("div", { staticClass: "error" }, [
                             _vm._v(
                               "\n                        Campo requerido.\n                    "

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Academico;
 use App\Mail\MensajeCreacion;
 use App\Persona;
 use App\Contacto;
@@ -70,7 +71,14 @@ class PersonaController extends Controller
         $colegiado->fecha_fin_vigencia=$request->fecha_fin_colegiado;
         $colegiado->save();
 
-        
+        $academico = new Academico();
+        $academico ->nivel_primario = $request->nivel_primario;
+        $academico ->nivel_basico = $request->nivel_basico;
+        $academico ->profesion_diversificados_id = $request->nivel_diversificado;
+        $academico ->profesions_id= $request->nivel_universitario;
+        $academico->save();
+
+
         $persona = new Persona();
         $persona->dpi = $request->dpi;
         $persona->nombre1 = $request->nombre1;
@@ -93,6 +101,8 @@ class PersonaController extends Controller
         $persona->contacto_id = $contacto->id;
         $persona->puesto_id = $puesto->id;
         $persona->colegiado_id = $colegiado->id;
+        $persona->academico_id = $academico->id;
+        $persona->no_hijos = $request->no_hijos;
         
 
         $persona->save();

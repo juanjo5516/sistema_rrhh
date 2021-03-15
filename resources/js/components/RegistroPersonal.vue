@@ -832,8 +832,9 @@
                     >
                         <option
                             v-for="nivel in formData.nivel_primario"
-                            v-bind:key="nivel"
-                            >{{ nivel }}</option
+                            v-bind:value="nivel.id"
+                            v-bind:key="nivel.id"
+                            >{{ nivel.nivel }}</option
                         >
                     </select>
                     <div
@@ -868,8 +869,9 @@
                     >
                         <option
                             v-for="nivel in formData.nivel_basico"
-                            v-bind:key="nivel"
-                            >{{ nivel }}</option
+                            v-bind:value="nivel.id"
+                            v-bind:key="nivel.id"
+                            >{{ nivel.nivel }}</option
                         >
                     </select>
                     <div
@@ -899,7 +901,7 @@
                     <span>Seleccione profesión a Nivel Diversificado: </span>
                     <br />
                     <select
-                        v-model="formData.profesion_diversificado"
+                        v-model="formData.profesion_diversificado_s"
                         class="form-control"
                         :class="
                             hasError('profesion_diversificado')
@@ -916,12 +918,12 @@
                         </option>
                     </select>
                     <div
-                        v-if="hasError('profesion_diversificado')"
+                        v-if="hasError('profesion_diversificado_s')"
                         class="invalid-feedback"
                     >
                         <div
                             class="error"
-                            v-if="!$v.formData.profesion_diversificado.required"
+                            v-if="!$v.formData.profesion_diversificado_s.required"
                         >
                             Campo requerido.
                         </div>
@@ -941,7 +943,7 @@
                 <div class="col-md-6 py-3">
                     <span>Seleccione profesión Universitaria: </span> <br />
                     <select
-                        v-model="formData.profesion"
+                        v-model="formData.profesion_s"
                         class="form-control"
                         :class="hasError('profesion') ? 'is-invalid' : ''"
                     >
@@ -953,10 +955,10 @@
                             {{ profesion.profesion_universitaria }}
                         </option>
                     </select>
-                    <div v-if="hasError('profesion')" class="invalid-feedback">
+                    <div v-if="hasError('profesion_s')" class="invalid-feedback">
                         <div
                             class="error"
-                            v-if="!$v.formData.profesion.required"
+                            v-if="!$v.formData.profesion_s.required"
                         >
                             Campo requerido.
                         </div>
@@ -1464,19 +1466,19 @@ export default {
                 profesion_diversificado: "",
                 fecha_nac: "",
                 nivel_primario: [
-                    "Primero",
-                    "Segundo",
-                    "Tercero",
-                    "Cuarto",
-                    "Quinto",
-                    "Sexto",
-                    "Sin estudio de nivel Primario"
+                    {id:'1', nivel:'Primero'},
+                    {id:'2', nivel:'Segundo'},
+                    {id:'3', nivel:'Tercero'},
+                    {id:'4', nivel:'Cuarto'},
+                    {id:'5', nivel:'Quinto'},
+                    {id:'6', nivel:'Sexto'},
+                    {id:'0', nivel:'Sin estudio de nivel Primario'}
                 ],
                 nivel_basico: [
-                    "Primero Básico",
-                    "Segundo Básico",
-                    "Tercero Básico",
-                    "Sin estudio de nivel Básico"
+                    {id:'1', nivel:'Primero Básico'},
+                    {id:'2', nivel:'Segundo Básico'},
+                    {id:'3', nivel:'Tercero Básico'},
+                    {id:'0', nivel:'Sin estudio de nivel Básico'}
                 ],
                 nivel_primario_s: [],
                 nivel_basico_s: [],
@@ -1499,7 +1501,9 @@ export default {
                 puesto_nominal: "",
                 puesto_funcional: "",
                 tipo_servicio: "",
-                especialidad: ""
+                especialidad: "",
+                profesion_diversificado_s:'',
+                profesion_s:''
             },
             validationRules: [
                 {
@@ -1531,10 +1535,10 @@ export default {
                     mental: { required }
                 },
                 {
-                    profesion: { required },
+                    profesion_s: { required },
                     nivel_primario_s: { required },
                     nivel_basico_s: { required },
-                    profesion_diversificado: { required }
+                    profesion_diversificado_s: { required }
                 },
                 {
                     nombre_padre: { required },
@@ -1630,7 +1634,12 @@ export default {
                     nominal_position: this.formData.puesto_nominal,
                     puesto_funcional: this.formData.puesto_funcional,
                     no_colegiado: this.formData.no_colegiado,
-                    fecha_fin_colegiado: this.formData.fecha_fin_colegiado
+                    fecha_fin_colegiado: this.formData.fecha_fin_colegiado,
+                    nivel_primario: this.formData.nivel_primario_s,
+                    nivel_basico: this.formData.nivel_basico_s,
+                    nivel_diversificado: this.formData.profesion_diversificado_s,
+                    nivel_universitario: this.formData.profesion_s,
+                    no_hijos: this.formData.no_hijos
                 })
                 .then(response => {
                     Swal.fire({

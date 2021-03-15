@@ -28,8 +28,10 @@ class CreatePersonasTable extends Migration
             $table->string('lugar_nacimiento', 50)->default('lugar_nacimiento');
             $table->string('estado_civil', 1)->default('C');
             $table->string('genero', 1)->nullable();
+            $table->bigInteger('no_hijos')->nullable();
             $table->foreignId('etnia_id')->constrained();
             $table->foreignId('comunidad_id')->constrained();
+            $table->foreignId('academico_id')->constrained();
             $table->string('renglon', 3)->default('029');
             $table->foreignId('sensorial_id')->constrained();
             $table->foreignId('motriz_id')->constrained();
