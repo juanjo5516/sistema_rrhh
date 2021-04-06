@@ -1427,8 +1427,8 @@ export default {
     mounted() {
         console.log("Component mounted.");
         this.obtenerCatalogo("etnias", "etnia");
-        this.obtenerCatalogo("comunidades", "comunidad_linguistica");
-        this.obtenerCatalogo("profesiones", "profesion_universitaria");
+        this.obtenerCatalogo("comunidads", "comunidad_linguistica");
+        this.obtenerCatalogo("profesions", "profesion_universitaria");
         this.obtenerCatalogo(
             "profesion_diversificados",
             "profesion_diversificado"
