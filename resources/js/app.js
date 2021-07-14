@@ -47,6 +47,7 @@ Vue.component('asignacion-component', require('./components/AsignacionComponent.
 Vue.component('personal-list-historico', require('./components/PersonalListHistoricoComponent.vue').default);
 Vue.component('personal-historico', require('./components/PersonalHistoricoComponent.vue').default);
 Vue.component('add-historico', require('./components/AddHistoricoComponent.vue').default);
+Vue.component('documentos', require('./components/Documentos.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

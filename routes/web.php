@@ -70,3 +70,5 @@ Route::resource('rol', 'RolController');
 Route::get('/obtener-catalogo', 'ObtenerCatalogoController@obtenerCatalogo');
 
 Route::view('/tablero-renglon', 'tableros.renglones');
+
+Route::view('/documentos', 'documentos.documentos');
