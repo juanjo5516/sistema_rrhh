@@ -46,6 +46,7 @@ Vue.component('egreso-component', require('./components/EgresoComponent.vue').de
 Vue.component('asignacion-component', require('./components/AsignacionComponent.vue').default);
 Vue.component('personal-list-historico', require('./components/PersonalListHistoricoComponent.vue').default);
 Vue.component('personal-historico', require('./components/PersonalHistoricoComponent.vue').default);
+Vue.component('detalle-documentos', require('./components/DetalleDocumentos.vue').default);
 Vue.component('add-historico', require('./components/AddHistoricoComponent.vue').default);
 Vue.component('documentos', require('./components/Documentos.vue').default);
 
